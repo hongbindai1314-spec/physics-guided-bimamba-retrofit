@@ -1,0 +1,23 @@
+{
+  "ID": 30,
+  "Stratum": "Interior",
+  "x1": 0.085,
+  "x2": 1.78,
+  "x3": 0.34,
+  "x4": 0.31,
+  "x5": 3.98,
+  "x6": 0.89,
+  "x7": 25.7,
+  "x8": 19.3,
+  "x9": 7.0,
+  "x10": 6.6,
+  "x11": 1,
+  "x12": 1,
+  "BiMamba_Energy": 99.2,
+  "EnergyPlus_Energy": 101.4,
+  "BiMamba_PPD": 9.7,
+  "EnergyPlus_PPD": 10.0,
+  "BiMamba_Carbon": 52.6,
+  "EnergyPlus_Carbon": 53.7,
+  "A_x": 97.0
+}

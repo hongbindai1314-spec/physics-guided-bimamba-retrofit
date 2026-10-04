@@ -1,0 +1,6 @@
+{
+  "type": "Ridge surrogate",
+  "role": "Fast screening model used by the optimisation loop",
+  "full_model": "Physics-Guided BiMamba",
+  "n_features": 55
+}

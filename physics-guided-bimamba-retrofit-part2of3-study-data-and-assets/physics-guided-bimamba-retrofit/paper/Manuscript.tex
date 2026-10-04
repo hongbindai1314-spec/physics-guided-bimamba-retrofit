@@ -1,0 +1,1626 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup[figure]{name=Figure,labelsep=period,font=small}
+\captionsetup[table]{name=Table,labelsep=period,font=small}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{ragged2e}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage[version=4]{mhchem}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\sisetup{
+  per-mode = symbol,
+  range-phrase = --,
+  group-minimum-digits = 4,
+  group-separator = {,}
+}
+
+\DeclareSIUnit{\ach}{ACH}
+\DeclareSIUnit{\kwh}{kWh}
+\DeclareSIUnit{\mwh}{MWh}
+\DeclareSIUnit{\ppm}{ppm}
+\DeclareSIUnit{\cny}{CNY}
+\DeclareSIUnit{\usd}{USD}
+\DeclareSIUnit{\person}{person}
+\providecommand{\w}{\watt}
+\providecommand{\W}{\watt}
+\providecommand{\J}{\joule}
+\providecommand{\MJ}{\mega\joule}
+\providecommand{\K}{\kelvin}
+\providecommand{\L}{\litre}
+\providecommand{\m}{\metre}
+\providecommand{\s}{\second}
+\providecommand{\mm}{\milli\metre}
+\providecommand{\kg}{\kilogram}
+\providecommand{\kWh}{\,\text{kWh}}
+\providecommand{\MWh}{\,\text{MWh}}
+\providecommand{\Wm}{\,\mathrm{W\,m^{-2}}}
+\providecommand{\yr}{\,\text{yr}^{-1}}
+\providecommand{\tCO}{\,\text{t CO}_2\text{-eq}}
+\providecommand{\pp}{\,\text{pp}}
+\providecommand{\RMSE}{\text{RMSE}}
+\providecommand{\MAE}{\text{MAE}}
+\providecommand{\MAPE}{\text{MAPE}}
+\providecommand{\Rsq}{R^2}
+\providecommand{\CVRMSE}{\text{CV-RMSE}}
+\providecommand{\HV}{\text{HV}}
+\providecommand{\IGD}{\text{IGD}}
+\providecommand{\CI}{\text{CI}}
+\providecommand{\PPD}{\text{PPD}}
+\providecommand{\MC}{\text{MC}}
+\providecommand{\KDE}{\text{KDE}}
+\providecommand{\SHAP}{\text{SHAP}}
+\makeatletter
+\renewenvironment{abstract}
+  {\if@twocolumn
+     \section*{\abstractname}%
+   \else
+     \small
+     \begin{center}%
+       {\bfseries \abstractname\vspace{-.5em}\vspace{0pt}}%
+     \end{center}%
+     \noindent\ignorespaces
+   \fi}
+  {\if@twocolumn\else\par\fi}
+\makeatother
+
+\title{Granular-Ball Computing-Enhanced Physics-Guided BiMamba for Building Energy Prediction and Retrofit Optimization}
+\author{}
+\date{}
+\sloppy
+\emergencystretch=3em
+\hbadness=10000
+\hfuzz=100pt
+\vfuzz=100pt
+\titlespacing*{\subsection}{0pt}{1.4\baselineskip}{0.7\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{1.1\baselineskip}{0.55\baselineskip}
+\titlespacing*{\paragraph}{0pt}{0.9\baselineskip}{0.5em}
+\setcounter{secnumdepth}{3}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{2pt}
+
+\begin{document}
+
+\maketitle
+\vspace{-3.2em}
+\begin{center}
+{\large Hongbin Dai$^{1,4}$, Qinqin Zhang$^{1,4}$, Huibin Zeng$^{2,4,*}$, Guangqiu Huang$^{3,4}$, Jingjing Wang$^{4}$}\\[0.5em]
+\begin{minipage}{\textwidth}
+\justifying
+\setlength{\parindent}{0pt}
+$^{1}$College of Computer and Information Science, Chongqing Normal University, Chongqing 401331, China\par
+$^{2}$School of Economics and Management, Chongqing Normal University, Chongqing 401331, China\par
+$^{3}$School of Management, Xi'an University of Architecture and Technology, Xi'an 710055, China\par
+$^{4}$Department of Information Systems, VNU University of Engineering and Technology, Hanoi 11021, Vietnam\par
+*Corresponding author: zenghuibin@cqnu.edu.cn
+\end{minipage}
+\end{center}
+
+\noindent\textbf{Abstract:} Accurate physics-guided building energy prediction is essential for the operation and retrofit of existing commercial buildings. This study proposes an integrated framework that combines granular-ball computing for regime-aware feature abstraction, third-order resistance-capacitance (RC) thermal descriptors for physics-based representation, a physics-guided bidirectional Mamba predictor (BiMamba), and an improved NSGA-III algorithm for retrofit optimization. The framework is validated using two years of 15-minute building management system data from a high-rise office building in Shanghai. Results show that the proposed approach improves building energy prediction while promoting consistency with calibrated RC energy-balance behaviour and preserving model interpretability. When used as a surrogate model, it also supports efficient generation of retrofit solutions across energy, thermal comfort, cost, and life-cycle carbon objectives. Scenario-based uncertainty analysis further demonstrates the robustness of balanced retrofit strategies under joint weather, occupancy, and parameter perturbations. The proposed framework provides a practical pipeline for data-driven building performance prediction and low-carbon retrofit decision support.
+
+\noindent\textbf{Keywords:} building energy prediction; physics-guided deep learning; BiMamba; granular-ball computing; many-objective optimisation
+
+\section{INTRODUCTION}
+
+\subsection{Research Context}
+The building sector accounts for approximately 36\% of global final energy consumption and nearly 39\% of energy-related CO$_2$ emissions \cite{1,2}. As nations accelerate their commitments toward carbon neutrality, the existing commercial building stock---characterised by ageing envelopes, oversized HVAC systems, and suboptimal operational schedules---represents both the largest source of inefficiency and the most significant opportunity for demand-side decarbonisation \cite{3}. Realising this potential requires two tightly coupled capabilities: (i) accurate physics-guided forecasting of building energy consumption at sub-hourly resolution to support model-predictive control, fault diagnostics, and retrofit scenario evaluation; and (ii) systematic multi-objective optimisation of retrofit design variables to navigate the inherently conflicting goals of minimising energy use, maintaining occupant comfort, controlling capital expenditure, and reducing life-cycle carbon emissions \cite{4,5}. Neither capability alone is sufficient; their integration within a unified, computationally tractable, and uncertainty-aware framework remains an open challenge.
+
+Building energy prediction methods span three established paradigms. Physics-based white-box simulators (EnergyPlus \cite{6}, TRNSYS \cite{7}) solve coupled heat-transfer and system equations from first principles, offering causal transparency but demanding exhaustive parameterisation and prohibitive computation at portfolio scale \cite{8}. Data-driven black-box models---including support vector regression (SVR) \cite{9}, gradient-boosted trees \cite{10}, and deep neural networks \cite{11})---learn input--output mappings from historical sensor data with rapid inference, yet lack physical constraints that prevent implausible outputs under distribution shift \cite{12}. Hybrid grey-box formulations embed lumped-parameter thermal circuits within statistical estimation frameworks, balancing interpretability against flexibility, but have historically been limited to low-order representations that do not fully exploit the richness of modern building management system (BMS) data \cite{13,14}.
+
+Recent deep-learning advances have substantially improved time-series forecasting for buildings. Recurrent architectures---LSTM \cite{15}, BiLSTM \cite{16}, GRU \cite{17}---mitigate vanishing gradients through gating mechanisms. Transformer-based models capture global dependencies via self-attention \cite{18}, with variants such as Informer \cite{19} and Autoformer \cite{20} addressing quadratic complexity. Despite this progress, most architectures treat the building as a purely statistical system, ignoring the thermodynamic laws governing energy balance. Three documented failure modes persist: (i) physically inconsistent predictions during transient events (morning pre-cooling, thermostat setbacks); (ii) poor extrapolation under novel weather or post-retrofit conditions; and (iii) limited interpretability that undermines practitioner trust \cite{21}. Concurrently, state-space models (SSMs) have emerged as an alternative to attention-based architectures. Mamba \cite{22} introduces input-dependent selectivity into the discretised state-space recurrence, achieving $O(L)$ complexity while dynamically modulating memory retention. Bidirectional extensions (BiMamba) \cite{23} process sequences in both temporal directions, capturing complementary dependencies within an observed input window. The use of selective state-space models in building energy forecasting, particularly in combination with RC-derived thermal descriptors and soft energy-balance regularisation, remains insufficiently evaluated. This motivates a systematic assessment of their value within a physically informed building-energy forecasting workflow.
+
+Existing building-load forecasting models remain constrained by three interrelated challenges: representing long thermal-memory effects, responding reliably to short operational transitions, and maintaining computational efficiency for long sub-hourly BMS sequences. Recurrent architectures can compress multi-hour thermal dynamics into limited hidden states, whereas attention-based models may incur substantial memory and computational overhead for long input windows. More importantly, purely statistical predictors do not explicitly represent the delayed and dissipative thermal behaviour of building envelopes and HVAC systems. These limitations motivate a physics-guided state-space framework that combines long-sequence representation, regime-aware feature abstraction, and soft physical regularisation. Table~\ref{tab:sequence_model_failures} retains a direct comparison of the principal model limitations addressed by the proposed framework.
+
+\begin{table}[!htbp]
+\centering
+\caption{Concrete failure modes of conventional sequence models in building-load forecasting}
+\label{tab:sequence_model_failures}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.18\textwidth}>{\RaggedRight\arraybackslash}p{0.27\textwidth}>{\RaggedRight\arraybackslash}p{0.31\textwidth}>{\RaggedRight\arraybackslash}p{0.18\textwidth}@{}}
+\toprule
+\textbf{Model family} & \textbf{Technical limitation} & \textbf{Typical building-load failure case} & \textbf{Practical consequence} \\
+\midrule
+Conventional RNNs (LSTM, GRU, BiLSTM) \cite{15,16,17,24} & Even with gating, informative gradients attenuate over long sub-hourly sequences, so multi-hour thermal inertia is compressed into a limited hidden state. & After overnight setback, the model underestimates the delayed effect of envelope heat storage and misses the magnitude or timing of the morning start-up peak. & Weak long-horizon control guidance and larger peak-load forecasting error. \\
+
+Transformer-family models \cite{18,19,20} & Self-attention captures long dependencies but incurs superlinear memory and compute growth as 15-minute sequences extend from one day to multiple days. & Multi-day forecasting for pre-cooling or retrofit scenario screening becomes expensive to retrain and difficult to deploy when the surrogate must be queried repeatedly. & High computational cost limits scalability in optimisation loops and operational deployment. \\
+
+Purely statistical deep models \cite{21} & Inputs and losses do not explicitly encode dissipative thermal physics, delayed responses, or asymmetric heating/cooling behaviour. & Under unusual weather fronts or post-retrofit operating regimes, the predictor generates fast load swings that violate expected thermal smoothing and lag. & Reduced extrapolation reliability and lower practitioner trust. \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Building retrofit optimisation has evolved from single-objective formulations \cite{25} to multi-objective frameworks accommodating energy, comfort, cost, and carbon simultaneously \cite{26,27}. NSGA-II \cite{28} remains widely used but degrades beyond three objectives due to crowding-distance limitations \cite{29}. NSGA-III \cite{30} and MOEA/D \cite{31} address many-objective problems through reference-point niching and decomposition, respectively, yet three obstacles persist. First, realistic retrofit decisions involve continuous, discrete, and binary variables, creating mixed-integer design spaces that challenge conventional operators \cite{32}. Second, coupling physics-based simulators with evolutionary algorithms requires tens of thousands of evaluations at minutes-to-hours per simulation, rendering the process impractical without surrogate models---which themselves introduce approximation errors \cite{33}. Third, weather variability, stochastic occupancy, and model-parameter uncertainty propagate through both prediction and optimisation stages, yet the vast majority of frameworks treat inputs deterministically \cite{34,35}.
+
+\subsection{Literature Review}
+
+Efforts to embed domain knowledge into data-driven building energy predictors have followed three principal strategies. The first augments machine-learning inputs with grey-box model parameters. Bacher and Madsen \cite{14} systematically compared first- through fourth-order resistance--capacitance (RC) models, establishing the 3rd-order formulation as the preferred trade-off between parsimony and fidelity. Reynders \emph{et al.} \cite{13} demonstrated that appending the RC-derived thermal time constant $\tau$ to a random-forest predictor reduced test-set MAPE by 8--12\% relative to raw-sensor-only inputs. However, these studies were limited to shallow learning architectures and did not enforce physical consistency at the loss-function level.
+
+The second strategy constrains the training loss itself. Physics-informed neural networks (PINNs) \cite{36} embed PDE residuals as soft penalties, and Drgo\v{n}a \emph{et al.} \cite{37} extended this concept to multi-zone building control, demonstrating reduced physically inconsistent outputs. Yet PINNs face practical limitations in the building context: the spatiotemporal dimensionality of multi-zone commercial buildings exceeds what current PINN formulations efficiently handle, and the governing physics is more naturally expressed as lumped-parameter ODEs than as PDEs \cite{38}.
+
+The third strategy incorporates attention mechanisms for adaptive feature recalibration. Squeeze-and-excitation blocks \cite{39} and cross-channel attention have been integrated with ConvLSTM architectures \cite{40}, improving temporal modelling but without physical grounding. The coordinated use of these physical, representation-learning, and sequence-modelling ideas with selective state-space models remains insufficiently evaluated in building energy forecasting.
+
+Modern commercial buildings generate heterogeneous data streams---zone temperatures, CO$_2$ concentrations, HVAC submeters, weather observations, Wi-Fi occupancy counts---spanning temporal scales from minutes (occupancy fluctuations) to months (seasonal trends) \cite{41}. Classical fusion approaches rely on hand-crafted features at predetermined windows (1-hour, 3-hour, 24-hour rolling statistics), requiring domain expertise and failing to adapt to local data density \cite{42}. Principal component analysis and autoencoders reduce dimensionality globally but may smooth out the local structure that distinguishes operational regimes \cite{43}.
+
+Granular computing \cite{44,45} offers a principled alternative by constructing information granules---intervals, fuzzy sets, or hyperspheres---whose size and shape adapt to local data density and target homogeneity. Granular ball computing (GBC) \cite{46}, a recent variant, partitions the feature space into adaptive hyperspheres through purity-based recursive splitting, providing noise-robust, multi-scale representations without manual specification of regime boundaries. GBC has demonstrated effectiveness in classification \cite{46}, clustering \cite{47}, and feature selection \cite{48}, but its potential for building energy prediction---specifically for encoding multi-scale occupancy patterns and operational regime transitions into compact, smooth features---has received limited attention. This motivates its evaluation as a regime-aware representation component in the present framework.
+
+Surrogate-assisted evolutionary optimisation has become the dominant paradigm for building retrofit \cite{26,27}. Polynomial regression \cite{49}, Kriging \cite{50}, and radial-basis-function networks \cite{51} have served as surrogates, but approximation errors---particularly in extrapolation regions---can bias the Pareto front. Deep-learning surrogates \cite{52} reduce model-form error, but the empirical value of coupling them with physics-informed training and adaptive feature abstraction for building retrofit screening remains to be established.
+
+Two algorithmic challenges remain underexplored in the building domain. First, standard NSGA-III distributes reference points uniformly on the unit simplex, assuming regular Pareto-front geometry. Building retrofit fronts are typically irregular and non-convex, causing many fixed reference points to fall in empty regions and degrading diversity in populated regions \cite{53}. Adaptive reference-point adjustment has been proposed in the broader evolutionary computation literature \cite{54} but has seen limited application to building problems. Second, constraint handling overwhelmingly relies on penalty functions requiring problem-specific tuning \cite{55}. Constraint-dominance principles \cite{56} offer a parameter-free alternative but have not been integrated with NSGA-III's reference-point niching for building applications.
+
+Finally, uncertainty propagation through the optimisation loop remains rare. The few studies incorporating stochastic inputs \cite{34,35,57} typically simplify the uncertainty model (e.g., Gaussian perturbation of a single weather parameter) and do not simultaneously propagate weather, occupancy, and model-parameter uncertainties. When a high-fidelity, fast surrogate is available, Monte Carlo propagation of multiple correlated uncertainty sources becomes tractable---motivating the integration of a physics-guided deep-learning surrogate into the optimisation framework.
+
+Despite these developments, several methodological needs remain insufficiently examined in the building domain. In particular, few studies have jointly evaluated multi-source data fusion, physics-guided sequence learning, adaptive granular feature abstraction, and surrogate-assisted many-objective retrofit screening under an explicit uncertainty-analysis workflow. Existing predictors also provide limited evidence on whether RC-derived physical descriptors and local operational-regime representations offer complementary value when coupled with selective state-space models. Constraint handling in retrofit optimisation still depends heavily on tunable penalty functions, and long-term validation using high-resolution, multi-season data from fully instrumented commercial buildings remains scarce.
+
+Rather than proposing a new general theory of sequence modelling, building thermal dynamics, granular computing, or evolutionary optimisation, this study develops a physics-guided methodological framework for building HVAC-energy forecasting and surrogate-assisted retrofit decision support. The framework integrates multi-source data fusion, granular-ball operational-regime representation, RC-derived thermal descriptors, bidirectional selective state-space modelling, and surrogate-assisted many-objective screening. The main contributions of this work are:
+
+\begin{enumerate}[label=(\arabic*),leftmargin=1.8em,labelsep=0.5em,itemsep=0.6em,topsep=0.3em]
+  \item A unified building-dynamics representation that integrates third-order RC thermal descriptors with granular-ball operational-regime features. The RC descriptors characterise slowly varying thermal properties, whereas the granular-ball representation captures local operating regimes and nonlinear transition patterns in the observed BMS data.
+
+  \item A Physics-Guided BiMamba predictor that adapts bidirectional selective state-space modelling to building HVAC-energy forecasting through RC-informed feature inputs and soft RC energy-balance regularisation. The objective is not to introduce a new generic state-space theory, but to evaluate whether physically informed representation improves sub-hourly forecasting under long thermal-memory and regime-transition conditions.
+
+  \item A surrogate-assisted retrofit decision framework that couples the trained predictor with improved NSGA-III search, representative EnergyPlus cross-verification, and post-optimal uncertainty-risk filtering. This component supports screening and prioritisation of retrofit alternatives rather than replacing detailed engineering design or high-fidelity simulation. The Shanghai office-building analysis is used as an engineering demonstration and empirical validation case for the general framework.
+\end{enumerate}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 1.png}
+\caption{Physics-guided BiMamba framework with granular computing}
+\label{fig:framework_overview}
+\end{figure}
+
+Figure 1 summarises the complete workflow, including BMS data processing, RC-based physical-feature construction, granular-ball operational-regime representation, Physics-Guided BiMamba prediction, surrogate-assisted retrofit optimisation, representative EnergyPlus cross-verification, and post-optimal uncertainty-risk filtering. The Shanghai office-building analysis is used as an engineering demonstration and empirical validation case for this methodological framework.
+
+Section II presents the general methodological framework, including data representation, RC-based physical-feature construction, granular-ball operational-regime representation, the Physics-Guided BiMamba predictor, surrogate-assisted optimisation, and uncertainty analysis. Section III describes the implementation of this framework for the Shanghai office-building case study, including the data environment, model configuration, retrofit design space, and evaluation settings. Section IV reports the empirical results, including predictive performance, ablation analysis, optimisation outcomes, representative EnergyPlus cross-verification, and post-optimal uncertainty assessment. Section V discusses the engineering implications, limitations, transferability, and future research directions.
+\section{METHODOLOGY}
+
+\subsection{Problem Definition Grounded in Building Physics}
+
+Consider a commercial building partitioned into thermal zones indexed by $i \in \{1, 2, \ldots, N_z\}$. From a first-principles perspective, the thermal behaviour of zone $i$ is governed by the conservation of energy. For a well-mixed zone with effective zone-air temperature $T_{z,i}(t)$ (\degree C), the instantaneous energy balance is:
+
+\begin{equation}
+C_{z,i}\frac{dT_{z,i}}{dt}
+=
+\frac{T_{w,i}-T_{z,i}}{R_{\mathrm{zw},i}}
++
+Q_{\mathrm{HVAC},i}^{\mathrm{RC}}(t)
++
+Q_{\mathrm{int},i}(t)
++
+\Gamma_i I_{\mathrm{sol}}(t),
+\label{eq:rc_zone_balance}
+\end{equation}
+where $\Gamma_i=\alpha_{\mathrm{sol},i}A_{w,i}$. The terms on the right-hand side represent, respectively:
+
+\textbf{Conductive heat transfer through the building envelope:} $T_{w,i}(t)$ (\degree C) is the effective wall-node temperature, $R_{\mathrm{zw},i}$ (K\,W$^{-1}$) is the thermal resistance between the zone-air and wall nodes, and $C_{z,i}$ (J\,K$^{-1}$) is the effective thermal capacitance of the zone-air node. The ratio $(T_{w,i}-T_{z,i})/R_{\mathrm{zw},i}$ represents conductive heat exchange between the wall and zone-air nodes. The remaining RC node, $m$, represents the interior thermal mass and is coupled to the wall node through $R_{\mathrm{wm},i}$.
+
+\textbf{Signed RC-equivalent HVAC rate:} $Q_{\mathrm{HVAC},i}^{\mathrm{RC}}(t)$ (W) denotes the signed RC-equivalent HVAC rate used exclusively in the grey-box energy-balance formulation for zone $i$. The sign convention is fixed throughout the manuscript: $Q_{\mathrm{HVAC},i}^{\mathrm{RC}}(t)>0$ denotes heating supplied to the zone, whereas $Q_{\mathrm{HVAC},i}^{\mathrm{RC}}(t)<0$ denotes cooling extracted from the zone. This quantity is used in the RC state equation and the physics-consistency calculation; it is not identical to the non-negative supervised prediction target.
+
+\textbf{Forecasting-target convention:} The supervised target is denoted by $y_k=E_{\mathrm{HVAC},k}^{\mathrm{BMS}}\geq0$, where $E_{\mathrm{HVAC},k}^{\mathrm{BMS}}$ is the observed HVAC-energy magnitude over the 15-minute interval ending at time $k$, expressed in kWh. Generic references to model outputs therefore use ``15-minute HVAC energy'' or ``BMS-reported HVAC energy.'' The terms ``cooling-season HVAC energy'' and ``heating-season HVAC energy'' are used only when referring specifically to the corresponding BMS components. The annual optimisation objective $f_1$, which represents total annual building energy consumption, remains distinct from the 15-minute forecasting target.
+
+\textbf{Internal heat gains:} $Q_{\text{int},i}(t)$ (W) aggregates heat released by occupants (sensible + latent), office equipment (computers, printers, servers), and lighting. In a typical commercial office, $Q_{\text{int},i}$ can range from 5 W·m$^{-2}$ during unoccupied hours to over 35 W·m$^{-2}$ during peak occupancy, making it a significant and highly variable driver of cooling demand.
+
+\textbf{Solar heat gain:} $\alpha_{\mathrm{sol},i}$ (dimensionless) is the solar absorptance, $A_{w,i}$ (m$^2$) is the effective solar-exposed wall area, and $I_{\mathrm{sol}}(t)$ (W\,m$^{-2}$) is the incident global horizontal irradiance. Their product is represented compactly by the effective solar aperture $\Gamma_i=\alpha_{\mathrm{sol},i}A_{w,i}$, so that $\Gamma_i I_{\mathrm{sol}}(t)$ is the solar forcing term in Equation~\eqref{eq:rc_zone_balance}. For glazed surfaces, $\alpha_{\mathrm{sol},i}$ is interpreted through the corresponding solar heat-gain property and $A_{w,i}$ through the exposed glazing area.
+
+Equation (1) encapsulates the fundamental physics that governs building energy consumption: the HVAC system must compensate for envelope heat transfer, internal gains, and solar gains to maintain the zone at its setpoint temperature. Three observations motivate the methodological choices in this paper:
+
+\textbf{Thermal-identity parameters:} The parameters $R_{\mathrm{zw},i}$, $R_{\mathrm{wm},i}$, $C_{z,i}$, $C_{w,i}$, $C_{m,i}$, and $\alpha_{\mathrm{sol},i}$ encode the thermal identity of zone $i$. They determine the effective thermal time constant $\tau_i=R_{\mathrm{zw},i}C_{z,i}$, the effective zone-to-mass coupling conductance $\kappa_i=(R_{\mathrm{zw},i}+R_{\mathrm{wm},i})^{-1}$, and the effective solar aperture $\Gamma_i=\alpha_{\mathrm{sol},i}A_{w,i}$. These quantities are inferred through the grey-box RC model described in Section~2.2.
+
+\textbf{The energy balance constrains the space of physically plausible predictions.} The prediction target is a non-negative interval-energy magnitude, while the RC balance uses the signed RC-equivalent rate $Q_{\mathrm{HVAC}}^{\mathrm{RC}}$. The two quantities are linked only within the physics-consistency calculation through a mode-aware conversion. This distinction motivates the energy-space regularisation defined in Section~2.3.
+
+\textbf{The driving terms---$T_{w,i}$, $Q_{\mathrm{int},i}$, and $I_{\mathrm{sol}}$---exhibit multi-scale temporal structure.} Solar radiation follows a deterministic diurnal cycle modulated by stochastic cloud cover; internal gains follow weekly occupancy patterns with minute-level fluctuations; and the wall and mass nodes integrate these forcings through the building thermal mass. Capturing this multi-scale structure requires features at multiple levels of abstraction, motivating the granular-ball computing module (Section~2.2).
+
+The retrofit optimisation problem seeks to identify the set of design modifications that best balance four conflicting objectives. Let $\mathbf{x} = [\mathbf{x}_c; \mathbf{x}_d; \mathbf{x}_b] \in \mathbb{R}^{n_c} \times \mathbb{Z}^{n_d} \times \{0,1\}^{n_b}$ denote the vector of design variables, where $n_c$, $n_d$, and $n_b$ are the numbers of continuous, discrete, and binary variables, respectively, with $n = n_c + n_d + n_b = 12$ in our formulation. The many-objective optimisation problem is:
+
+\begin{equation}
+\begin{aligned}
+\min_{\mathbf{x}} \quad & \mathbf{f}(\mathbf{x}) = [f_1(\mathbf{x}), f_2(\mathbf{x}), f_3(\mathbf{x}), f_4(\mathbf{x})]^\top \\
+\text{subject to} \quad & \mathbf{g}(\mathbf{x}) \leq \mathbf{0}, \\
+& \mathbf{x}_{\text{min}} \leq \mathbf{x} \leq \mathbf{x}_{\text{max}}
+\end{aligned}
+\end{equation}
+
+where $\mathbf{f}(\mathbf{x}) \in \mathbb{R}^4$ is the objective vector, $f_1$--$f_4$ correspond to energy, discomfort, cost, and carbon, respectively; $\mathbf{g}(\mathbf{x}) = [g_1(\mathbf{x}),\ldots,g_m(\mathbf{x})]^\top$ is the vector of $m$ inequality constraints; and $\mathbf{x}_{\text{min}},\mathbf{x}_{\text{max}} \in \mathbb{R}^n$ are lower and upper bounds of the design vector.
+
+The four objectives are defined as:
+
+\textbf{$f_1(\mathbf{x})$: Annual total energy consumption (kWh).} This includes electricity consumed by the HVAC system (chillers, fans, pumps, VRF units), lighting, and plug loads. $f_1$ depends on the design variables through their effect on the building's thermal balance (Equation 1): improved insulation reduces the conductive term; higher COP reduces the electrical energy required per unit of thermal energy; and raised cooling setpoints reduce the driving potential for heat transfer.
+
+\textbf{$f_2(\mathbf{x})$: Thermal discomfort (\% of occupied hours with PPD $>$ 10 \%).} The predicted percentage dissatisfied (PPD) is computed from the predicted mean vote (PMV) using Fanger's model, which depends on air temperature, mean radiant temperature, air velocity, humidity, metabolic rate, and clothing insulation. Design variables that reduce energy consumption (e.g., raising cooling setpoints, reducing ventilation) tend to increase discomfort, creating a fundamental trade-off.
+
+\textbf{$f_3(\mathbf{x})$: Initial retrofit cost (USD).} This encompasses material costs (insulation, glazing, HVAC equipment), labour costs, and design/engineering fees. Cost functions are typically piecewise-linear or step-wise in the design variables: adding 10 mm of insulation is cheaper per unit than adding 150 mm due to diminishing returns on existing wall cavities, and VFD/ERV installation involves a fixed cost regardless of building size.
+
+\textbf{$f_4(\mathbf{x})$: Life-cycle carbon emissions (kg CO$_2$-eq).} This includes operational carbon (proportional to $f_1$ via the grid emission factor, approximately 0.65 t CO$_2$·MWh$^{-1}$ for Shanghai's electricity mix) plus embodied carbon of retrofit materials (insulation, glazing, HVAC equipment) amortised over a 30-year life span.
+
+The inequality constraints $\mathbf{g}(\mathbf{x}) \leq \mathbf{0}$ encode practical limitations:
+\begin{itemize}
+    \item Maximum insulation thickness (0.15 m), limited by wall cavity depth;
+    \item Window-to-wall ratio between 0.20 and 0.60, to comply with daylighting requirements and structural code;
+    \item Minimum ventilation rate (0.5 L·s$^{-1}$·m$^{-2}$), to meet indoor air quality standards;
+    \item Cooling setpoint not exceeding 26 \degree C and heating setpoint not below 18 \degree C, to remain within acceptable comfort bounds.
+\end{itemize}
+
+The box constraints $\mathbf{x}_{\text{min}} \leq \mathbf{x} \leq \mathbf{x}_{\text{max}}$ define the feasible range of each design variable.
+
+A key computational challenge is that evaluating $\mathbf{f}(\mathbf{x})$ for a given design $\mathbf{x}$ requires simulating the building's annual energy performance under the modified design parameters. When a physics-based simulator (e.g., EnergyPlus) is used, each evaluation costs minutes to hours. Evolutionary algorithms typically require tens of thousands of evaluations, making direct coupling computationally prohibitive. Our approach replaces the simulator with the trained BiMamba predictor (Section 2.3), which evaluates a candidate design in approximately 0.015 seconds---a speedup of four to five orders of magnitude.
+
+\subsection{Multi-Source Data Fusion and Adaptive Feature Extraction}
+\begin{table}[H]
+\centering
+\caption{End-to-end feature-construction algorithm pipeline for reproducible model input generation}
+\label{tab:algo_feature_construction}
+\small
+\begin{tabular}{@{}p{0.96\textwidth}@{}}
+\toprule
+\textbf{Input:} Raw 15-minute BMS streams $\mathbf{X}_{raw}$, weather forcing, occupancy proxies, HVAC measurements, floor/zone metadata.\\
+\textbf{Output:} Unified predictor input tensor $\mathbf{X}_{feat}$ containing denoised sensor signals, RC-derived physical descriptors, and GBC membership features.\\[0.3em]
+\midrule
+\begin{enumerate}[leftmargin=1.5em,itemsep=0.2em]
+    \item Synchronise all raw channels to the common 15-minute timeline; flag missing samples, communication gaps, and physically impossible sensor values.
+    \item Impose the chronological training--validation--test partition before fitting any data-dependent object. Impute short gaps using historical observations only, restrict long-gap $k$-NN donors to timestamps preceding the forecast origin, and replace extreme outliers using a trailing-window IQR rule.
+    \item At each forecast origin $t$, apply terminal-reconstruction MSSA only to the trailing history available up to $t$ and export the reconstructed terminal representation for downstream use.
+    \item For each floor (or thermal group), fit the 3rd-order RC model by regularised nonlinear least squares using the training period only and obtain $\hat{\boldsymbol{\theta}}=[\hat{R}_{\mathrm{zw}},\hat{R}_{\mathrm{wm}},\hat{C}_{z},\hat{C}_{w},\hat{C}_{m},\hat{\alpha}_{\mathrm{sol}}]^\top$.
+    \item Convert the training-derived RC parameters into compact physical descriptors $[\tau,\kappa,\Gamma]^\top$, freeze them, and append them to all subsequent samples from the same floor.
+    \item Construct the augmented training matrix from denoised training-period operational variables and appended RC descriptors; recursively generate granular balls using purity-controlled splitting and training labels only.
+    \item For each training, validation, or test sample, compute distances to the fixed training-derived ball centres and transform them into soft membership weights $\mathbf{g}_t$; concatenate $\mathbf{g}_t$ with the denoised operational variables and RC descriptors.
+    \item Standardise features using training-set statistics only, build historical input windows ending at the forecast origin, and export the final tensor $\mathbf{X}_{feat}$ to the BiMamba training and inference pipeline.
+\end{enumerate}\\[-0.4em]
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Temporal Data Split and Leakage-Control Protocol}
+\label{sec:leakage_control}
+
+The complete two-year dataset was partitioned chronologically before any data-dependent transformation was estimated. The training period (1 January 2022--31 December 2022) was used exclusively to determine preprocessing settings, fit feature-scaling statistics, estimate RC parameters, construct granular balls, and train the forecasting models. The validation period (1 January 2023--30 June 2023) was used only for hyperparameter selection and early stopping. The test period (1 July 2023--31 December 2023) was reserved exclusively for final out-of-sample evaluation and was never used to fit preprocessing objects, update feature representations, select model configurations, or retrain the model.
+
+All time-varying transformations follow a forecast-origin protocol. For a prediction generated at time $t$, only information observed at or before $t$ is permitted to contribute to the corresponding input representation. Historical records preceding a validation or test boundary may be used as lagged context when they occur before the relevant forecast origin; however, no information recorded after the forecast origin is allowed to flow backward into the current sample. The forecasting task is formulated as one-step-ahead 15-minute HVAC-energy prediction. Given an observed historical input sequence $\mathbf{Z}_{t-T+1:t}$, where $T$ denotes the look-back length, the model predicts the BMS-reported HVAC energy at time $t+1$. Consequently, the target $y_{t+1}$, all covariates measured after time $t$, and all later observations are excluded from the construction of the input sequence.
+
+All fitted preprocessing objects are frozen after training. This includes RC-model parameters, granular-ball centres and radii, Gaussian membership bandwidths, and feature-scaling statistics. Validation and test samples are transformed only through these fixed training-derived objects. A component-wise audit of the permitted information-access scope, fitting stage, and freezing rule for each preprocessing and modelling operation is provided in Supplementary Table~S1.
+
+The raw data streams from the building management system (BMS) are heterogeneous in nature (temperatures, humidity, power, counts), in range (CO$_2$ at 400--2000 ppm vs. chiller power at 0--500 kW), in noise level (weather station with 0.1 \degree C resolution vs. inexpensive zone temperature sensors with $\pm$0.5 \degree C accuracy), and in temporal dynamics (rapidly fluctuating Wi-Fi counts vs. slowly evolving wall temperatures). The purpose of the feature-extraction pipeline is to transform these raw streams into a unified, high-quality, physically enriched, and multi-scale feature representation that maximises the downstream predictor's accuracy, robustness, and interpretability. The pipeline comprises three sequential operations: denoising, physical-feature derivation, and granular-feature construction. The full end-to-end workflow is summarised in Table~\ref{tab:algo_feature_construction}.
+
+\textbf{Missing-value imputation.} BMS data inevitably contain gaps due to sensor failure, communication dropouts, and maintenance downtime. To avoid the use of future information, all imputations are performed under a causal information-access constraint. For a missing value associated with forecast origin $t$, only observations available at or before $t$ are permitted to contribute to its reconstruction. Short gaps are reconstructed using one-sided local extrapolation based on the most recent valid historical observations of the same variable. This procedure preserves local temporal continuity without using the first valid observation after the missing interval. For longer gaps, we employ a $k$-nearest-neighbours ($k$-NN) procedure with $k=5$ and a time-weighted Euclidean distance metric, but all candidate donor records are restricted to historical timestamps $s<t$:
+
+\begin{equation}
+d(t, s) = \sqrt{\sum_{j' \neq j} \left( \frac{x_{j'}(s) - \bar{x}_{j'}(t)}{\sigma_{j'}} \right)^2 + \lambda (t - s)^2}
+\end{equation}
+
+where $\bar{x}_{j'}(t)$ is the last observed value of variable $j'$ before the gap, $\sigma_{j'}$ is the range of variable $j'$ (used for normalisation), and $\lambda$ is a weighting coefficient that prioritises temporally proximate donors. The imputed value is the inverse-distance-weighted mean of the selected historical donors. This causal design ensures that no future sensor reading, weather observation, occupancy measurement, or load value is used to reconstruct an earlier missing entry.
+
+\textbf{Outlier detection and replacement.} After imputation, outliers are detected using the interquartile range (IQR) method applied to a trailing historical window of 192 observations (48 hours). For each variable $j$ at time $t$, the observation $x_j(t)$ is flagged as an outlier if:
+
+\begin{equation}
+x_j(t) < Q_{0.25}^{(j)}(t) - 3.0 \cdot \text{IQR}^{(j)}(t) \quad \text{or} \quad x_j(t) > Q_{0.75}^{(j)}(t) + 3.0 \cdot \text{IQR}^{(j)}(t)
+\end{equation}
+
+where $Q_{0.25}^{(j)}(t)$ and $Q_{0.75}^{(j)}(t)$ are the 25th and 75th percentiles computed from observations available before or at time $t$, and $\text{IQR}^{(j)}(t) = Q_{0.75}^{(j)}(t) - Q_{0.25}^{(j)}(t)$. The multiplier 3.0 (rather than the common 1.5) was chosen to be conservative, flagging only extreme anomalies---such as sensor stuck-at-zero, impossible negative temperatures, or chiller-power readings exceeding nameplate capacity---while preserving genuine peak values that are physically realistic. Flagged outliers are replaced by the median of the preceding 12 valid observations (three hours), which provides a robust historical estimate.
+
+\textbf{Causal multivariate singular spectrum analysis (MSSA).} After imputation and outlier treatment, the data are still contaminated by high-frequency sensor noise that is uninformative for energy prediction and detrimental to RC parameter estimation. To prevent retrospective information flow, MSSA is implemented as a forecast-origin-based terminal-reconstruction filter rather than as an offline smoothing procedure applied to the complete record.
+
+For each forecast origin $t$, let $\mathcal{H}_{t}=[\mathbf{x}_{t-W+1},\ldots,\mathbf{x}_{t}]$ denote the trailing historical support window of length $W=672$ observations (seven days). MSSA uses an embedding length $L_{\mathrm{emb}}=96$ and $K_{\mathrm{emb}}=W-L_{\mathrm{emb}}+1$ columns. For each variable $j\in\{1,\ldots,D\}$, the trajectory matrix is
+
+\begin{equation}
+\mathbf{X}^{(t)}_j = \begin{bmatrix}
+x_j(t-W+1) & x_j(t-W+2) & \cdots & x_j(t-K_{\mathrm{emb}}+1) \\
+x_j(t-W+2) & x_j(t-W+3) & \cdots & x_j(t-K_{\mathrm{emb}}+2) \\
+\vdots & \vdots & \ddots & \vdots \\
+x_j(t-W+L_{\mathrm{emb}}) & x_j(t-W+L_{\mathrm{emb}}+1) & \cdots & x_j(t)
+\end{bmatrix}.
+\end{equation}
+
+The $D$ trajectory matrices are vertically stacked to form $\mathbf{X}^{(t)}_{\mathrm{total}}=[(\mathbf{X}^{(t)}_1)^\top,\ldots,(\mathbf{X}^{(t)}_D)^\top]^\top\in\mathbb{R}^{(DL_{\mathrm{emb}})\times K_{\mathrm{emb}}}$ and decomposed as
+
+\begin{equation}
+\mathbf{X}^{(t)}_{\mathrm{total}} = \sum_{i=1}^{r} \sigma_i^{(t)}\mathbf{u}_i^{(t)}(\mathbf{v}_i^{(t)})^\top,
+\end{equation}
+
+where $r=\min(DL_{\mathrm{emb}},K_{\mathrm{emb}})$. The leading $M=15$ components selected from the training period are retained:
+
+\begin{equation}
+\widetilde{\mathbf{X}}^{(t)}_{\mathrm{total}} = \sum_{i=1}^{M} \sigma_i^{(t)}\mathbf{u}_i^{(t)}(\mathbf{v}_i^{(t)})^\top.
+\end{equation}
+
+The truncated matrix is then Hankelised by diagonal averaging. Crucially, only the reconstructed terminal vector $\widetilde{\mathbf{x}}_{t}$ associated with the right-hand endpoint of $\mathcal{H}_t$ is exported to the downstream pipeline. No observation after time $t$ can enter the MSSA embedding, decomposition, reconstruction, or denoised feature representation. The support-window length, embedding length, and retained component number are selected exclusively using the 2022 training period and remain fixed for validation and test inference. Retaining $M=15$ components preserves the dominant diurnal, weekly, and seasonal structures while suppressing high-frequency measurement noise. The exact MSSA configuration, together with the RC-fitting and GBC-construction settings used in the reproducibility workflow, is consolidated in Supplementary Table~S3.
+
+With the denoised time series in hand, we proceed to extract physically interpretable features that encode the building's thermal identity. The key insight is that the parameters of a lumped-parameter thermal model---resistances, capacitances, absorptances---contain information about the building's thermal inertia, envelope quality, and solar responsiveness that cannot be directly read from raw sensor values. By estimating these parameters and converting them into high-level features, we provide the downstream deep-learning model with a compact physical ``fingerprint'' of each thermal zone.
+
+\textbf{Model structure.} We adopt a 3rd-order resistance--capacitance (RC) model for each thermal zone. The model comprises three thermal nodes representing distinct physical components of the zone:
+\begin{enumerate}
+    \item \textbf{Zone-air node ($T_z$):} Represents the indoor air and lightweight furnishings that equilibrate rapidly with it. Its effective thermal capacitance is $C_z$ (J\,K$^{-1}$).
+    \item \textbf{Effective wall node ($T_w$):} Represents the envelope and wall assembly. Its effective thermal capacitance is $C_w$ (J\,K$^{-1}$). It is connected to the zone-air node through $R_{\mathrm{zw}}$ (K\,W$^{-1}$) and to the interior thermal-mass node through $R_{\mathrm{wm}}$ (K\,W$^{-1}$).
+    \item \textbf{Interior thermal-mass node ($T_m$):} Represents heavy interior elements that exchange heat on longer time scales. Its effective thermal capacitance is $C_m$ (J\,K$^{-1}$).
+\end{enumerate}
+
+\textbf{Continuous-time state-space formulation.} The thermal dynamics of the three-node RC circuit are described by a system of first-order linear ordinary differential equations:
+
+\begin{equation}
+\frac{d}{dt}
+\begin{bmatrix} T_z \\ T_w \\ T_m \end{bmatrix}
+=
+\mathbf{A}(\boldsymbol{\theta})
+\begin{bmatrix} T_z \\ T_w \\ T_m \end{bmatrix}
++
+\mathbf{B}(\boldsymbol{\theta})
+\begin{bmatrix} Q_{\mathrm{HVAC}}^{\mathrm{RC}} \\ I_{\mathrm{sol}} \\ Q_{\mathrm{int}} \end{bmatrix}.
+\end{equation}
+
+where $\boldsymbol{\theta}=[R_{\mathrm{zw}},R_{\mathrm{wm}},C_z,C_w,C_m,\alpha_{\mathrm{sol}}]^\top$ is the parameter vector to be identified.
+
+\textbf{Discretisation.} For digital implementation with the BMS sampling interval $\Delta t = 900$ s (15 minutes), we discretise the continuous-time system using the zero-order hold (ZOH) method:
+
+\begin{equation}
+\mathbf{A}_d=e^{\mathbf{A}\Delta t},
+\qquad
+\mathbf{B}_d=
+\left(
+\int_0^{\Delta t}e^{\mathbf{A}\xi}\,d\xi
+\right)\mathbf{B}
+=
+\mathbf{A}^{-1}
+\left(e^{\mathbf{A}\Delta t}-\mathbf{I}\right)\mathbf{B}.
+\end{equation}
+
+where $\mathbf{A}_d$ and $\mathbf{B}_d$ are the discrete-time state and input matrices over one sampling interval $\Delta t$, $\mathbf{A}$ and $\mathbf{B}$ are the continuous-time matrices, $\xi$ is the integration dummy variable, and $\mathbf{I}$ is the identity matrix.
+
+The discrete-time state-transition equation is:
+
+\begin{equation}
+\mathbf{T}_{k+1} = \mathbf{A}_d(\boldsymbol{\theta}) \mathbf{T}_k + \mathbf{B}_d(\boldsymbol{\theta}) \mathbf{u}_k
+\end{equation}
+
+where $\mathbf{T}_k=[T_{z,k},T_{w,k},T_{m,k}]^\top$ is the state vector at step $k$, and $\mathbf{u}_k=[Q_{\mathrm{HVAC},k}^{\mathrm{RC}},I_{\mathrm{sol},k},Q_{\mathrm{int},k}]^\top$ is the signed RC-equivalent input-forcing vector.
+
+\textbf{Parameter estimation.} The parameter vector $\boldsymbol{\theta}$ is estimated by solving a regularised nonlinear least-squares problem:
+
+\begin{equation}
+\hat{\boldsymbol{\theta}} = \arg\min_{\boldsymbol{\theta} \in \Theta} \left\{ \sum_{k=1}^{N-1} \| \mathbf{T}_k^{\text{meas}} - \mathbf{T}_k(\boldsymbol{\theta}) \|_2^2 + \mu \|\boldsymbol{\theta}\|_1 \right\}
+\end{equation}
+
+where $\Theta$ is the feasible parameter set (bounded by physically meaningful ranges), $\mathbf{T}_k^{\text{meas}}$ is the measured state vector, $\mathbf{T}_k(\boldsymbol{\theta})$ is the model-predicted state, and $\mu$ is the L1-regularisation coefficient.
+
+\textbf{Derived physical features.} From the estimated parameters $\hat{\boldsymbol{\theta}}$, we compute three high-level features:
+
+\textbf{Thermal time constant:}
+\begin{equation}
+\tau=R_{\mathrm{zw}}C_z \qquad \text{(hours)}
+\end{equation}
+
+\textbf{Effective coupling conductance:}
+\begin{equation}
+\kappa=(R_{\mathrm{zw}}+R_{\mathrm{wm}})^{-1}
+\qquad \text{(W\,K}^{-1}\text{)}
+\end{equation}
+
+\textbf{Effective solar aperture:}
+\begin{equation}
+\Gamma=\alpha_{\mathrm{sol}}A_w \qquad \text{(m}^2\text{)}
+\end{equation}
+
+These three descriptors $[\tau,\kappa,\Gamma]^\top$ are computed from the training-period RC estimates and appended to the input vector for all subsequent samples from the corresponding floor. The descriptor set is frozen after training-period calibration, and neither validation nor test observations are used to update the RC estimates or the derived descriptors. Here, $\tau$ denotes the effective thermal time constant, $\kappa$ denotes the effective zone-to-mass coupling conductance, and $\Gamma$ denotes the effective solar aperture.
+
+Granular Ball Computing (GBC) offers a principled, data-driven alternative. GBC automatically partitions the feature space into a collection of hyperspheres (granular balls) whose centres and radii adapt to the local distribution of data and the local homogeneity of a target variable.
+
+\textbf{Algorithm description.} Given the denoised and augmented training-data matrix $\mathbf{X}_{\mathrm{train}} \in \mathbb{R}^{N_{\mathrm{train}} \times d}$ and the corresponding training target vector $\mathbf{y}_{\mathrm{train}} \in \mathbb{R}^{N_{\mathrm{train}}}$, GBC constructs a set of granular balls $\mathcal{B} = \{B_1, B_2, \ldots, B_M\}$ through a recursive top-down splitting process. Ball purity, recursive splitting, centres, radii, and Gaussian bandwidths are estimated from the training subset only. Validation and test observations are mapped to this fixed training-derived system, and their target values are never used to update, split, merge, or recalibrate granular balls.
+
+\textbf{Step 1: Compute the ball centre and radius.}
+\begin{equation}
+\boldsymbol{\mu}_i = \frac{1}{|B_i|} \sum_{\mathbf{x}_n \in B_i} \mathbf{x}_n
+\end{equation}
+\begin{equation}
+r_i = \max_{\mathbf{x}_n \in B_i} \|\mathbf{x}_n - \boldsymbol{\mu}_i\|_2
+\end{equation}
+
+where $\boldsymbol{\mu}_i$ is the centroid of ball $B_i$, $|B_i|$ is the number of samples in $B_i$, and $r_i$ is the maximum Euclidean distance from the centroid to any sample in $B_i$.
+
+\textbf{Step 2: Evaluate purity.}
+\begin{equation}
+\text{Purity}(B_i) = 1 - \frac{\text{Var}(y | B_i)}{\max_{j} \text{Var}(y | B_j) + \epsilon}
+\end{equation}
+
+where $B_i$ is the $i$-th granular ball, $\text{Var}(y|B_i)$ is the variance of target values within $B_i$, and $\epsilon$ is a small positive constant for numerical stability.
+
+\textbf{Membership-weight computation.} After constructing the granular balls, we transform any new sample $\mathbf{x}$ into a fixed-dimensional granular feature vector using Gaussian kernel weights:
+
+\begin{equation}
+w_i(\mathbf{x}) = \frac{\exp\left( -\frac{\|\mathbf{x} - \boldsymbol{\mu}_i\|_2^2}{2\sigma_i^2} \right)}{\sum_{j \in \mathcal{N}_K(\mathbf{x})} \exp\left( -\frac{\|\mathbf{x} - \boldsymbol{\mu}_j\|_2^2}{2\sigma_j^2} \right)}, \quad i \in \mathcal{N}_K(\mathbf{x})
+\end{equation}
+
+where $\mathcal{N}_K(\mathbf{x})$ denotes the set of $K_{\text{nearest}}$ nearest granular balls to sample $\mathbf{x}$, and $\sigma_i$ is the Gaussian bandwidth associated with ball $B_i$ (set proportional to its radius $r_i$).
+
+\textbf{Final feature vector.} The granular membership weights are concatenated with the raw sensor features and the three RC-derived physical features to form the final input representation:
+
+\begin{equation}
+\mathbf{z}_t = [\mathbf{x}_t^{\text{raw}}; \tau, \kappa, \Gamma; \mathbf{w}(\mathbf{x}_t)] \in \mathbb{R}^{d_{\text{total}}}
+\end{equation}
+
+where $d_{\text{total}} = d_{\text{raw}} + 3 + K_{\text{nearest}}$. In our case study, $d_{\text{raw}} = 42$, yielding $d_{\text{total}} = 55$.
+
+\subsection{Hybrid Spatiotemporal Prediction: The BiMamba Architecture}
+
+\par\noindent\hspace*{2em}\textbf{Motivation: Why Mamba for Building Energy.} The choice of the core sequence-modelling backbone for building energy prediction must account for three domain-specific challenges: extremely long sequences, multi-scale temporal patterns, and strong bidirectional contextual dependencies. These properties make bidirectional selective state-space modelling a suitable candidate backbone for systematic evaluation in the present building-energy forecasting setting.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Continuous State-Space Representation.} The mathematical foundation of Mamba is the continuous-time linear state-space model (SSM):
+
+\begin{equation}
+\frac{dh(t)}{dt} = \mathbf{A} h(t) + \mathbf{B} u(t)
+\end{equation}
+\begin{equation}
+y(t) = \mathbf{C} h(t) + \mathbf{D} u(t)
+\end{equation}
+
+where $h(t) \in \mathbb{R}^{d_h}$ is the latent state, $u(t) \in \mathbb{R}^{d_u}$ is the input sequence, and $y(t) \in \mathbb{R}^{d_y}$ is the output; $\mathbf{A} \in \mathbb{R}^{d_h \times d_h}$ is the state-transition matrix, $\mathbf{B} \in \mathbb{R}^{d_h \times d_u}$ is the input matrix, $\mathbf{C} \in \mathbb{R}^{d_y \times d_h}$ is the readout matrix, and $\mathbf{D} \in \mathbb{R}^{d_y \times d_u}$ is the skip matrix.
+
+The key innovation of Mamba over classical SSMs is \textbf{input-dependent selectivity}: the matrices $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ are not fixed but are functions of the current input $u(t)$.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Discretisation and Selective Mechanism.} Using the zero-order hold approximation with a learnable time step $\Delta \in \mathbb{R}_+$:
+
+\begin{equation}
+\bar{\mathbf{A}} = \exp(\Delta \mathbf{A}), \quad \bar{\mathbf{B}} = (\Delta \mathbf{A})^{-1} (\exp(\Delta \mathbf{A}) - \mathbf{I}) \Delta \mathbf{B}
+\end{equation}
+
+where $\Delta$ is the learned discretisation step, $\exp(\cdot)$ denotes the matrix exponential, $\mathbf{I}$ is the identity matrix, and $(\Delta\mathbf{A})^{-1}$ is used when $\Delta\mathbf{A}$ is non-singular (or replaced by a numerically stable equivalent in implementation).
+
+The discretised recurrence becomes:
+\begin{equation}
+h_k = \bar{\mathbf{A}} h_{k-1} + \bar{\mathbf{B}} u_k, \quad y_k = \mathbf{C} h_k
+\end{equation}
+
+where $k \in \{1,\ldots,L\}$ is the discrete time index, $L$ is the sequence length, $u_k$ is the input at step $k$, and $h_k,y_k$ are the corresponding hidden state and output.
+
+\textbf{Selective parameterisation.} $\mathbf{B}$, $\mathbf{C}$, and $\Delta$ are functions of the input:
+\begin{equation}
+\mathbf{B}_k = \mathbf{W}_B \mathbf{x}_k, \quad \mathbf{C}_k = \mathbf{W}_C \mathbf{x}_k, \quad \Delta_k = \text{softplus}(\mathbf{w}_\Delta^\top \mathbf{x}_k)
+\end{equation}
+
+where $\mathbf{x}_k \in \mathbb{R}^{d_{\text{total}}}$ is the fused input feature at time $k$, $\mathbf{W}_B$ and $\mathbf{W}_C$ are learnable projection matrices, $\mathbf{w}_\Delta$ is a learnable vector, and $\text{softplus}(a)=\ln(1+e^a)$ guarantees $\Delta_k>0$.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Bidirectional Extension for Building Energy.} We adopt a bidirectional \textbf{BiMamba} configuration that instantiates two separate Mamba modules and concatenates their hidden states:
+
+\begin{equation}
+\vec{h}_k = \text{Mamba}_{\text{fwd}}(\mathbf{x}_1, \ldots, \mathbf{x}_k), \quad \overleftarrow{h}_k = \text{Mamba}_{\text{bwd}}(\mathbf{x}_L, \ldots, \mathbf{x}_k)
+\end{equation}
+\begin{equation}
+h_k^{\text{bi}} = [\vec{h}_k; \overleftarrow{h}_k] \in \mathbb{R}^{2d_h}
+\end{equation}
+
+where $\vec{h}_k$ and $\overleftarrow{h}_k$ are forward and backward hidden states, respectively; $[\cdot;\cdot]$ denotes vector concatenation along the feature dimension. Importantly, for the one-step-ahead prediction of $y_{t+1}$, both selective scans operate only on the fully observed historical input window $\mathbf{Z}_{t-T+1:t}$. The backward scan reverses the order of this already observed window; it does not access $y_{t+1}$, future weather variables, future occupancy measurements, or any other observation recorded after time $t$. Thus, each historical timestamp can incorporate information from earlier and later positions within the same observed window without introducing future-information leakage.
+
+The concatenated states are fused through a gated linear unit (GLU):
+\begin{equation}
+h_k^{\text{fused}} = \text{GLU}(h_k^{\text{bi}}) = (\mathbf{W}_1 h_k^{\text{bi}}) \odot \sigma(\mathbf{W}_2 h_k^{\text{bi}})
+\end{equation}
+
+where $\mathbf{W}_1,\mathbf{W}_2$ are trainable weight matrices, $\sigma(\cdot)$ is the sigmoid function, and $\odot$ denotes element-wise multiplication.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Multi-Scale Convolutional Front-End.} We extract local temporal patterns at multiple scales using three parallel 1-D convolution branches:
+\begin{equation}
+\mathbf{c}_t^{(s)} = \text{ReLU}\left( \sum_{i=0}^{s-1} \mathbf{W}_s^{(i)} \mathbf{z}_{t-i} + \mathbf{b}_s \right), \quad s \in \{3, 5, 7\}
+\end{equation}
+
+where $t$ is the time index, $s$ is kernel size, $\mathbf{z}_{t-i}$ is the input feature at lag $i$, $\mathbf{W}_s^{(i)}$ is the convolution weight for lag $i$ under branch $s$, and $\mathbf{b}_s$ is the branch bias.
+
+The outputs are concatenated to form a multi-scale representation:
+\begin{equation}
+\mathbf{c}_t = [\mathbf{c}_t^{(3)}; \mathbf{c}_t^{(5)}; \mathbf{c}_t^{(7)}] \in \mathbb{R}^{C_{\text{total}}}
+\end{equation}
+
+where $C_{\text{total}}=C_3+C_5+C_7$ is the total number of channels after concatenating the three branches.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Fusion of Physical, Granular, and Convolutional Features.} We employ a learnable linear fusion gate:
+\begin{equation}
+\mathbf{f}_t = \mathbf{W}_c \mathbf{c}_t + \mathbf{W}_p [\tau, \kappa, \Gamma]^\top + \mathbf{W}_g \mathbf{w}(\mathbf{x}_t) + \mathbf{b}_f
+\end{equation}
+
+where $\mathbf{W}_c,\mathbf{W}_p,\mathbf{W}_g$ are learnable fusion matrices, $\mathbf{w}(\mathbf{x}_t)$ is the GBC membership vector, and $\mathbf{b}_f$ is the fusion bias.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Temporal Attention and Output Head.} A temporal attention mechanism computes adaptive weights:
+\begin{equation}
+e_t = \mathbf{v}_a^\top \tanh(\mathbf{W}_a h_t^{\text{final}} + \mathbf{b}_a)
+\end{equation}
+\begin{equation}
+\alpha_t = \frac{\exp(e_t)}{\sum_{s=1}^L \exp(e_s)}
+\end{equation}
+\begin{equation}
+\mathbf{c}_{\text{context}} = \sum_{t=1}^L \alpha_t h_t^{\text{final}}
+\end{equation}
+
+where $h_t^{\text{final}}$ denotes the final hidden representation at time $t$, $\mathbf{W}_a,\mathbf{b}_a,\mathbf{v}_a$ are attention parameters, and $\alpha_t$ is the normalised attention weight with $\sum_{t=1}^{L}\alpha_t=1$.
+
+The context vector is passed through a two-layer MLP to produce the final prediction:
+\begin{equation}
+\hat{y} = \mathbf{W}_{\text{out}}^{(2)} \text{Dropout}\left(\text{ReLU}(\mathbf{W}_{\text{out}}^{(1)} \mathbf{c}_{\text{context}} + \mathbf{b}_{\text{out}}^{(1)})\right) + \mathbf{b}_{\text{out}}^{(2)}
+\end{equation}
+
+where $\mathbf{W}_{\text{out}}^{(1)},\mathbf{W}_{\text{out}}^{(2)}$ and $\mathbf{b}_{\text{out}}^{(1)},\mathbf{b}_{\text{out}}^{(2)}$ are MLP parameters, and $\hat{y}$ is the predicted non-negative 15-minute BMS-reported HVAC energy at the forecasting horizon, expressed in kWh.
+
+\medskip
+\par\noindent\hspace*{2em}\textbf{Physics-Informed Loss Function.} The data-fidelity term is the mean squared error:
+\begin{equation}
+\mathcal{L}_{\text{data}} = \frac{1}{N_{\text{batch}}} \sum_{i=1}^{N_{\text{batch}}} (y_i - \hat{y}_i)^2
+\end{equation}
+
+where $N_{\mathrm{batch}}$ is the batch size, $y_i=E_{\mathrm{HVAC},i}^{\mathrm{BMS}}\geq0$ is the observed 15-minute BMS-reported HVAC energy, and $\hat{y}_i=\hat{E}_{\mathrm{HVAC},i}^{\mathrm{BMS}}$ is the corresponding non-negative prediction.
+
+For the RC energy-balance calculation used during training, the predicted interval energy is mapped to a signed RC-equivalent HVAC rate using the BMS cooling/heating operating-mode label:
+\begin{equation}
+\hat{Q}_{\mathrm{HVAC},k}^{\mathrm{RC}}
+=
+s_k\frac{1000\hat{y}_k}{\Delta t_{\mathrm{h}}},
+\end{equation}
+where $\Delta t_{\mathrm{h}}=0.25$ h is the 15-minute interval duration, $s_k=-1$ denotes cooling operation, and $s_k=+1$ denotes heating operation. This signed RC-equivalent rate is used only in the grey-box balance calculation and is not interpreted as the BMS electrical-power measurement.
+
+The RC temperature update is:
+\begin{equation}
+\hat{T}_{z,k+1}^{\mathrm{RC}}
+=
+T_{z,k}
++
+\frac{\Delta t}{C_z}
+\left[
+\frac{T_{w,k}-T_{z,k}}{R_{\mathrm{zw}}}
++
+\hat{Q}_{\mathrm{HVAC},k}^{\mathrm{RC}}
++
+Q_{\mathrm{int},k}
++
+\Gamma I_{\mathrm{sol},k}
+\right].
+\end{equation}
+
+where $\hat{T}_{z,k+1}^{\mathrm{RC}}$ is the one-step RC-implied zone temperature, and $C_z$, $R_{\mathrm{zw}}$, $T_{w,k}$, $T_{z,k}$, $Q_{\mathrm{int},k}$, and $I_{\mathrm{sol},k}$ are the consistently defined RC parameters and driving variables at step $k$.
+
+To preserve the unit of the supervised target, the signed RC-implied HVAC rate is converted back to a non-negative interval-energy magnitude:
+\begin{equation}
+E_{\mathrm{HVAC},i}^{\mathrm{RC,implied}}
+=
+\frac{\Delta t_{\mathrm{h}}}{1000}
+\left|Q_{\mathrm{HVAC},i}^{\mathrm{RC,implied}}\right|.
+\end{equation}
+
+The physics inconsistency loss is then evaluated in the same 15-minute energy space as the data-fidelity loss:
+\begin{equation}
+\mathcal{L}_{\mathrm{physics},i}
+=
+\max\left(
+0,
+\left|\hat{y}_i-E_{\mathrm{HVAC},i}^{\mathrm{RC,implied}}\right|
+-\varepsilon_{\mathrm{phys}}
+\right)^2.
+\end{equation}
+
+Here, $Q_{\mathrm{HVAC},i}^{\mathrm{RC,implied}}$ is the signed RC-equivalent HVAC rate back-calculated from the calibrated RC energy balance and the measured temperature trajectory. It is converted to the corresponding interval-energy magnitude $E_{\mathrm{HVAC},i}^{\mathrm{RC,implied}}$ before comparison with the model prediction. Therefore, both the data-fidelity loss and physics-consistency loss are evaluated in kWh, and $\varepsilon_{\mathrm{phys}}$ is a tolerance margin expressed in kWh.
+
+The total training loss is:
+\begin{equation}
+\mathcal{L} = \mathcal{L}_{\text{data}} + \lambda_{\mathrm{phys}} \frac{1}{N_{\text{batch}}} \sum_{i=1}^{N_{\text{batch}}} \mathcal{L}_{\text{physics},i}
+\end{equation}
+
+where $\lambda_{\mathrm{phys}}$ controls the trade-off between predictive accuracy and physics consistency.
+
+In implementation, the data-fidelity loss and the physics-consistency loss are expressed on comparable scales before aggregation. The RC-implied energy mismatch is normalised by the training-set standard deviation of the implied-energy residual, ensuring that $\mathcal{L}_{\mathrm{data}}$ and $\mathcal{L}_{\mathrm{physics}}$ remain dimensionless and of comparable order during model training.
+
+The physics-informed loss is implemented as a soft RC energy-balance regulariser rather than as a hard physical-feasibility constraint. Specifically, it penalises deviations between the predicted 15-minute HVAC-energy magnitude and the corresponding interval-energy magnitude implied by the calibrated third-order RC representation, with a tolerance of $\varepsilon_{\mathrm{phys}}=15\kWh$.
+
+For reproducibility, the physics-consistency weight was fixed at $\lambda_{\mathrm{phys}}=0.05$ throughout model training after validation-stage hyperparameter selection. The candidate values $\{0.01,0.03,0.05,0.10,0.20\}$ were evaluated on the validation period, and $\lambda_{\mathrm{phys}}=0.05$ was selected as the final setting. No epoch-wise warm-up schedule, staged increase, adaptive reweighting rule, or error-dependent weighting mechanism was applied. The physics-consistency term therefore contributed to the optimisation objective from the first optimisation step at a fixed relative weight. Monitoring the normalised loss trajectories confirmed that the physics-consistency term remained of comparable scale to the data-fidelity term and did not dominate gradient updates.
+
+The role of this term is therefore to encourage the learned predictor to remain compatible with the identified grey-box thermal dynamics, particularly under operational conditions that are difficult to represent through purely data-driven fitting. It does not imply that the proposed model is physically equivalent to a fully calibrated whole-building simulator, nor does it guarantee strict satisfaction of all thermodynamic constraints for every prediction sample. Accordingly, the physics-informed loss should be interpreted as an energy-balance regulariser that promotes enhanced consistency with the calibrated RC representation.
+
+\subsection{Many-Objective Optimisation: INSGA-III with Adaptive Reference Points}
+
+Constraint handling via constrained dominance is defined through the total constraint violation:
+\begin{equation}
+v(\mathbf{x}) = \sum_{j=1}^{m} \max(0, g_j(\mathbf{x})) + \sum_{k=1}^{p} |h_k(\mathbf{x})|
+\end{equation}
+
+where $m$ and $p$ are the numbers of inequality and equality constraints, respectively; $g_j(\mathbf{x})\le0$ and $h_k(\mathbf{x})=0$ define feasibility.
+
+The \textbf{constrained-dominance relation} creates a natural hierarchy: feasible solutions are preferred over infeasible ones, and less-violating infeasible solutions are preferred over more-violating ones.
+
+Adaptive reference-point generation extends standard NSGA-III, which distributes fixed reference points uniformly. In the present implementation, reference points are rescaled and redistributed at each generation based on the current population's objective range. This modified search configuration is used as a decision-support component rather than being presented as a new general evolutionary optimisation theory.
+
+Adaptive crossover and mutation operators use probabilities that decay linearly with generation:
+\begin{equation}
+p_c(g) = p_c^{\max} - \frac{g}{G_{\max}}(p_c^{\max} - p_c^{\min}), \quad p_m(g) = p_m^{\max} - \frac{g}{G_{\max}}(p_m^{\max} - p_m^{\min})
+\end{equation}
+
+where $g$ is the current generation index, $G_{\max}$ is the maximum number of generations, and $p_c^{\min},p_c^{\max},p_m^{\min},p_m^{\max}$ are preset bounds for crossover and mutation probabilities.
+
+For continuous variables, we use Simulated Binary Crossover (SBX) and Polynomial Mutation. For discrete and binary variables, uniform crossover and random mutation are applied.
+
+\subsection{Uncertainty Quantification and Epistemic Risk Propagation}
+
+Uncertainty propagation is performed to evaluate the stability and downside risk of representative non-dominated retrofit configurations under realistic operating fluctuations. The revised framework jointly considers aleatoric uncertainty arising from external operational variability and epistemic uncertainty associated with surrogate-model approximation.
+
+Four uncertainty sources are propagated through the framework: (i) weather uncertainty sampled from a 10-year historical meteorological pool; (ii) stochastic occupancy uncertainty modelled through a non-homogeneous Poisson process; (iii) building physical-parameter uncertainty sampled from the covariance matrix of the identified third-order RC thermal descriptors; and (iv) surrogate epistemic uncertainty estimated using Monte Carlo (\MC) dropout during inference \cite{58}.
+
+With dropout retained during inference, the trained Physics-Guided BiMamba model generates stochastic predictions that provide an approximate posterior predictive uncertainty measure. For each representative Pareto-optimal design vector $\mathbf{x}^{*}$, $N_{\mathrm{MC}}=500$ joint scenarios are generated. Each scenario combines weather forcing, occupancy density, RC descriptors, and an independent \MC-dropout forward pass to produce a perturbed objective vector $\mathbf{f}^{(s)}(\mathbf{x}^{*})$.
+
+For each objective $f_i$, the stochastic mean is calculated as:
+\begin{equation}
+\bar{f}_{i}(\mathbf{x}^{*})=
+\frac{1}{N_{\mathrm{MC}}}
+\sum_{s=1}^{N_{\mathrm{MC}}}
+f_{i}^{(s)}(\mathbf{x}^{*}).
+\end{equation}
+
+The relative 90\% confidence-interval width is calculated as:
+\begin{equation}
+w_{f_i}=
+\frac{
+Q_{0.95}\left[f_i(\mathbf{x}^{*})\right]
+-
+Q_{0.05}\left[f_i(\mathbf{x}^{*})\right]
+}
+{\bar{f}_{i}(\mathbf{x}^{*})}
+\times100\%,
+\end{equation}
+where $Q_{0.05}$ and $Q_{0.95}$ denote the 5th and 95th percentiles of the scenario distribution. The 95th-percentile downside-risk indicator is defined as:
+\begin{equation}
+P_{95,i}=
+Q_{0.95}\left[f_i(\mathbf{x}^{*})\right].
+\end{equation}
+
+The optimisation retains a two-tier structure. INSGA-III first generates a dense deterministic Pareto front using nominal surrogate predictions. A secondary Robustness Risk Filtering layer then evaluates representative non-dominated solutions under the joint uncertainty scenarios and identifies candidates with lower volatility and downside risk. Embedding the full 500-scenario ensemble in each generation would require at least $200\times300\times500=3.0\times10^{7}$ scenario-conditioned surrogate evaluations before accounting for repeated stochastic forward passes for epistemic uncertainty, which would substantially reduce the tractability of the many-objective search. Retrofit cost remains deterministic because it is analytically calculated from the selected retrofit measures.
+
+\section{CASE-STUDY IMPLEMENTATION AND EXPERIMENTAL SETTINGS}
+
+The methodological framework introduced in Section~2 is formulated independently of a specific building context. This section describes its implementation for the Shanghai office-building case study, including the building and BMS data environment, physical-feature calibration, predictor configuration, retrofit design space, high-fidelity verification setup, and evaluation protocols. These details are provided to support reproducibility and should be interpreted as a case-specific engineering implementation of the general framework rather than as additional methodological innovations.
+
+\subsection{Case-Study Building and Operating Context}
+
+\subsubsection{Location and Climate Context}
+
+The case-study building is situated in the central business district of Shanghai, China (latitude \ang{31.23} N, longitude \ang{121.47} E, elevation \SI{4}{\m} above sea level). Shanghai falls within the hot-summer–cold-winter (HSCW) climate zone according to the Chinese national standard GB 50176-2016, and within ASHRAE Climate Zone 3A (warm–humid). This climate is characterised by four distinct seasons: hot, humid summers with peak dry-bulb temperatures routinely exceeding \SI{38}{\celsius} and relative humidity above \SI{80}{\percent}; cool, damp winters with minimum temperatures occasionally falling below \SI{0}{\celsius}; and moderate spring and autumn transition periods. The annual cooling degree-days (base \SI{18}{\celsius}) average approximately 1850, and the heating degree-days (base \SI{18}{\celsius}) average approximately 1400, indicating that both cooling and heating demands are substantial. The pronounced seasonality and the wide range of outdoor conditions (dry-bulb temperature spanning approximately \SI{-3}{\celsius} to \SI{40}{\celsius} across the year) make Shanghai an exceptionally demanding test bed for building energy prediction: any model must perform accurately under tropical-like summer conditions, temperate shoulder seasons, and near-freezing winter conditions.
+
+The building's urban context introduces additional complexity. Surrounding high-rise structures create partial shading on the lower floors during morning and late afternoon hours, while the upper floors receive unobstructed solar radiation throughout the day. The urban heat-island effect elevates the local ambient temperature by \num{1}--\SI{3}{\celsius} above the suburban weather-station reference, particularly during calm summer nights. These micro-climatic effects contribute to the floor-dependent variation in thermal parameters that the RC model captures (Section 3.4).
+
+\subsubsection{Building Geometry and Construction}
+
+The building is a 15-storey Class A office tower with a total gross floor area of \SI{45200}{\square\m} (approximately \SI{3010}{\square\m} per floor), constructed in 2012 and partially retrofitted in 2019. The structure is reinforced concrete with a curtain-wall envelope system. Key geometric and construction parameters are summarised in Table~\ref{tab:baseline}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Baseline building characteristics}
+\label{tab:baseline}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+Number of floors & 15 (above grade) + 2 (basement, excluded from analysis) \\
+Total gross floor area & \SI{45200}{\square\m} \\
+Typical floor area & \SI{3010}{\square\m} \\
+Floor-to-floor height & \SI{3.9}{\m} \\
+Floor-to-ceiling height & \SI{2.8}{\m} \\
+Window-to-wall ratio (WWR) & 0.42 (overall); 0.48 (south), 0.38 (north), 0.40 (east/west) \\
+Glazing type & Double-glazed low-emissivity (\SI{6}{\mm} + \SI{12}{\mm} air gap + \SI{6}{\mm} low-e) \\
+Glazing U-value & \SI{2.1}{\w\per\square\m\per\K} \\
+Solar heat gain coefficient (SHGC) & 0.35 \\
+Visible light transmittance (VLT) & 0.52 \\
+Spandrel panel insulation & \SI{50}{\mm} extruded polystyrene (XPS), U-value \SI{0.68}{\w\per\square\m\per\K} \\
+Roof insulation & \SI{80}{\mm} XPS, U-value \SI{0.45}{\w\per\square\m\per\K} \\
+Thermal mass (floor slabs) & \SI{200}{\mm} reinforced concrete, density \SI{2400}{\kg\per\cubic\m} \\
+Interior partitions & Lightweight steel-framed gypsum board (\SI{12.5}{\mm} × 2 layers each side) \\
+Infiltration rate & \SI{0.5}{\ach} at \SI{50}{\pascal} (measured via blower-door test, 2021) \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The envelope thermal performance is typical of commercial buildings constructed in Shanghai during the 2010–2015 period, complying with the then-current national standard JGJ 134-2010 but not meeting the more stringent requirements of the 2022 update. This positions the building as a strong candidate for energy retrofit: its envelope is neither so poor as to make the case trivially obvious nor so advanced as to leave little room for improvement.
+
+\subsubsection{HVAC System Configuration}
+
+The building is served by a variable refrigerant flow (VRF) system, which is the predominant HVAC technology for mid-rise commercial buildings in East Asia due to its part-load efficiency and zone-level controllability. The system comprises:
+
+\begin{itemize}[leftmargin=*]
+\item 12 outdoor condensing units (nominal cooling capacity ranging from 45 to \SI{56}{\kilo\w} each, total installed cooling capacity \SI{612}{\kilo\w}) located on the rooftop. Each unit serves a group of 15 indoor units via a three-pipe refrigerant distribution network that enables simultaneous heating and cooling in different zones.
+
+\item 180 indoor units (cassette-type, wall-mounted, and ducted) distributed across the 15 floors, with an average of 12 units per floor. Each indoor unit is individually controllable with local thermostat setpoints, fan speed selection (low/medium/high/auto), and on/off scheduling.
+
+\item A dedicated outdoor air system (DOAS) comprising 3 air-handling units (AHUs) that provide conditioned outdoor air at a rate of \SI{10}{\L\per\s\per\person} (meeting ASHRAE 62.1-2019) to all floors via a vertical duct riser and floor-level distribution. The DOAS incorporates energy-recovery wheels (sensible effectiveness 0.72, latent effectiveness 0.65) to pre-condition the incoming outdoor air.
+\end{itemize}
+
+The VRF system's coefficient of performance (COP) varies from 2.8 at full load to 4.5 at 50\% part-load ratio (PLR), reflecting the inverter-driven compressor's improved efficiency at reduced capacity. This COP variation is an important factor in energy prediction: the same cooling demand can be met with significantly different electrical energy inputs depending on the outdoor temperature and PLR, creating a nonlinear relationship that pure data-driven models may fail to capture under novel conditions.
+
+\subsubsection{Occupancy Characteristics}
+
+The building houses approximately 2800 permanent office workers across 15 floors, with additional transient occupancy from visitors, meeting attendees, and service personnel. The typical weekday occupancy schedule spans 08:00–20:00, with a pronounced morning arrival peak (08:00–09:30), a lunch-break dip (12:00–13:30), and a gradual evening departure (17:30–20:00). Weekend occupancy is substantially reduced, typically 10–15\% of the weekday peak. National holidays (Chinese New Year, National Day Golden Week, Dragon Boat Festival, Mid-Autumn Festival, etc.) exhibit near-zero occupancy for extended periods, creating distinct operational regimes that the prediction model must handle.
+
+The Wi-Fi access point (AP) infrastructure provides a real-time proxy for occupancy: the 45 APs distributed across the building report the number of unique device connections at 15-minute intervals, with counts ranging from 28 (early morning, all floors combined) to 1520 (midday peak, all floors). The coefficient of variation of the Wi-Fi count exceeds 90\%, underscoring the high temporal variability of occupancy and the importance of accurate occupancy modelling for energy prediction.
+
+\subsection{Data Acquisition: Sensor Network and Data Sources}
+
+\subsubsection{Sensor Inventory and Deployment}
+
+\begin{table}[H]
+\centering
+\caption{Sensor inventory by category}
+\label{tab:sensors}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllr}
+\toprule
+Category & Sensor type & Measurement & Count \\
+\midrule
+\multirow{3}{*}{Thermal environment}
+& Pt100 RTD (zone) & Air temperature & 120 \\
+& Capacitive (zone) & Relative humidity & 120 \\
+& NDIR (zone) & \ce{CO2} concentration & 45 \\
+\midrule
+\multirow{4}{*}{HVAC system}
+& CT clamp (chiller) & Chiller power & 12 \\
+& CT clamp (VRF indoor) & Indoor unit power/status & 180 \\
+& Pt100 RTD (AHU) & Supply/return air temperature & 45 \\
+& Pulse output (AHU) & Fan speed & 45 \\
+\midrule
+\multirow{4}{*}{Energy consumption}
+& Revenue-grade meter & Main utility (whole building) & 1 \\
+& Branch circuit meter & Lighting circuits & 8 \\
+& Branch circuit meter & Plug load circuits & 12 \\
+& Branch circuit meter & HVAC circuits & 6 \\
+\midrule
+\multirow{4}{*}{Weather}
+& Vaisala WXT536 & Dry-bulb temperature & 1 \\
+& Vaisala WXT536 & Relative humidity & 1 \\
+& Vaisala WXT536 & Wind speed/direction & 1 \\
+& Kipp \& Zonen CMP6 & Global horizontal irradiance (GHI) & 1 \\
+\midrule
+\multirow{2}{*}{Occupancy}
+& Cisco Meraki AP & Wi-Fi connection count & 45 \\
+& Derived (\ce{CO2}-based) & Estimated occupant count & 45 \\
+\midrule
+\multicolumn{3}{r}{Total} & 330 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The building is equipped with a comprehensive building management system (BMS) manufactured by Honeywell (Niagara Framework, version 4.9), which collects, stores, and transmits data from 330 sensor points at a uniform 15-minute sampling interval. Data were collected continuously from 1 January 2022 to 31 December 2023, spanning two full calendar years (730 days, 70080 time steps). The sensor inventory is organised into five categories, as detailed in Table~\ref{tab:sensors}.
+
+Table~\ref{tab:sensors} shows that the instrumentation strategy intentionally over-samples high-variability subsystems (zone thermal states and terminal HVAC operation) while maintaining full-coverage boundary-condition sensing (weather and whole-building metering). This balance is important for two reasons: it preserves sufficient spatial granularity to learn heterogeneous zone behaviour, and it retains an energy-accounting backbone that supports physically meaningful aggregation and cross-checks. In particular, the combination of direct occupancy proxies (Wi-Fi counts) and indirect proxies (\ce{CO2}-derived occupants) provides complementary observability for internal gains, which is a key uncertainty source in high-frequency load prediction.
+
+The weather station is mounted on the rooftop at \SI{65}{\m} above ground level, providing unobstructed measurements representative of the building's exposure. The pyranometer (Kipp \& Zonen CMP6) measures global horizontal irradiance (GHI) with a spectral range of 285–2800 nm and is cleaned monthly to prevent soiling-related degradation.
+
+\subsubsection{Data Overview and Summary Statistics}
+
+Table~\ref{tab:stats} reports the summary statistics of the key data streams after initial quality control (prior to the MSSA denoising step). These statistics establish the range, central tendency, and variability of each variable, contextualising the prediction task. Several features of the data merit comment. First, the cooling-season BMS-reported HVAC energy spans a wide dynamic range (12--612 kWh per 15-minute interval, a factor of 51$\times$), reflecting the contrast between nighttime minimum operation and summer midday peaks. This dynamic range makes the prediction task challenging because the model must remain accurate across low- and high-energy operating conditions. Second, the Wi-Fi occupancy count has a coefficient of variation of $385/585=65.8\%$, confirming the high temporal variability of occupancy and the need for features that encode occupancy regimes. Third, the weather station recorded zero missing values over the two-year period, providing an uninterrupted meteorological reference for RC parameter estimation and model evaluation.
+
+\begin{table}[H]
+\centering
+\caption{Summary statistics of key data streams (January 2022--December 2023)}
+\label{tab:stats}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccccr}
+\toprule
+Variable & Unit & Min & 25th pctl & Median & Mean & 75th pctl & Max & Std & Missing (\%) \\
+\midrule
+Zone temperature (mean) & \si{\celsius} & 14.2 & 22.8 & 24.5 & 24.2 & 25.8 & 30.1 & 2.4 & 1.8 \\
+Zone relative humidity (mean) & \% & 22.5 & 42.0 & 50.5 & 49.8 & 58.2 & 78.5 & 11.2 & 1.6 \\
+Zone \ce{CO2} (mean) & \si{\ppm} & 385 & 450 & 580 & 620 & 760 & 1850 & 225 & 2.1 \\
+Outdoor dry-bulb temperature & \si{\celsius} & -2.8 & 8.5 & 18.2 & 17.8 & 26.5 & 40.2 & 9.6 & 0.0 \\
+Outdoor relative humidity & \% & 15.0 & 55.0 & 70.0 & 67.5 & 82.0 & 100.0 & 18.5 & 0.0 \\
+Global horizontal irradiance & \si{\w\per\square\m} & 0 & 0 & 85 & 195 & 380 & 1020 & 245 & 0.0 \\
+Wind speed & \si{\m\per\s} & 0.0 & 1.2 & 2.5 & 2.8 & 3.8 & 14.5 & 1.9 & 0.0 \\
+Cooling-season HVAC energy, $E_{\mathrm{cool}}^{\mathrm{BMS}}$ (15-min) & \si{\kwh} & 12.0 & 85.0 & 225.0 & 248.5 & 385.0 & 612.0 & 158.0 & 0.8 \\
+Heating-season HVAC energy, $E_{\mathrm{heat}}^{\mathrm{BMS}}$ (15-min) & \si{\kwh} & 0.0 & 0.0 & 0.0 & 62.5 & 105.0 & 445.0 & 98.0 & 0.8 \\
+Wi-Fi occupancy count & persons & 28 & 180 & 620 & 585 & 920 & 1520 & 385 & 0.5 \\
+Chiller power (total) & \si{\kilo\w} & 0.0 & 35.0 & 155.0 & 172.0 & 280.0 & 498.0 & 128.0 & 1.2 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsubsection{Temporal Data Split}
+
+The two-year dataset was partitioned chronologically before any data-dependent transformation was estimated. The training set spans 1 January 2022 to 31 December 2022 (35,040 time steps) and is the only subset used to determine MSSA settings, estimate RC parameters, construct GBC balls, fit feature-scaling statistics, and train the forecasting models. The validation set covers 1 January 2023 to 30 June 2023 (17,472 time steps) and is used only for hyperparameter selection and early stopping. The test set extends from 1 July 2023 to 31 December 2023 (17,568 time steps) and is reserved exclusively for final performance evaluation; it is not used for preprocessing fitting, representation updating, model selection, or parameter tuning.
+
+All preprocessing and feature-construction operations follow the forecast-origin protocol defined in Section~\ref{sec:leakage_control}. Historical observations preceding a validation or test boundary remain admissible only when they occur before the relevant forecast origin. No information recorded after that origin is allowed to contribute to its imputation, denoising, feature construction, model input, or prediction. The test set covers the summer cooling season (July--September), the autumn transition (October--November), and the early winter heating season (December), thereby providing a rigorous evaluation across three distinct seasonal regimes.
+
+\subsection{Data Cleaning and Denoising}
+
+The raw BMS data, despite the high-quality sensor network, contain artefacts that must be addressed before they can support reliable RC modelling and deep-learning prediction. The cleaning pipeline comprises three sequential steps—causal imputation, trailing-window outlier treatment, and causal MSSA denoising—as described in Section~\ref{sec:leakage_control}. This section reports the specific parameters and outcomes for the case-study data.
+
+\subsubsection{Missing-Value Imputation}
+
+An audit of the two-year dataset revealed that missing values account for 0.0\% to 2.1\% of observations across variables (Table~\ref{tab:stats}). The temporal distribution of missing data is non-uniform: 78\% of all gaps occur during three periods---a BMS firmware update in March 2022 (affecting zone sensors for 18 hours), a network switch failure in August 2022 (affecting HVAC submeters for 36 hours), and a scheduled maintenance window in January 2023 (affecting 60\% of zone sensors for 12 hours).
+
+All missing values were handled under the forecast-origin restriction. Short gaps ($\leq 2$ hours, i.e., $\leq 8$ consecutive missing intervals) were reconstructed using one-sided local extrapolation from the most recent valid historical observations. Long gaps ($>2$ hours) were reconstructed using $k$-nearest-neighbour ($k$-NN) imputation with $k=5$ and the time-weighted distance metric defined in Equation~(3), with all candidate donor records restricted to timestamps preceding the forecast origin. This restriction prevents future sensor records, future weather observations, future occupancy measurements, and future load values from entering the imputation process.
+
+After imputation, the total missing-data fraction was reduced to 0.0\% across all variables. The maximum imputed gap was 36 hours (the August 2022 network failure). To assess imputation quality, we artificially removed 5\% of the data in randomly selected blocks that mimicked the observed gap-length distribution and reconstructed each masked value using only information available before the masked time point. The imputation RMSE was \SI{0.4}{\celsius} for zone temperatures, \SI{12}{\kwh} for cooling-season HVAC energy, and 45 persons for Wi-Fi counts---well within the sensor accuracy and natural variability.
+
+\subsubsection{Outlier Detection and Treatment}
+
+Outliers were detected using the trailing historical IQR method (Equation 4) with a 48-hour window and multiplier 3.0. Across the two-year dataset, the procedure flagged 127 zone-temperature observations (0.09\%), primarily corresponding to stuck-at-zero readings from a faulty Pt100 sensor on Floor 7 (replaced in April 2022) and a brief excursion to \SI{42}{\celsius} caused by direct sunlight on a sensor near an open window. It also identified 85 chiller-power observations (0.06\%) associated with CT-clamp signal saturation during high-load transients and 43 Wi-Fi-count observations (0.03\%) caused by network-scanner resets that momentarily reported zero connections. All flagged outliers were replaced by the median of the preceding 12 observations (3 hours). The conservative multiplier of 3.0 ensured that genuine peak values—such as the summer maximum cooling-season HVAC energy of \SI{612}{\kwh}, which lies within 2.3 IQR of the 75th percentile—were not erroneously flagged. A visual inspection of the top-100 flagged observations confirmed that all were genuine artefacts (sensor malfunction, communication error) rather than physically real extremes.
+
+\subsubsection{MSSA Denoising Results}
+
+After causal missing-value handling and outlier treatment, MSSA was applied under the forecast-origin protocol defined in Section~\ref{sec:leakage_control}. Rather than smoothing the complete two-year record retrospectively, each denoised representation was reconstructed only from the historical observations available up to the corresponding forecast origin. The fixed MSSA configuration uses a seven-day support window ($W=672$ 15-minute observations), an embedding length of $L_{\mathrm{emb}}=96$, and $M=15$ retained components, all selected from the 2022 training period only.
+
+For each prediction time $t$, only the terminal reconstruction associated with the trailing historical window ending at $t$ was exported to the downstream RC-feature and BiMamba-prediction procedures. Accordingly, observations recorded after $t$ did not contribute to the denoised representation used to predict the load at $t+1$. The retained components preserve the dominant diurnal, weekly, and seasonal structures while suppressing high-frequency measurement noise. The revised manuscript uses this same fixed causal preprocessing protocol for the reported prediction, ablation, and optimisation analyses.
+
+The effect of MSSA denoising on prediction performance was quantified by comparing a BiMamba model trained on raw (undenoised) inputs with the same model trained on MSSA-denoised inputs under the identical chronological split and forecast-origin protocol. The corresponding validation results are reported in Table~\ref{tab:ablation}, confirming that high-frequency sensor noise compounds across the 55-dimensional feature space and materially degrades prediction when unaddressed.
+
+\subsection{Physical Feature Extraction via RC Modelling}
+
+\subsubsection{Estimation Procedure}
+
+Following the methodology of Section 2.2.2, we estimated the parameters of a 3rd-order RC model for each of the 15 floors using the 2022 training data. The estimation was performed independently for each floor, since the thermal characteristics (envelope area, orientation, shading from adjacent buildings, proximity to the roof) vary across floors. For each floor, the inputs to the RC model are:
+
+\begin{itemize}[leftmargin=*]
+\item State variables: Zone air temperature $T_z(k)$ (averaged across the 8 zone sensors on that floor), and outdoor dry-bulb temperature $T_{\text{out}}(k)$ as a proxy for the wall surface temperature $T_w(k)$ (corrected using a sol-air temperature formulation that incorporates GHI and wind speed).
+
+\item Forcing inputs: BMS-measured HVAC electrical power $P_{\mathrm{HVAC}}^{\mathrm{BMS}}(k)$ (sum of the VRF indoor-unit power readings on that floor, converted from kW to W), solar radiation $I_{\mathrm{sol}}(k)$ (GHI from the rooftop weather station, adjusted for facade orientation using solar geometry), and internal gains $Q_{\mathrm{int}}(k)$ (estimated from Wi-Fi occupancy count on that floor using a metabolic-rate model of \SI{120}{\w} per person plus equipment power proportional to occupancy). The measured electrical-power channel is distinguished from the signed RC-equivalent HVAC rate $Q_{\mathrm{HVAC}}^{\mathrm{RC}}(k)$ used in the grey-box balance. The latter is constructed only for RC-state and physics-consistency calculations under the cooling/heating operating-mode convention defined in Section~2.3.
+\end{itemize}
+
+The nonlinear least-squares problem (Equation 12) was solved using the ADMM algorithm with 500 iterations and a convergence tolerance of $10^{-6}$ on the relative change in the cost function. To prevent leakage during regularisation selection, the $\ell_1$-regularisation coefficient $\lambda=0.01$ was selected by expanding-window temporal validation within the 2022 training period. In each validation round, the RC model was estimated using an initial historical training block and evaluated on the immediately following validation block; every parameter-estimation interval therefore ended strictly before its associated validation interval began. The candidate value that minimised the mean validation reconstruction error (RMSE of predicted versus measured zone temperature) across these chronological rounds was selected. After selection, the final third-order RC parameter vector for each floor was estimated once using the complete 2022 training period and was then frozen for validation and test inference. The selected value was consistently $\lambda=0.01$ across all 15 floors, indicating that the regularisation strength is relatively insensitive to the specific floor.
+
+The ADMM subproblems were initialised with physically motivated starting values: $R_{zw}=0.02\ \si{\K\per\W}$, $R_{wm}=0.03\ \si{\K\per\W}$, $C_z=5\times10^6\ \si{\J\per\K}$, $C_w=2\times10^7\ \si{\J\per\K}$, $C_m=5\times10^7\ \si{\J\per\K}$, and $\alpha=0.7$. These initial values were derived from the building's construction documents and published thermal-property databases for reinforced concrete, XPS insulation, and low-e glazing. Sensitivity to initialisation was tested by running the ADMM algorithm from five random starting points within the physically admissible domain $\Phi$; all runs converged to the same solution (within 2\% relative difference for all parameters), confirming that the problem is well-conditioned and the global minimum is reliably found.
+
+\subsubsection{Estimated Parameters}
+
+Table~\ref{tab:rc_params} presents the estimated RC parameters for three representative floors: Floor 3 (low-rise), Floor 8 (mid-rise), and Floor 14 (high-rise). These three floors were selected to illustrate the systematic variation of thermal parameters with building height.
+
+\begin{table}[!htbp]
+\centering
+\caption{Estimated 3rd-order RC parameters for representative floors}
+\label{tab:rc_params}
+\begin{tabular}{lcccc}
+\toprule
+Parameter & Unit & Floor 3 & Floor 8 & Floor 14 \\
+\midrule
+$R_{zw}$ & $\SI{e-2}{\K\per\W}$ & 2.35 & 2.12 & 1.88 \\
+$R_{wm}$ & $\SI{e-2}{\K\per\W}$ & 3.18 & 2.95 & 2.72 \\
+$C_z$ & \si{\MJ\per\K} & 6.43 & 6.38 & 6.30 \\
+$C_w$ & \si{\MJ\per\K} & 24.5 & 21.8 & 18.5 \\
+$C_m$ & \si{\MJ\per\K} & 58.2 & 52.0 & 45.8 \\
+$\alpha$ & — & 0.68 & 0.72 & 0.75 \\
+\midrule
+$\tau=R_{zw}C_z$ & hours & 4.20 & 3.76 & 3.29 \\
+$\kappa=1/(R_{zw}+R_{wm})$ & \si{\W\per\K} & 18.1 & 19.7 & 21.7 \\
+$S=\alpha A_w$ & \si{\square\m} & 408 & 432 & 450 \\
+Validation RMSE & \si{\celsius} & 0.38 & 0.35 & 0.42 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results reveal three systematic trends with building height. First, the thermal resistances $R_{zw}$ and $R_{wm}$ decrease on upper floors, indicating more efficient heat transfer between the zone air, wall, and thermal mass. This is physically consistent with the greater wind exposure at higher elevations: increased convective heat-transfer coefficients on the exterior wall surface reduce the effective resistance. The wind speed at Floor 14 (approximately \SI{65}{\m} above ground) is estimated to be 30--50\% higher than at Floor 3 (approximately \SI{15}{\m} above ground) based on the logarithmic wind profile, which directly enhances the exterior convective coefficient.
+
+Second, the wall and mass capacitances $C_w$ and $C_m$ are lower on upper floors. A likely explanation is that the structural mass decreases with height, as reflected in thinner concrete columns and reduced slab reinforcement as the building tapers, while adjacent thermal mass from neighbouring buildings and the ground provides additional buffering for lower floors. By contrast, the zone air capacitance $C_z$ is approximately constant across floors, as expected, because it depends primarily on the floor area and ceiling height, which are uniform.
+
+Third, the solar absorptance $\alpha$ increases from 0.68 (Floor 3) to 0.75 (Floor 14). This trend reflects reduced shading from surrounding buildings at higher elevations: Floor 3 is partially shaded by an adjacent 12-storey building to the south during morning hours, whereas Floor 14 receives unobstructed solar radiation throughout the day. The higher absorptance implies greater solar heat gain and, consequently, higher cooling demand on upper floors, a finding that later influences the optimisation results.
+
+The derived thermal time constant $\tau$ decreases from 4.20 hours (Floor 3) to 3.29 hours (Floor 14), confirming that upper floors respond more quickly to HVAC interventions. This has practical implications: pre-cooling strategies on upper floors can be initiated later (closer to occupancy onset) than on lower floors, reducing energy waste. The effective coupling conductance $\kappa$ increases with height (from 18.1 to \SI{21.7}{\W\per\K}), indicating tighter thermal coupling between the zone and the building mass on upper floors. The effective solar aperture $\Gamma$ increases from 408 to \SI{450}{\square\m} due to the combined effect of higher absorptance and slightly larger exposed facade area on upper floors (the building has a slight setback at Floor 10).
+
+\subsubsection{Model Validation}
+
+The quality of the RC model fit was assessed by computing the RMSE between the model-predicted and measured zone temperatures over the 2022 training year. The floor-averaged RMSE is \SI{0.38}{\celsius}, with a range of \num{0.32}--\SI{0.45}{\celsius} across the 15 floors. This is within the measurement accuracy of the Pt100 sensors ($\pm\SI{0.3}{\celsius}$) and well below the typical control deadband of $\pm\SI{1.0}{\celsius}$, confirming that the 3rd-order model captures the essential thermal dynamics of each floor.
+
+On the 2023 validation set, the floor-averaged RMSE increases slightly to \SI{0.45}{\celsius}, reflecting minor year-to-year changes in building operation (a firmware update in February 2023 slightly modified the VRF control logic). The increase is modest and does not compromise the quality of the derived physical features.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figure 2.png}
+\caption{Spatial distribution of thermal time constant $\tau$ across building floors}
+\label{fig:tau_dist}
+\end{figure}
+Figure~\ref{fig:tau_dist} presents the spatial distribution of $\tau$ across the 15 floors in a composite visualisation. The left panel shows violin plots of the zone-level $\tau$ estimates (each floor has $n_{\text{zones}}=40$ zones, yielding 40 $\tau$ estimates per floor), revealing both the floor-level mean and the within-floor variability. The right panel shows a building-section schematic with each floor coloured according to its mean $\tau$, providing an intuitive spatial representation. The gradient from warm colours (high $\tau$, lower floors) to cool colours (low $\tau$, upper floors) is clearly visible, with the three highlighted floors (3, 8, 14) marked by dashed borders corresponding to the detailed parameters in Table~\ref{tab:rc_params}. Wind-exposure arrows of increasing length at higher elevations and solar-radiation arrows at the rooftop complete the physical picture. More importantly, the figure makes the engineering interpretation of the RC parameters visually explicit: lower floors retain thermal inertia for longer periods, whereas upper floors react more quickly to weather forcing and HVAC interventions. This spatial contrast supports the later use of floor-sensitive control and retrofit decisions rather than assuming a uniform thermal response across the whole building.
+
+
+
+\subsection{Granular Ball Computing Configuration}
+
+\subsubsection{GBC Training and Ball Construction}
+
+The GBC module was applied to the MSSA-denoised training data (2022) following the algorithm described in Section 2.2.3. The input to GBC is the $N_{\text{train}} \times (F_{\text{raw}}+3)$ data matrix, where $N_{\text{train}}=35040$ and $F_{\text{raw}}+3=50$ (47 raw features plus 3 RC-derived physical features). The target variable for purity computation is the BMS-reported HVAC energy (kWh per 15-minute interval).
+
+The purity threshold $\theta$ was selected via a grid search over $\{0.50,0.60,0.70,0.80\}$, using the full BiMamba pipeline's validation-set MAPE as the evaluation criterion. For each candidate $\theta$, the GBC algorithm was run on the training data, membership weights were computed for both training and validation sets, and the BiMamba model was trained and evaluated. The optimal $\theta=0.70$ produces 47 balls—a balance between discriminative power and robustness. The minimum ball size was set to $n_{\text{min}}=15$ samples, ensuring that each ball contains enough data to compute meaningful statistics.
+
+Similarly, the number of nearest balls $M$ for membership-weight computation was selected from $\{3,5,7,10\}$; $M=5$ was chosen for computational efficiency.
+
+To prevent label-related leakage, granular-ball purity, recursive splitting, centres, radii, and Gaussian bandwidths were estimated once from the 2022 training features and their associated training targets only. Validation and test samples were mapped to this fixed training-derived ball system to compute membership weights. Their target values were never used to split, merge, update, or recalibrate granular balls. The corresponding implementation settings, fitted objects, and freezing rules are summarised in Supplementary Table~S3.
+
+\subsubsection{Physical Interpretation of Granular Balls}
+
+The 47 granular balls automatically identified by the GBC algorithm provide a data-driven representation of recurring building operating conditions. For descriptive interpretation, the ball centres and temporal distributions were examined to identify six dominant operational patterns: night setback, morning ramp-up, midday plateau, afternoon decline, weekend low occupancy, and heating-season operation. These labels are intended to provide an interpretable summary of recurrent operating patterns rather than to define externally imposed ground-truth classes.
+
+The operational meaning of the granular balls was subsequently evaluated using quantitative clustering validation, including cluster compactness, cluster separation, operational-label agreement, and resampling stability. The corresponding validation protocol and comparison with standard clustering baselines are described in Section~3.5.3 and reported in Supplementary Table~S2.
+
+
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item Night setback (8 balls, 14.3\% of training samples): Outdoor temperature 12–\SI{22}{\celsius}, cooling-season HVAC energy 12–\SI{60}{\kwh}, occupancy near zero.
+\item Morning ramp-up (7 balls, 14.3\%): Outdoor temperature 18–\SI{28}{\celsius}, cooling-season HVAC energy 100–\SI{280}{\kwh}, rapidly increasing occupancy.
+\item Midday plateau (12 balls, 22.9\%): Outdoor temperature 28–\SI{38}{\celsius}, cooling-season HVAC energy 350–\SI{612}{\kwh}, stable high occupancy.
+\item Afternoon decline (8 balls, 17.1\%): Outdoor temperature 26–\SI{35}{\celsius}, cooling-season HVAC energy 200–\SI{400}{\kwh}, gradually decreasing occupancy.
+\item Weekend low occupancy (6 balls, 11.4\%): Wide outdoor temperature range but low cooling-season HVAC energy.
+\item Heating season (6 balls, 10.0\%): Outdoor temperature $-2$–\SI{12}{\celsius}, moderate heating-season HVAC energy.
+\end{enumerate}
+
+\subsubsection{Quantitative Validation of Granular-Ball Operational Regimes}
+
+To assess whether the GBC-derived granular balls represent coherent and meaningful operational regimes beyond qualitative inspection, we conducted a quantitative clustering validation against four standard baselines: K-means, Gaussian mixture modelling, agglomerative clustering, and DBSCAN.
+
+All clustering methods were fitted using the same 2022 MSSA-denoised training matrix containing 47 operational variables and three RC-derived physical descriptors. The same training-derived feature-scaling procedure was applied to all methods. K-means, Gaussian mixture modelling, and agglomerative clustering were configured with 47 clusters to match the number of granular balls selected by the GBC validation procedure. DBSCAN hyperparameters were selected on the training data only. For GBC, the soft membership representation was converted to a hard partition by assigning each sample to the granular ball with the largest membership weight.
+
+Five complementary indicators were used. First, the Silhouette coefficient evaluates the separation of samples from neighbouring clusters, with larger values indicating better separation. Second, the Davies--Bouldin index evaluates within-cluster dispersion relative to between-cluster separation, with smaller values indicating better cluster structure. Third, the Calinski--Harabasz index evaluates the ratio of between-cluster to within-cluster dispersion, with larger values indicating more distinct clusters. Fourth, normalized mutual information was calculated between the clustering output and operational reference labels derived after clustering from the building calendar, BMS schedule, HVAC operating status, and occupancy pattern. These operational reference labels were not used during GBC construction, purity estimation, threshold selection, or membership computation. Fifth, adjusted Rand index was calculated across 100 moving-block bootstrap resamples with a block length of 96 observations to quantify the temporal stability of each partition while preserving daily operating structure.
+
+Supplementary Table~S2 reports the full comparison. The GBC representation achieves a Silhouette coefficient of 0.288, a Davies--Bouldin index of 1.21, a Calinski--Harabasz index of 1,580, an operational-label NMI of 0.785, and a bootstrap stability ARI of 0.842. Although Gaussian mixture modelling achieves the highest Silhouette coefficient of 0.345, GBC achieves the lowest Davies--Bouldin index and the highest Calinski--Harabasz index, operational-label NMI, and bootstrap stability ARI among all compared methods. Relative to the strongest standard clustering baseline, GBC improves operational-label NMI from 0.554 to 0.785 and bootstrap stability ARI from 0.712 to 0.842. These results indicate that the granular-ball representation is not only visually distinguishable but also quantitatively compact, operationally aligned, and temporally stable.
+
+
+Beyond the decomposition itself, Figure~\ref{fig:gbc_decomp} also clarifies the logic of the proposed spatiotemporal physics-guided architecture. The model is organised into three tightly coupled layers: a multi-source input layer, a spatiotemporal feature-processing core, and a physics-guided output layer. This hierarchy allows heterogeneous building information to be fused first, then processed across multiple temporal scales, and finally constrained by physical knowledge before prediction.
+
+At the input stage, the model combines raw sensor sequences, RC-derived physical descriptors, and granular-behaviour attributes associated with occupancy and operating regimes. These heterogeneous signals are aligned and fused into a shared representation $z_t$, so that the downstream predictor can simultaneously access instantaneous measurements, physically meaningful state variables, and regime-aware contextual cues.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figure 3.png}
+\caption{Visual illustration of the GBC decomposition at $\theta=0.70$.}
+\label{fig:gbc_decomp}
+\end{figure}
+
+The spatiotemporal core then extracts deep features through two complementary pathways. A multi-scale convolutional branch captures local variations over different receptive fields, while the BiMamba stack models long-horizon thermal memory and bidirectional temporal dependencies more efficiently than conventional recurrent architectures. Within this stack, the selective scanning mechanism adjusts the state-space update according to the current input, enabling the model to emphasise critical time steps and suppress less informative signals. The resulting convolutional and sequence features are then fused and refined through gated interactions.
+
+Finally, the physics-guided output layer converts the fused latent features into HVAC-related predictions under energy-balance regularisation. A temporal-attention module highlights the most informative dynamic states, and the prediction head is regularised by a physics-consistency term derived from the calibrated building energy-balance relationship and engineering considerations such as temperature continuity. When an unguided prediction departs from the calibrated RC energy-balance representation, the corresponding physics loss feeds back to the model and encourages the output to remain compatible with that representation. In this way, the architecture improves not only prediction accuracy, but also interpretability, generalisation, and operational reliability.
+
+Figure~\ref{fig:rc_validation_new} presents the full architecture of the proposed spatiotemporal physics-guided model for HVAC control. The framework is organised into three tightly coupled layers: a multi-source input layer, a spatiotemporal feature-processing core, and a physics-guided output layer. Compared with Figure~\ref{fig:tau_dist}, which emphasises the spatial distribution of RC-derived thermal characteristics, this figure makes the end-to-end network structure explicit and shows how heterogeneous building information is transformed into energy-balance-regularised predictions.
+
+At the input level, the model integrates three complementary information streams: raw sensor sequences $Z_t^{\mathrm{raw}}$, physical attribute descriptors derived from the RC representation, and granular-behaviour features related to occupancy and usage intensity. This design allows the predictor to encode instantaneous measurements, thermodynamically meaningful state information, and regime-aware behavioural cues within a unified feature representation. A dedicated multi-view fusion module then concatenates and aligns these signals before they are passed to the deep feature extractor.
+
+The spatiotemporal core contains two parallel yet complementary processing paths. A multi-scale CNN branch captures local spatial-temporal variations through kernels with different receptive fields, improving sensitivity to short-term fluctuations and fine-scale operating patterns. In parallel, the BiMamba stack models long-horizon thermal memory and bidirectional temporal dependencies through input-adaptive state-space updates. The selective scanning operator is central to this design, because it computes the state-space parameters in an input-dependent manner and enables the model to focus on critical transitions such as occupancy changes, weather shifts, and load ramping events. Features extracted by the convolutional and BiMamba branches are subsequently integrated through multi-layer fusion and a GLU-based gating module, which refines the shared latent representation before prediction.
+
+At the output level, the fused features are passed through temporal attention and a physics-guided prediction head. Rather than relying on an unconstrained black-box mapping, the model evaluates disagreement between predicted 15-minute HVAC energy and the calibrated RC heat-balance representation, temperature continuity, and practical operating limits. When this disagreement exceeds the tolerance, a physics loss is fed back to the network and encourages the prediction to remain compatible with the calibrated RC representation. This feedback mechanism is a key advantage of Physics-Guided BiMamba: it improves predictive accuracy, interpretability, robustness under regime shift, and suitability for downstream optimisation and engineering deployment.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\textwidth]{figure 4.png}
+\caption{Physics-Guided BiMamba architecture for 15-minute HVAC-energy prediction}
+\label{fig:rc_validation_new}
+\end{figure}
+
+\subsection{BiMamba Predictor: Configuration, Training, and Baselines}
+
+\subsubsection{Hyperparameter Optimisation}
+
+The BiMamba architecture was implemented in PyTorch 2.1.0 with CUDA 12.1 and trained on an NVIDIA A100 80 GB GPU. Hyperparameters were optimised using Bayesian optimisation via the Optuna framework (version 3.4), with 100 trials and the Tree-structured Parzen Estimator (TPE) sampler. The search space and final selected values are reported in Table~\ref{tab:bimamba_hp}.
+
+
+
+The selected hyperparameter pattern indicates a medium-capacity regime rather than an over-parameterised one: state and fusion dimensions converge to 128, while regularisation terms (dropout 0.3, weight decay $10^{-3}$) remain non-trivial. This configuration is consistent with the problem setting, where strong temporal structure exists but distributional shifts across seasons penalise overly flexible models. The non-zero physics penalty ($\lambda_{\mathrm{phys}}=0.05$) further confirms that a hybrid loss produces better validation behaviour than purely data-driven fitting.
+\begin{table}[!htbp]
+\centering
+\caption{Hyperparameter search space and optimal values for the BiMamba predictor}
+\label{tab:bimamba_hp}
+\begin{tabular}{llll}
+\toprule
+Hyperparameter & Search space & Optimal value & Notes \\
+\midrule
+State dimension $N_s$ & \{64, 128, 256\} & 128 & \\
+Number of BiMamba layers $L_{\text{layers}}$ & \{2, 3, 4, 5\} & 4 & \\
+Multi-scale CNN channels $D_k$ & \{32, 64, 128\} & 64 & \\
+Fused dimension $D_{\text{fuse}}$ & \{64, 128, 256\} & 128 & \\
+Attention hidden dim $D_a$ & \{32, 64, 128\} & 64 & \\
+MLP hidden dim $D_h$ & \{64, 128, 256\} & 128 & \\
+Learning rate & [$10^{-4}$,$10^{-2}$] & $3\times10^{-4}$ & \\
+Weight decay & [$10^{-5}$,$10^{-2}$] & $10^{-3}$ & \\
+Dropout probability & [0.1, 0.5] & 0.3 & \\
+Physics penalty $\lambda_{\mathrm{phys}}$ & [0, 0.2] & 0.05 & \\
+Batch size & \{32, 64, 128, 256\} & 128 & \\
+Look-back window $T$ & \{48, 96, 192\} & 96 & \\
+Tolerance $\varepsilon$ & [5, 30] & \SI{15}{\kwh} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The optimal look-back window of $T=96$ (24 hours) was corroborated by autocorrelation analysis of the cooling-load time series.
+
+\subsubsection{Training Protocol and Baseline Models}
+
+The proposed BiMamba model was trained using the AdamW optimiser with a cosine-annealing learning-rate scheduler over a maximum of 200 epochs. Early stopping with a patience of 20 epochs was applied using the validation period. Training converged after 145 epochs and required approximately 2.5 hours on an NVIDIA A100 80 GB GPU. The final model contains approximately 2.4 million trainable parameters. Gradient clipping with a maximum norm of 1.0 was used to stabilise optimisation. No epoch-wise warm-up was applied to the physics-consistency term; the selected weight $\lambda_{\mathrm{phys}}=0.05$ was fixed from the first optimisation step throughout training.
+
+To provide an expanded and up-to-date benchmark, thirteen alternative models and variants were evaluated: ARIMA, SVR, XGBoost, LSTM, BiLSTM, GRU, Transformer, Informer, TimesNet, PatchTST, iTransformer, unidirectional Mamba, and BiMamba without the physics-informed loss. The proposed full BiMamba model was compared against these thirteen alternatives, yielding a total of fourteen evaluated models.
+
+All deep sequence models were evaluated under the same causal forecasting protocol. Specifically, each model received the same 96-step historical input window, the same chronological training-validation-test split, the same causal MSSA preprocessing, the same training-derived feature-scaling statistics, and the same 55-dimensional unified input tensor consisting of raw BMS variables, RC-derived physical descriptors, and GBC membership features. Hyperparameters for each deep-learning baseline were selected using the validation period only. Therefore, none of the competing deep-learning models was disadvantaged by unequal access to weather variables, occupancy proxies, RC descriptors, GBC features, or historical observations.
+
+For architecture-specific ablations, the causal preprocessing pipeline, RC/GBC feature representation, look-back window, training-validation split, optimisation settings, and evaluation protocol were retained unchanged unless the tested component itself was deliberately removed. Thus, the feature-pipeline ablations quantify the contribution of MSSA, RC descriptors, and GBC memberships, whereas the architecture ablations quantify the additional contribution of the multi-scale CNN, bidirectional selective state-space encoder, and temporal-attention module.
+
+\subsection{Optimisation Framework Configuration}
+
+\subsubsection{Design Variables and Feasible Ranges}
+
+Twelve design variables were identified as the most impactful retrofit measures. The variables, types, and feasible ranges are detailed in Table~\ref{tab:design_vars}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Design variables for retrofit optimisation}
+\label{tab:design_vars}
+\begin{tabular}{rlllll}
+\toprule
+No. & Variable & Type & Lower bound & Upper bound & Unit \\
+\midrule
+1 & Insulation thickness & Continuous & 0.02 & 0.15 & m \\
+2 & Window U-value & Discrete & 1.2 & 3.0 & \si{\W\per\square\m\per\K} \\
+3 & SHGC & Discrete & 0.20 & 0.50 & — \\
+4 & WWR & Continuous & 0.20 & 0.60 & — \\
+5 & Cooling COP & Discrete & 3.0 & 5.5 & — \\
+6 & Heating efficiency & Discrete & 0.80 & 0.98 & — \\
+7 & Cooling setpoint & Continuous & 22.0 & 26.0 & \si{\celsius} \\
+8 & Heating setpoint & Continuous & 18.0 & 22.0 & \si{\celsius} \\
+9 & Ventilation rate & Continuous & 0.5 & 2.0 & \si{\L\per\s\per\square\m} \\
+10 & Lighting power density & Continuous & 5.0 & 12.0 & \si{\W\per\square\m} \\
+11 & VFD installed & Binary & 0 & 1 & — \\
+12 & ERV installed & Binary & 0 & 1 & — \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:design_vars} highlights the mixed-variable nature of realistic retrofit planning: continuous control and envelope parameters are coupled with discrete technology levels and binary equipment decisions. This structure prevents trivial gradient-based optimisation and justifies the use of many-objective evolutionary search with dedicated operators for heterogeneous decision spaces. The specified bounds are also implementation-aware rather than purely theoretical, reflecting engineering feasibility, code-compliance limits, and market-available product tiers in the Shanghai context.
+
+\subsubsection{Objective Function Evaluation}
+
+For each candidate design $\mathbf{x}$, four objectives are evaluated:
+
+\begin{enumerate}[leftmargin=*]
+\item $f_1$ (Energy): Annual total energy from BiMamba simulation.
+\item $f_2$ (Discomfort): Percentage of occupied hours with PPD $>10\%$.
+\item $f_3$ (Cost): Initial investment cost calibrated to Shanghai market.
+\item $f_4$ (Carbon): Operational plus amortised embodied carbon.
+\end{enumerate}
+
+\subsubsection{Algorithm Settings}
+
+The INSGA-III algorithm and three baseline optimisers were configured as in Table~\ref{tab:opt_settings}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Optimisation algorithm settings}
+\label{tab:opt_settings}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Parameter & INSGA-III & NSGA-III & NSGA-II & MOEA/D \\
+\midrule
+Population size & 200 & 200 & 200 & 200 \\
+Number of generations & 300 & 300 & 300 & 300 \\
+Ref.\ point divisions $H$ & 4 (adaptive) & 4 (fixed) & — & 4 (fixed) \\
+Crossover & SBX+uniform & SBX+uniform & SBX+uniform & SBX+uniform \\
+$\eta_c$ & 20 & 20 & 20 & 20 \\
+$\eta_m$ & 20 & 20 & 20 & 20 \\
+$p_c$ & 0.9→0.6 & 0.9 & 0.9 & 0.9 \\
+$p_m$ & 0.1→0.05 & 1/12 & 1/12 & 1/12 \\
+Constraint handling & Constraint-dominance & Penalty & Penalty & Penalty \\
+Runs & 5 & 5 & 5 & 5 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The settings in Table~\ref{tab:opt_settings} enforce fairness across algorithms by matching population size, generation budget, and variation operators wherever possible. Under this controlled protocol, performance differences primarily reflect search strategy (reference adaptation and constraint handling) rather than budget asymmetry. This design is important for reproducibility: it allows the reported gains of INSGA-III to be interpreted as methodological improvements rather than tuning artefacts.
+
+\subsubsection{Computational Cost}
+
+As summarised in Table~\ref{tab:comp_cost}, the total wall-clock time for the entire framework is approximately 20 hours, making the proposed pipeline substantially faster than conventional physics-based simulation.
+
+
+
+Table~\ref{tab:comp_cost} indicates that optimisation dominates total wall-clock time, while preprocessing and model training remain a minority share of the pipeline cost. The practical implication is that once the surrogate is trained, iterative planning studies (new policy constraints, alternative objective weights, scenario refreshes) become computationally feasible without repeating expensive simulator-in-the-loop workflows. In other words, the computational bottleneck is shifted from physical simulation to controllable optimisation runtime, which is a more tractable engineering trade-off for real deployment.
+
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Computational cost breakdown}
+\label{tab:comp_cost}
+\begin{tabular}{llr}
+\toprule
+Stage & Hardware & Wall-clock time \\
+\midrule
+Data preprocessing (MSSA) & Intel Xeon (32 cores) & 0.5 h \\
+RC model estimation & Intel Xeon (32 cores) & 1.0 h \\
+GBC ball construction & Intel Xeon (32 cores) & 0.2 h \\
+BiMamba training & NVIDIA A100 & 2.5 h \\
+\midrule
+Preprocessing + training & & 4.2 h \\
+\midrule
+INSGA-III optimisation & A100 (×4) & 15.0 h \\
+Uncertainty analysis & A100 (×4) & 0.3 h \\
+\midrule
+Grand total & & $\sim$20 h \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\subsubsection{High-Fidelity Cross-Verification Setup}
+
+To examine whether representative surrogate-derived retrofit solutions remain credible in a high-fidelity whole-building simulation environment, a case-specific EnergyPlus model (Version 23.2) was established for the Shanghai office-building case study. The EnergyPlus model was parameterised and calibrated using the building geometry, envelope characteristics, HVAC configuration, operating schedules, and measured BMS information described in Section~3.2. The model calibration used the available measured building-operation data to align the simulation with the observed building context before the retrofit scenarios were evaluated.
+
+The twelve retrofit variables defined in Table~\ref{tab:design_vars} were mapped consistently into the EnergyPlus model, including envelope-related parameters, glazing performance, HVAC efficiency, temperature setpoints, ventilation rate, lighting power density, and binary VFD/ERV adoption decisions. Three representative Pareto solutions were selected from the efficiency-focused, balanced, and cost-focused archetypes identified in the optimisation results. These solutions correspond to the representative designs reported in Table~\ref{tab:energyplus_cross_validation}.
+
+For each representative retrofit design, the same retrofit settings, weather conditions, occupancy schedules, and objective definitions were applied in the Physics-Guided BiMamba surrogate and the EnergyPlus model. Annual energy consumption, thermal discomfort, and lifecycle carbon emissions were compared between the two evaluation environments. Retrofit cost was calculated analytically from the selected retrofit measures and therefore remains identical in both evaluations.
+
+The purpose of this cross-verification is to determine whether the representative Pareto archetypes preserve their principal objective-space characteristics when evaluated using a high-fidelity first-principles simulation model. It does not imply that every non-dominated solution in the full Pareto front was individually simulated. The results of this representative cross-verification are reported in Section~4.2.2 and Table~\ref{tab:energyplus_cross_validation}.
+
+\subsection{Evaluation Metrics}
+
+\subsubsection{Prediction Metrics}
+
+Five standard metrics quantify prediction accuracy:
+
+\begin{align}
+\RMSE &= \sqrt{\frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y}_i)^2}, \label{eq:rmse} \\
+\MAE &= \frac{1}{N}\sum_{i=1}^{N}|y_i-\hat{y}_i|, \label{eq:mae} \\
+\MAPE &= \frac{100\%}{N}\sum_{i=1}^{N}\frac{|y_i-\hat{y}_i|}{\max(y_i,\epsilon_y)}, \label{eq:mape} \\
+R^2 &= 1-\frac{\sum_{i=1}^{N}(y_i-\hat{y}_i)^2}{\sum_{i=1}^{N}(y_i-\bar{y})^2}, \label{eq:r2} \\
+\CVRMSE &= \frac{\RMSE}{\bar{y}}\times 100\%. \label{eq:cvrmse}
+\end{align}
+
+Bootstrap confidence intervals and paired $t$-tests with Bonferroni correction assess statistical significance.
+
+\subsubsection{Optimisation Metrics}
+
+Pareto-front quality is measured primarily by Hypervolume (HV) and Inverted Generational Distance (IGD):
+
+\begin{align}
+\text{HV}(\mathcal{P}) &= \operatorname{Vol}\left( \bigcup_{\mathbf{x}\in\mathcal{P}} [f(\mathbf{x}),\mathbf{z}^{\text{ref}}] \right) \label{eq:hv} \\
+\text{IGD}(\mathcal{P},\mathcal{P}^\ast) &= \frac{1}{|\mathcal{P}^\ast|} \sum_{\mathbf{z}^\ast\in\mathcal{P}^\ast} \min_{\mathbf{z}\in\mathcal{P}} \|\mathbf{z}^\ast-\mathbf{z}\|_2 \label{eq:igd}
+\end{align}
+
+To complement these two headline indicators, we also report feasibility rate, spacing metric (SP), and the number of active reference points to characterise solution quality, diversity, and algorithm behaviour more fully.
+
+\section{RESULTS}
+
+This section reports the empirical evaluation of the proposed Physics-Guided BiMamba framework. It presents predictive-performance comparisons, ablation evidence, seasonal and interpretability analyses, surrogate-assisted retrofit optimisation outcomes, representative EnergyPlus cross-verification, and post-optimal uncertainty results. The engineering implications, deployment boundaries, limitations, and future research directions are considered separately in Section~5.
+
+\subsection{Prediction Performance Evaluation}
+
+\subsubsection{Overall Comparison with Baseline Models}
+
+Table~\ref{tab:all_models_perf} presents the full quantitative comparison of the proposed BiMamba predictor against thirteen alternative models and variants on the held-out test set from July--December 2023, comprising 17\,568 time steps. Five metrics are reported: $\RMSE$, $\MAE$, $\MAPE$, $\Rsq$, and $\CVRMSE$. Each metric is accompanied by a 95\,\% bootstrap confidence interval obtained from 10\,000 resamples of the held-out test set.
+
+\begin{table}[!htbp]
+\centering
+\caption{Test-set prediction performance of 14 models under the same causal preprocessing and unified feature-input protocol}
+\label{tab:all_models_perf}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+Model & Family & $\RMSE$ (kWh) & $\MAE$ (kWh) & $\MAPE$ (\%) & $\Rsq$ & $\CVRMSE$ (\%) \\
+\midrule
+ARIMA & Statistical & $58.2\pm3.8$ & $44.5\pm3.2$ & $14.8\pm1.2$ & $0.828\pm0.018$ & $19.5\pm1.3$ \\
+SVR & Shallow ML & $52.6\pm3.2$ & $40.1\pm2.8$ & $13.2\pm1.0$ & $0.860\pm0.015$ & $17.6\pm1.1$ \\
+XGBoost & Shallow ML & $46.3\pm2.8$ & $35.2\pm2.4$ & $11.5\pm0.9$ & $0.891\pm0.013$ & $15.5\pm1.0$ \\
+LSTM & Deep Learning & $41.8\pm2.5$ & $31.5\pm2.1$ & $10.5\pm0.8$ & $0.911\pm0.011$ & $14.0\pm0.9$ \\
+BiLSTM & Deep Learning & $39.5\pm2.3$ & $29.8\pm1.9$ & $9.8\pm0.7$ & $0.921\pm0.010$ & $13.2\pm0.8$ \\
+GRU & Deep Learning & $40.2\pm2.4$ & $30.5\pm2.0$ & $10.1\pm0.8$ & $0.917\pm0.011$ & $13.5\pm0.8$ \\
+Transformer & Deep Learning & $38.8\pm2.2$ & $29.2\pm1.8$ & $9.5\pm0.7$ & $0.924\pm0.009$ & $13.0\pm0.7$ \\
+Informer & Deep Learning & $37.2\pm2.0$ & $28.0\pm1.6$ & $9.1\pm0.6$ & $0.930\pm0.008$ & $12.5\pm0.7$ \\
+TimesNet & Deep Learning & $36.5\pm1.9$ & $27.4\pm1.6$ & $8.9\pm0.6$ & $0.932\pm0.008$ & $12.2\pm0.6$ \\
+PatchTST & Deep Learning & $35.8\pm1.8$ & $26.9\pm1.5$ & $8.7\pm0.5$ & $0.935\pm0.007$ & $12.0\pm0.6$ \\
+iTransformer & Deep Learning & $34.4\pm1.7$ & $25.9\pm1.4$ & $8.4\pm0.5$ & $0.940\pm0.007$ & $11.5\pm0.5$ \\
+Mamba & Deep Learning & $35.0\pm1.8$ & $26.5\pm1.5$ & $8.6\pm0.5$ & $0.938\pm0.007$ & $11.7\pm0.6$ \\
+BiMamba (w/o physics loss) & Proposed Variant & $33.8\pm1.6$ & $25.6\pm1.3$ & $8.3\pm0.5$ & $0.942\pm0.007$ & $11.3\pm0.5$ \\
+BiMamba (proposed) & Proposed & $\mathbf{32.5\pm1.4}$ & $\mathbf{24.5\pm1.2}$ & $\mathbf{8.0\pm0.4}$ & $\mathbf{0.946\pm0.006}$ & $\mathbf{11.0\pm0.5}$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The proposed BiMamba achieves the best overall performance across all five evaluation metrics. It obtains an RMSE of $32.5\pm1.4$\,kWh, an MAE of $24.5\pm1.2$\,kWh, a MAPE of $8.0\pm0.4$\,\%, an $R^2$ of $0.946\pm0.006$, and a CV-RMSE of $11.0\pm0.5$\,\%.
+
+Among the newly added recent baselines, iTransformer provides the strongest overall performance, with an RMSE of $34.4\pm1.7$\,kWh, an MAE of $25.9\pm1.4$\,kWh, a MAPE of $8.4\pm0.5$\,\%, an $R^2$ of $0.940\pm0.007$, and a CV-RMSE of $11.5\pm0.5$\,\%. Relative to iTransformer, the proposed BiMamba reduces RMSE by $1.9$\,kWh, MAE by $1.4$\,kWh, MAPE by $0.4$ percentage points, and CV-RMSE by $0.5$ percentage points, while improving $R^2$ by $0.006$.
+
+PatchTST and TimesNet also provide strong results under the unified feature representation, achieving MAPEs of $8.7\pm0.5$\,\% and $8.9\pm0.6$\,\%, respectively. Compared with these recent baselines, BiMamba reduces MAPE by $0.7$ percentage points relative to PatchTST and $0.9$ percentage points relative to TimesNet. The comparison indicates that the proposed framework remains competitive not only against recurrent, Transformer, Informer, and unidirectional Mamba models, but also against recent patch-based, frequency-aware, and inverted-attention forecasting architectures.
+
+The comparison should not be interpreted as evidence that feature engineering is unimportant. All deep sequence models received the same 55-dimensional unified input representation, including raw BMS variables, RC-derived descriptors, and GBC membership features. Therefore, the remaining performance difference reflects how effectively each sequence model exploits the same causal, physics-enriched, and regime-aware input tensor. The contribution of the individual feature streams and architecture modules is examined separately in Section~4.1.2.
+
+The findings should be interpreted as task-specific evidence for high-resolution commercial-building load forecasting rather than as a claim that the competing architectures are generally inferior. In this setting, the proposed BiMamba model combines local multi-scale temporal extraction, input-dependent state-space propagation, and bidirectional historical-window representation. This combination appears advantageous for building load dynamics characterised by coupled operational inputs, short-duration transitions, and persistent thermal-memory effects.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 5.png}
+\caption{Prediction performance comparison across 14 models under the same causal preprocessing and unified feature-input protocol.}
+\label{fig:model_compare}
+\end{figure}
+
+Figure~\ref{fig:model_compare} visualises the performance comparison across fourteen models. Panels (a)--(e) present RMSE, MAPE, $R^2$, MAE, and CV-RMSE, respectively. Error bars represent 95\,\% bootstrap confidence intervals, and the model-family colours distinguish statistical, shallow machine-learning, deep-learning, and proposed-model variants. The consistently lower errors of the proposed BiMamba are observed across all five metrics rather than being limited to a single evaluation criterion.
+
+Panel (f) presents a radar-chart comparison of PatchTST, iTransformer, Mamba, BiMamba without the physics-informed loss, and the proposed BiMamba. The proposed model exhibits the most compact radar profile, indicating the most balanced overall performance across RMSE, MAE, MAPE, CV-RMSE, and $1-R^2$.
+
+Figure~\ref{fig:pred_vs_act_bimamba} provides detailed diagnostic visualisation for the BiMamba predictor, comprising four coordinated panels that collectively characterise the prediction quality, error structure, and uncertainty behaviour.
+
+Panel (a): Predicted versus observed HVAC-energy scatter plot with marginal distributions. The joint scatter plot displays all 17 568 test-set predictions, coloured by kernel density estimation ($\KDE$) to reveal the bivariate distribution. Points cluster tightly around the identity line ($\hat{y}=y$) across the entire load range, with the density maximum at approximately $225\kWh$ (the median load). The $\pm10\%$ deviation lines bracket the vast majority of predictions: 91.3\,\% of predictions fall within 10\,\% of the actual value. Per-regime regression lines (green for low loads $<100\kWh$, orange for mid loads $100$–$350\kWh$, red for high loads $>350\kWh$) show that the model maintains near-unity slope and near-zero intercept across all three regimes, with no systematic bias toward over- or under-prediction. A small number of outliers ($|\mathrm{residual}|>2.5\times\RMSE$, marked by open red circles) are identified: these 23 points (0.13\,\% of the test set) correspond to rare operational anomalies—unscheduled equipment start-ups, brief sensor communication losses during reconstruction, and a single one-hour power curtailment event in August 2023—that were not represented in the training data.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 6.png}
+\caption{Predicted versus observed 15-minute BMS-reported HVAC energy (Physics-Guided BiMamba)}
+\label{fig:pred_vs_act_bimamba}
+\end{figure}
+
+The top marginal histogram decomposes the observed HVAC-energy distribution by regime (low/mid/high), revealing the strong bimodality of the load profile: a low-load mode centred at approximately $50\kWh$ (nighttime and weekend) and a broad high-load mode spanning $200$–$500\kWh$ (occupied weekday hours). The right marginal histogram shows the corresponding predicted HVAC-energy distribution, which matches the actual distribution closely, confirming that the model preserves the statistical properties of the load profile rather than smoothing out extremes.
+
+Panel (b): Residual distribution. The histogram of residuals ($y-\hat{y}$) with a fitted Gaussian overlay shows an approximately symmetric, zero-mean distribution ($\mu_r=0.3\kWh$, $\sigma_r=32.4\kWh$). The near-zero mean confirms the absence of systematic bias. The Gaussian fit is adequate for the central mass of the distribution but slightly underestimates the tails, indicating marginally heavier-than-normal tails (excess kurtosis $\approx0.4$). The $1\sigma$ and $2\sigma$ boundaries capture 68.5\,\% and 95.8\,\% of residuals respectively, consistent with the Gaussian approximation. The dashed vertical line at zero residual serves as a visual reference for bias assessment.
+
+Panel (c): Residual versus observed HVAC energy, coloured by $\MC$-dropout standard deviation. This panel reveals the heteroscedastic structure of the prediction error: residual variance increases with load magnitude. At low loads ($<100\kWh$), the moving-average absolute error is approximately $12\kWh$ and the $\MC$-dropout standard deviation is approximately $8\kWh$—tight predictions reflecting the low variability of nighttime and weekend conditions. At high loads ($>400\kWh$), the moving-average absolute error rises to approximately $35\kWh$ and the $\MC$-dropout standard deviation to approximately $22\kWh$—wider predictions reflecting the higher variability introduced by stochastic occupancy, intermittent cloud cover, and HVAC equipment cycling during peak hours. This heteroscedasticity is physically expected: high-load conditions are more variable and harder to predict, and the model's uncertainty estimates appropriately capture this through wider $\MC$-dropout intervals. The annotations highlight ``Tight at low loads'' and ``Wider spread at peak loads,'' with arrows pointing to representative regions.
+
+Panel (d): $\CI$ width vs.\ load level. Box plots of the 95\,\% $\CI$ width (from MC dropout) across ten load bins ($0$–$65$, $65$–$130$, \dots, $585$–$650\kWh$) quantify the heteroscedastic uncertainty structure. The median $\CI$ width increases from approximately $40\kWh$ in the lowest bin to approximately $90\kWh$ in the highest bin, following a quadratic trend (dashed purple line). This systematic relationship between load magnitude and prediction uncertainty has practical implications for model-predictive control: during high-load periods, the controller should allocate more headroom in its capacity planning to accommodate the wider prediction intervals. The colour gradient of the box plots (yellow-to-red, mapped to the load-bin centre) provides an intuitive visual encoding of the increasing uncertainty at higher loads.
+
+\subsubsection{Ablation Study: Isolating Component Contributions}
+
+To rigorously quantify the contribution of each component in the BiMamba architecture and feature pipeline, we conducted a systematic ablation study in which individual components were removed one at a time while all other settings remained unchanged. Eight model variants were trained and evaluated on the same training/validation/test splits, with the same hyperparameters (except where the removed component necessitated a minor architecture adjustment, e.g., reducing the input dimension when features are removed); Table~\ref{tab:ablation} reports the test-set $\MAPE$ for each variant, along with the $\MAPE$ degradation ($\Delta\MAPE$) relative to the full model and a brief description of the ablated component.
+
+\begin{table}[!htbp]
+\centering
+\caption{Ablation-study test-set $\MAPE$ for model variants}
+\label{tab:ablation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+Variant               & Description                                  & $\MAPE$ (\%) & $\Delta\MAPE$ (\pp) & Rank \\
+\midrule
+BiMamba (full, proposed)  & All components included                     & 8.0          & ---                & 1 \\
+w/o MSSA denoising        & Train on raw data (no denoising)            & 9.9          & $+1.9$             & 8 \\
+w/o RC physical features  & Remove $\tau,\kappa,\Gamma$ from input           & 9.5          & $+1.5$             & 7 \\
+w/o GBC granular features & Remove 5 membership weights                 & 8.9          & $+0.9$             & 6 \\
+w/o Multi-scale CNN       & Single kernel size 5                        & 8.8          & $+0.8$             & 5 \\
+w/o Bidirectional         & Unidirectional Mamba only                   & 8.6          & $+0.6$             & 4 \\
+w/o Temporal attention    & Mean pooling instead                         & 8.4          & $+0.4$             & 3 \\
+w/o Physics-informed loss & $\lambda_{\mathrm{phys}}=0$                  & 8.3          & $+0.3$             & 2 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+To complement the MAPE-based ablation comparison in Table~\ref{tab:ablation}, Table~\ref{tab:physics_loss_detail} reports the detailed predictive performance of the full BiMamba model and the variant trained without the physics-informed loss. The comparison quantifies the contribution of the energy-balance regularisation across multiple error metrics.
+
+
+
+The ablation results yield several insights, which we discuss in order of decreasing impact:
+
+\par\noindent\hspace*{2em}\textbf{MSSA denoising ($+1.9\pp$).} The removal of MSSA denoising produces the largest single degradation, increasing $\MAPE$ from 8.0\,\% to 9.9\,\%. This result underscores that sensor noise, while individually small for any single variable (typically $<1\,\%$ of signal amplitude), compounds across the 55-dimensional feature space to substantially impair prediction performance when left unaddressed. The MSSA denoising step—which retains 96.2\,\% of total variance while removing high-frequency noise—provides a ``clean'' input to both the RC parameter estimation and the BiMamba training. Without MSSA, the RC parameter estimates become noisier (the validation $\RMSE$ of the RC model increases from $0.45^\circ\text{C}$ to $0.72^\circ\text{C}$), which in turn degrades the quality of the physical features $\tau,\kappa,\Gamma$, and the physics-informed loss becomes less effective because the RC-implied reference $Q_{\mathrm{HVAC}}^{\mathrm{RC,implied}}$ is computed from noisy temperatures. The MSSA denoising thus provides a cascade of downstream benefits that justify its computational cost (0.5 hours).
+\begin{table}[!htbp]
+\centering
+\caption{Detailed prediction performance with and without the physics-informed loss}
+\label{tab:physics_loss_detail}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Metric & Full BiMamba model & Without physics-informed loss ($\lambda_{\mathrm{phys}}=0$) & Improvement \\
+\midrule
+RMSE (kWh) & $32.5 \pm 1.4$ & $33.8 \pm 1.6$ & 1.3 (3.8\%) \\
+MAE (kWh) & $24.5 \pm 1.2$ & $25.6 \pm 1.3$ & 1.1 (4.3\%) \\
+MAPE (\%) & $8.0 \pm 0.4$ & $8.3 \pm 0.5$ & 0.3 pp (3.6\%) \\
+$R^2$ & $0.946 \pm 0.006$ & $0.942 \pm 0.007$ & 0.004 \\
+CV-RMSE (\%) & $11.0 \pm 0.5$ & $11.3 \pm 0.5$ & 0.3 pp (2.7\%) \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\par\noindent\hspace*{2em}\textbf{RC physical features ($+1.5\pp$).} Removing the three RC-derived features ($\tau,\kappa,\Gamma$) produces the second-largest degradation, increasing $\MAPE$ to 9.5\,\%. This result confirms the fundamental hypothesis of the physics-guided approach: explicit encoding of the building's thermal identity—thermal inertia, heat-transfer efficiency, and solar responsiveness—provides information that the neural network cannot reliably extract from raw sensor data alone. The degradation is particularly pronounced during weather extremes: on the subset of test data with outdoor temperatures above $35^\circ\text{C}$, the $\MAPE$ increase is $2.1\pp$ (from 9.2\,\% to 11.3\,\%); on the subset below $5^\circ\text{C}$, the increase is $1.8\pp$ (from 8.8\,\% to 10.6\,\%). During these extreme conditions, the building operates near the boundaries of its thermal comfort zone, and the RC features provide the inductive bias needed to extrapolate the thermal response beyond the range of training-data conditions. Without the RC features, the model has less information about thermal inertia and envelope response during extremes, which can reduce its compatibility with the calibrated RC energy-balance representation.
+
+The $1.5\pp$ improvement from RC features substantially exceeds the $0.3\pp$ improvement from the physics-informed loss ($\lambda_{\mathrm{phys}}$). This comparison suggests that feature-level physical encoding (providing $\tau,\kappa,\Gamma$ as inputs) is more impactful than loss-level physical regularisation (penalising energy-balance violations). The two mechanisms are complementary, however: the RC features encode the building's static thermal identity, while the physics loss enforces dynamic consistency at each time step. Together, they contribute a combined $1.8\pp$ improvement that is greater than the sum of their individual effects ($1.5+0.3=1.8\pp$ vs.\ $1.7\pp$ when both are removed simultaneously), indicating a mild positive interaction.
+
+\par\noindent\hspace*{2em}\textbf{GBC granular features ($+0.9\pp$).}Removing the five GBC membership weights increases $\MAPE$ to 8.9\,\%. The degradation is not uniformly distributed across the test set: it is concentrated during transitional periods between operational regimes. On a per-hour analysis, the $\MAPE$ increase is largest during the morning ramp-up (07:00–09:00, $+1.4\pp$), the evening setback (18:00–20:00, $+1.2\pp$), and weekend-to-weekday transitions (Monday 06:00–10:00, $+1.6\pp$). During these transitions, the building's thermal state is changing rapidly, and similar raw sensor readings can correspond to very different energy consumption levels depending on the operational regime. For example, a zone temperature of $25^\circ\text{C}$ and an outdoor temperature of $30^\circ\text{C}$ can occur during a morning ramp-up (when the HVAC system is ramping from setback to occupied mode, with rising cooling-season HVAC energy) or during an afternoon decline (when the HVAC system is coasting down, with falling cooling-season HVAC energy). The raw sensor features alone cannot distinguish these two contexts; the GBC membership weights provide the discriminative signal by encoding proximity to the ``morning ramp-up'' balls versus the ``afternoon decline'' balls. The increase in test $\MAPE$ from 8.0\,\% to 8.9\,\% after removing GBC membership features demonstrates the predictive utility of regime-aware information. This predictive ablation should be distinguished from the quantitative clustering validation reported in Section~3.5.3 and Supplementary Table~S2, which evaluates the coherence, operational alignment, and temporal stability of the granular-ball representation itself.
+
+During steady-state periods (midday plateau, nighttime setback), the $\MAPE$ degradation from removing GBC features is smaller ($+0.4\pp$), confirming that the granular features' primary contribution is during regime transitions rather than within-regime prediction. This pattern validates the conceptual motivation for GBC: the granular balls encode the multi-scale structure of operational regimes, providing the most value precisely where regime-awareness is needed most.
+
+\par\noindent\hspace*{2em}To ensure fairness in baseline comparison, all deep sequence baselines reported in Table~\ref{tab:all_models_perf} were trained with the same core input pool, including weather, occupancy, control, and RC/GBC-derived features whenever the architecture could ingest them without altering the benchmark protocol. In other words, the reported performance gap is not attributable to withholding the physical descriptors from LSTM-, Transformer-, or Mamba-family comparators. What distinguishes the proposed model is the way these heterogeneous signals are fused: the bidirectional selective state-space backbone, multi-scale convolutional front-end, and physics-consistency regulariser jointly exploit the RC/GBC information more effectively than straightforward feature concatenation. Nevertheless, an explicit ``Transformer + RC/GBC'' sensitivity run would be a useful additional benchmark in future revisions to isolate architectural merit even more sharply.
+
+\par\noindent\hspace*{2em} Replacing the three-branch multi-scale CNN (kernel sizes 3, 5, 7) with a single-kernel CNN (kernel size 5) increases $\MAPE$ to 8.8\,\%. This degradation confirms that temporal patterns at different scales contribute independently to prediction accuracy. A per-scale analysis (removing one kernel at a time) reveals that kernel 3 (45-minute scale) contributes $0.3\pp$ (capturing rapid occupancy fluctuations and HVAC cycling), kernel 5 (75-minute scale) contributes $0.3\pp$ (capturing medium-duration ramp-ups and setbacks), and kernel 7 (105-minute scale) contributes $0.2\pp$ (capturing broader diurnal envelopes). The three kernels together contribute $0.8\pp$, which is exactly the sum of the individual contributions, indicating that the three scales capture non-overlapping temporal information.
+
+\par\noindent\hspace*{2em}\textbf{Bidirectional extension ($+0.6\pp$).} Reverting the proposed BiMamba model to a unidirectional forward-only Mamba increases the test $\MAPE$ to 8.6\%, indicating that bidirectional representation learning improves prediction accuracy. Importantly, the bidirectional structure does not use future observations beyond the forecast origin. For the one-step-ahead prediction of $y_{t+1}$, both the forward and backward selective scans operate only within the fully observed historical input window $\mathbf{Z}_{t-95:t}$. Thus, the backward scan processes the available historical sequence in reverse order and enables the representation of each historical timestamp to incorporate information from earlier and later positions within the same observed window, without accessing $y_{t+1}$, future weather variables, future occupancy measurements, or later operating states.
+
+The performance gain from bidirectionality is most evident during operational-transition periods, including weekday pre-cooling intervals (06:00--08:00), evening setback transitions (18:00--19:00), and maintenance-related load changes that are already partially reflected in the observed historical window. During these periods, the backward scan helps the model integrate short-term changes with the broader recent operational trajectory, such as the onset, persistence, or recovery of pre-cooling, load reduction, or equipment-state adjustment. This improves the representation of temporally asymmetric and rapidly changing load patterns without requiring access to unobserved future events.
+
+During stable midday operation, the contribution of the bidirectional extension is comparatively limited ($+0.1\pp$), because the recent historical trajectory is relatively smooth and the forward-only representation already captures most of the relevant information. These results suggest that bidirectionality primarily enhances the encoding of complex historical transition patterns rather than exploiting future information. This interpretation is consistent with the forecast-origin leakage-control protocol: for every prediction time $t$, the model receives only the observed historical window ending at $t$, and no variable recorded after the forecast origin is available to the preprocessing or prediction pipeline.
+
+\par\noindent\hspace*{2em}\textbf{Temporal attention ($+0.4\pp$).}
+Replacing the temporal attention mechanism with simple mean pooling (equal weighting of all $T=96$ time steps) increases $\MAPE$ to 8.4\,\%. The attention mechanism learns to assign higher weights to time steps that are most informative for the current prediction. Analysis of the learned attention weights reveals interpretable patterns: the model consistently assigns the highest weights to time steps corresponding to the same hour on the previous day (lag 96), the most recent 1–2 hours (lags 1–8), and the transition between occupied and unoccupied modes (the time step when occupancy crosses 50\,\% of peak). Mean pooling treats all 96 time steps equally, diluting the signal from these informative steps with the noise from less relevant ones.
+
+\par\noindent\hspace*{2em}\textbf{Physics-informed loss ($+0.3\pp$).}
+Training with $\lambda_{\mathrm{phys}}=0$, corresponding to a purely data-driven MSE objective, increases the test $\MAPE$ from 8.0\,\% to 8.3\,\%. The full physics-guided BiMamba achieves an RMSE of $32.5 \pm 1.4\kWh$, an MAE of $24.5 \pm 1.2\kWh$, a MAPE of $8.0 \pm 0.4\,\%$, an $R^2$ of $0.946 \pm 0.006$, and a CV-RMSE of $11.0 \pm 0.5\,\%$. Removing the physics-informed loss increases these values to $33.8 \pm 1.6\kWh$, $25.6 \pm 1.3\kWh$, $8.3 \pm 0.5\,\%$, $0.942 \pm 0.007$, and $11.3 \pm 0.5\,\%$, respectively.
+
+The soft physics regularisation therefore reduces RMSE by 1.3\,kWh, MAE by 1.1\,kWh, MAPE by 0.3 percentage points, and CV-RMSE by 0.3 percentage points, while improving $R^2$ by 0.004. The contribution is more pronounced during extreme-weather observations, defined as outdoor temperatures above $35^\circ\text{C}$ or below $5^\circ\text{C}$, which account for approximately 18\,\% of the test set. In this subset, removing the physics-informed loss increases MAPE by 0.7 percentage points, compared with 0.1 percentage points under typical outdoor-temperature conditions between $10^\circ\text{C}$ and $30^\circ\text{C}$.
+
+These findings indicate that the proposed training strategy improves prediction robustness and enhances consistency with the calibrated RC energy-balance representation, particularly near the boundary of the observed thermal regime. However, because the physics term is implemented as a soft regularisation rather than as a hard feasibility constraint, these results should not be interpreted as formal validation against a fully calibrated whole-building simulation model.
+
+\par\noindent\hspace*{2em}\textbf{Interaction effects.}
+To assess whether the component contributions are additive or synergistic, we trained two additional variants: (i) removing both RC features and GBC features simultaneously ($\Delta\MAPE=+2.6\pp$), and (ii) removing both RC features and the physics-informed loss simultaneously ($\Delta\MAPE=+1.7\pp$). Variant (i) shows a larger degradation than the sum of individual removals ($2.6>1.5+0.9=2.4$), suggesting a mild positive interaction: the RC and GBC features provide complementary information (physical identity vs.\ operational context) that together enables the model to generalise more effectively than either stream alone. Variant (ii) shows an additive effect ($1.7\approx1.5+0.3$), indicating that the RC features and the physics loss operate through independent mechanisms (feature enrichment vs.\ loss regularisation) with no synergy or redundancy.
+
+Extended seasonal-performance and within-week temporal diagnostics are provided in Supplementary Note S1 and Supplementary Figures S1 and S2.
+
+\subsubsection{Feature Importance and Interpretability Analysis}
+
+The ability to explain why a model makes a particular prediction is essential for building trust with facility managers, diagnosing prediction failures, and extracting actionable insights for building operation. We employ $\SHAP$ (SHapley Additive exPlanations) analysis, which provides theoretically grounded, model-agnostic feature attributions based on cooperative game theory. For each prediction, $\SHAP$ assigns a value to each input feature that quantifies its marginal contribution to the model's output relative to the expected prediction. The $\SHAP$ values are computed using the TreeSHAP-inspired kernel approximation adapted for neural networks, with 1 500 test-set samples used for the analysis.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 7.png}
+\caption{SHAP-based interpretation of Physics-Guided BiMamba.}
+\label{fig:shap}
+\end{figure}
+
+Figure~\ref{fig:shap} provides complementary evidence on global feature attribution and physics-aware dependence patterns. Panel (a) shows that outdoor temperature and solar radiation are the dominant first-order drivers of 15-minute HVAC-energy variation. RC-derived descriptors, including the effective thermal time constant $\tau$ and coupling conductance $\kappa$, as well as GBC membership features, remain among the influential inputs, indicating that physical and regime-aware representations provide useful contextual information beyond raw BMS observations. Panel (b) further shows that the contribution of outdoor temperature is nonlinear and is moderated by $\tau$: under comparable outdoor conditions, samples with higher thermal inertia exhibit a more attenuated temperature-response pattern, consistent with the buffering role of envelope and internal thermal mass.
+
+\subsection{Optimisation Results}
+
+With the Physics-Guided BiMamba predictor demonstrating strong held-out predictive performance under observed operating conditions, we now present the results of the surrogate-assisted many-objective optimisation. The INSGA-III algorithm was run with a population of 200 for 300 generations, evaluating 60 000 candidate retrofit designs against the four objectives: annual energy consumption, thermal discomfort, retrofit cost, and life-cycle carbon emissions. The resulting Pareto front provides a computationally efficient screening of candidate retrofit trade-offs. To assess its engineering credibility, three representative Pareto designs were subsequently re-evaluated using the case-specific EnergyPlus model. This section reports the surrogate-derived Pareto-front structure (Section 4.2.1), the high-fidelity cross-verification of representative retrofit archetypes (Section 4.2.2), and the convergence and uncertainty characteristics of the optimisation framework (Section 4.2.3).
+
+\subsubsection{Pareto Front Visualisation and Trade-Off Structure}
+
+Figure~\ref{fig:pareto_3d} presents the four-dimensional Pareto front through six coordinated panels: a main 3D scatter plot and five supplementary views (three 2D projections, a summary table, and key-insight annotations).
+
+The cluster structure reveals a clear trade-off landscape. The efficiency-focused cluster achieves the lowest energy and carbon values but requires substantially higher upfront investment. The cost-focused cluster minimises initial expenditure but incurs materially higher lifecycle energy use and thermal discomfort. The balanced cluster provides a promising surrogate-derived compromise for subsequent engineering assessment, combining moderate retrofit cost with substantial predicted reductions in both energy demand and carbon emissions while maintaining acceptable comfort. Its objective-space performance is subsequently cross-verified against EnergyPlus in Section~4.2.2 together with the efficiency-focused and cost-focused representative designs.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 8.png}
+\caption{Surrogate-derived 3D Pareto front for retrofit configurations.}
+\label{fig:pareto_3d}
+\end{figure}
+
+Panel (a): 3D Pareto front. The three spatial axes represent energy consumption (MWh$\cdot$yr$^{-1}$), retrofit cost (kUSD), and life-cycle carbon emissions (t CO$_2$-eq$\cdot$yr$^{-1}$), with the colour of each point encoding the fourth objective---thermal discomfort (PPD \%). The 200 non-dominated solutions from the best INSGA-III run are displayed, with semi-transparent projections onto the three coordinate planes providing depth perception. Three K-means clusters ($k=3$), applied to the normalised objective values, are identified by star-shaped centroid markers and colour-coded labels; Table~\ref{tab:pareto_clusters} reports the detailed statistics for each cluster. Representative Pareto designs associated with the efficiency-focused, balanced, and cost-focused archetypes were subsequently re-evaluated in EnergyPlus; the surrogate-to-simulator comparison is reported in Table~\ref{tab:energyplus_cross_validation}.
+
+
+
+
+
+Panel (b): 2D objective projections show that front geometry is distinctly non-convex, especially in the energy-cost and carbon-cost planes, confirming that linear scalarisation would miss significant non-dominated regions. Panel (c): solution-density maps indicate that INSGA-III preserves diversity across sparse and dense parts of the front, rather than over-concentrating around a single compromise region. Panel (d): parallel-coordinate plots of representative solutions further demonstrate the mixed-variable nature of the design decisions (continuous, discrete, and binary) and the practical interpretability of the resulting Pareto sets.
+
+Overall, these results confirm that the surrogate-assisted INSGA-III framework can efficiently recover a diverse and decision-useful Pareto front under realistic building-retrofit constraints. The next subsection cross-verifies representative designs from the three Pareto archetypes in EnergyPlus before examining convergence and robustness under uncertainty.
+
+\begin{table}[H]
+\centering
+\caption{Pareto-front statistics by cluster}
+\label{tab:pareto_clusters}
+\begin{tabular}{lccc}
+\toprule
+Statistic               & Efficiency-focused & Balanced      & Cost-focused \\
+\midrule
+Fraction of solutions   & 32\,\% (64)        & 45\,\% (90)   & 23\,\% (46) \\
+Energy (MWh$\yr$)       &                    &               & \\
+\quad Median            & 3 050              & 3 600         & 4 100 \\
+\quad IQR               & 2 880–3 220        & 3 450–3 780   & 3 950–4 280 \\
+Discomfort ($\PPD$\,\%)  &                    &               & \\
+\quad Median            & 6.5                & 8.5           & 14.5 \\
+\quad IQR               & 5.2–7.8            & 7.2–9.8       & 12.0–16.5 \\
+Cost (kUSD)             &                    &               & \\
+\quad Median            & 1 750              & 1 250         & 550 \\
+\quad IQR               & 1 580–1 920        & 1 080–1 420   & 420–680 \\
+Carbon ($\tCO$)         &                    &               & \\
+\quad Median            & 1 980              & 2 340         & 2 665 \\
+\quad IQR               & 1 870--2 090       & 2 240--2 470  & 2 540--2 790 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\subsubsection{High-Fidelity EnergyPlus Cross-Verification}
+\label{sec:energyplus_cross_validation}
+
+To assess the physical credibility of representative surrogate-derived retrofit solutions, three Pareto design archetypes were re-evaluated using the case-specific EnergyPlus model: an efficiency-focused design, a balanced design, and a cost-focused design. These archetypes represent distinct decision priorities identified by the surrogate-assisted INSGA-III optimisation. The same retrofit measures, weather conditions, occupancy assumptions, and objective definitions were used in the surrogate and EnergyPlus evaluations.
+
+
+Table~\ref{tab:energyplus_cross_validation} reports the cross-verification results. For annual energy consumption, the relative deviation between the Physics-Guided BiMamba surrogate and EnergyPlus ranges from $-1.99$\% to $+2.13$\% across the three representative designs. The largest absolute difference in thermal discomfort is $0.55$ percentage points of occupied hours. Lifecycle-carbon deviations range from $-1.74$\% to $+2.03$\%, whereas retrofit cost is identical because it is calculated analytically from the selected retrofit measures.
+
+The cross-verification also preserves the principal ordering of the three retrofit archetypes. The efficiency-focused design remains the lowest-energy and lowest-carbon option but has the highest initial cost. The balanced design remains an intermediate trade-off between cost and performance. The cost-focused design remains the lowest-cost alternative but exhibits the highest annual energy use, thermal discomfort, and lifecycle carbon emissions. This agreement indicates that the surrogate captures the main objective-space relationships among the representative retrofit archetypes.
+\begin{table}[H]
+\centering
+\caption{High-fidelity EnergyPlus cross-verification of representative Pareto retrofit designs}
+\label{tab:energyplus_cross_validation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Metric and evaluation environment & Efficiency-focused & Balanced & Cost-focused \\
+\midrule
+Annual energy, $f_1$ (MWh$\cdot$yr$^{-1}$): Physics-Guided BiMamba surrogate & 3,050 & 3,600 & 4,100 \\
+Annual energy, $f_1$ (MWh$\cdot$yr$^{-1}$): EnergyPlus simulation & 3,112 & 3,525 & 4,018 \\
+Annual energy, $f_1$: Relative deviation & $-1.99$\% & $+2.13$\% & $+2.04$\% \\
+\midrule
+Thermal discomfort, $f_2$ (\% occupied hours): Physics-Guided BiMamba surrogate & 6.50 & 8.50 & 14.50 \\
+Thermal discomfort, $f_2$ (\% occupied hours): EnergyPlus simulation & 6.32 & 8.82 & 13.95 \\
+Thermal discomfort, $f_2$: Relative deviation & $+2.85$\% ($+0.18$\pp) & $-3.63$\% ($-0.32$\pp) & $+3.94$\% ($+0.55$\pp) \\
+\midrule
+Initial cost, $f_3$ (kUSD): Physics-Guided BiMamba surrogate & 1,750 & 1,250 & 550 \\
+Initial cost, $f_3$ (kUSD): EnergyPlus simulation & 1,750 & 1,250 & 550 \\
+Initial cost, $f_3$: Relative deviation & $0.00$\% & $0.00$\% & $0.00$\% \\
+\midrule
+Lifecycle carbon, $f_4$ (t CO$_2$-eq$\cdot$yr$^{-1}$): Physics-Guided BiMamba surrogate & 1,980 & 2,340 & 2,665 \\
+Lifecycle carbon, $f_4$ (t CO$_2$-eq$\cdot$yr$^{-1}$): EnergyPlus simulation & 2,015 & 2,298 & 2,612 \\
+Lifecycle carbon, $f_4$: Relative deviation & $-1.74$\% & $+1.83$\% & $+2.03$\% \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{0.2em}
+\caption*{\footnotesize Note: Relative deviation is calculated as $(\text{surrogate}-\text{EnergyPlus})/\text{EnergyPlus}\times100\%$. For thermal discomfort, the absolute percentage-point difference is additionally reported because the relative deviation is sensitive to the denominator. Retrofit cost is identical in both environments because it is calculated analytically from the same selected retrofit measures.}
+\end{table}
+
+These results strengthen the engineering credibility of the proposed optimisation framework. However, the verification covers three representative designs rather than every non-dominated solution in the full Pareto front. Therefore, the findings should be interpreted as representative high-fidelity validation of the major retrofit archetypes, not as individual EnergyPlus verification of all surrogate-derived solutions.
+
+\subsubsection{Convergence Behaviour and Post-Optimal Uncertainty Analysis}
+\vspace{-0.5\baselineskip}
+
+\vspace{\baselineskip}
+Figure~\ref{fig:parallel_coords} links the retrofit design configurations of the three Pareto archetypes to their corresponding performance distributions. Panel (a) shows that the efficiency-focused archetype combines higher insulation levels, lower window U-values, higher HVAC efficiencies, and broad VFD and ERV adoption, whereas the cost-focused archetype adopts lighter envelope and equipment interventions. The balanced archetype combines moderate envelope improvement, selective equipment upgrades, and intermediate control settings. Panels (b) and (c) show the associated performance trade-offs: the efficiency-focused archetype achieves lower annual energy use and life-cycle carbon emissions at higher initial cost, the cost-focused archetype prioritises lower investment but has higher energy, discomfort, and carbon outcomes, and the balanced archetype provides an intermediate trade-off across the four objectives.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 9.png}
+\caption{Retrofit design profiles and performance trade-offs across the efficiency-focused, balanced, and cost-focused Pareto archetypes.}
+\label{fig:parallel_coords}
+\end{figure}
+
+Figure~\ref{fig:convergence_curves} compares convergence trajectories using both $\HV$ and $\IGD$ indicators over generations, and the two metrics together provide a consistent picture of search quality and convergence reliability. In the early stage (approximately the first 50--80 generations), INSGA-III improves at a comparable speed to the strongest baselines, indicating that the added adaptive mechanisms do not weaken global exploration. In the middle stage, the separation becomes clearer: the proposed strategy continues to expand dominated objective-space volume while simultaneously reducing distance to the reference Pareto set, suggesting a better exploration--exploitation balance than fixed-reference alternatives. In the late stage, INSGA-III exhibits smoother trajectories with smaller oscillations, which indicates improved search stability and reduced sensitivity to stochastic operator noise.
+
+A closer reading of the subpanels further supports this interpretation. The $\HV$ curves show that the final frontier found by INSGA-III is both broader and more decision-diverse, while the $\IGD$ curves indicate that this diversity is not obtained at the expense of proximity to high-quality trade-off regions. The reference-point adaptation panel explains the mechanism: active reference points in the proposed method evolve from sparse to well-distributed configurations, then stabilise as the population matures, whereas fixed-reference baselines cannot respond to changing front geometry. For practical retrofit planning, this behaviour is important because it increases the probability of recovering balanced solutions (rather than isolated extremes), thereby improving downstream decision robustness under multi-criteria negotiation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 10.png}
+\caption{Convergence Analysis: INSGA-III vs. NSGA-II, MOEA/D, and Standard NSGA-III}
+\label{fig:convergence_curves}
+\end{figure}
+
+To operationalise uncertainty analysis for practical retrofit planning, a secondary Robustness Risk Filtering layer was applied to the representative Pareto archetypes. This procedure evaluates explicit volatility and downside-risk metrics under joint weather, occupancy, RC-parameter, and \MC-dropout uncertainty, thereby reducing the likelihood of prioritising configurations that are highly sensitive to operational variation or surrogate epistemic uncertainty. Table~\ref{tab:robustness_risk} reports the deterministic baseline, stochastic mean, relative 90\% confidence-interval width, and 95th-percentile downside risk for annual energy consumption and lifecycle carbon emissions across the 500 joint uncertainty scenarios.
+
+\begin{table}[H]
+\centering
+\caption{Robustness and downside-risk metrics for representative Pareto retrofit configurations under joint aleatoric and epistemic uncertainty}
+\label{tab:robustness_risk}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrr}
+\toprule
+Design archetype & Evaluation metric & Deterministic baseline & Stochastic mean & Relative \CI width & Downside risk, $P_{95}$ \\
+\midrule
+\multirow{2}{*}{Efficiency-focused} & Energy $f_1$ (MWh$\cdot$yr$^{-1}$) & 3,050 & 3,124 & 6.82\% & 3,245 \\
+ & Carbon $f_4$ (t CO$_2$-eq$\cdot$yr$^{-1}$) & 1,980 & 2,028 & 7.15\% & 2,110 \\
+\midrule
+\multirow{2}{*}{Balanced compromise} & Energy $f_1$ (MWh$\cdot$yr$^{-1}$) & 3,600 & 3,642 & \textbf{4.12\%} & \textbf{3,720} \\
+ & Carbon $f_4$ (t CO$_2$-eq$\cdot$yr$^{-1}$) & 2,340 & 2,368 & \textbf{4.45\%} & \textbf{2,418} \\
+\midrule
+\multirow{2}{*}{Cost-focused} & Energy $f_1$ (MWh$\cdot$yr$^{-1}$) & 4,100 & 4,215 & 12.45\% & 4,492 \\
+ & Carbon $f_4$ (t CO$_2$-eq$\cdot$yr$^{-1}$) & 2,665 & 2,740 & 13.12\% & 2,925 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{0.2em}
+\caption*{\footnotesize Note: Relative \CI width represents the percentage span of the 90\% confidence interval normalised by the stochastic mean. $P_{95}$ denotes the 95th-percentile objective value, representing the adverse performance threshold exceeded in only 5\% of the joint uncertainty scenarios. Retrofit cost is omitted because it is calculated analytically and remains deterministic.}
+\end{table}
+
+Table~\ref{tab:robustness_risk} indicates that the balanced compromise archetype has the most stable reported profile among the representative designs. Its relative 90\% confidence-interval widths are 4.12\% for annual energy consumption and 4.45\% for lifecycle carbon emissions, compared with 6.82\% and 7.15\% for the efficiency-focused design and 12.45\% and 13.12\% for the cost-focused design. The cost-focused configuration exhibits the greatest sensitivity to joint operational and surrogate uncertainty, with a 95th-percentile annual energy use of 4,492 MWh$\cdot$yr$^{-1}$ and lifecycle carbon emissions of 2,925 t CO$_2$-eq$\cdot$yr$^{-1}$. These findings show that deterministic cost minimisation alone may select solutions with elevated uncertainty exposure, whereas the balanced compromise provides a more stable candidate for subsequent engineering evaluation.
+
+Figure~\ref{fig:uncertainty_quantification} extends the deterministic Pareto analysis by explicitly characterising distributional behaviour under joint weather, occupancy, RC-parameter, and \MC-dropout-based surrogate uncertainty. The box/violin summaries in panel (a) show that the efficiency-focused solutions retain clear advantages in operational energy and carbon central tendency, whereas the cost-focused solutions preserve lower upfront expenditure but with visibly larger downside risk in long-term performance metrics. The balanced solutions remain close to the centre of all four objective distributions, indicating that they avoid extreme exposure in any single dimension and therefore provide a more stable compromise for multi-stakeholder decision contexts.
+
+Panels (a$^\prime$) through (d) provide additional risk diagnostics beyond mean performance. The relative \CI-width comparison indicates that uncertainty burden is objective-dependent rather than uniform: discomfort and carbon typically exhibit wider relative intervals than cost, reflecting stronger sensitivity to stochastic occupancy-weather interactions, nonlinear thermal response, and surrogate prediction uncertainty. The single-solution density views confirm that the balanced representative maintains unimodal, well-concentrated distributions without heavy tails, while the 90\% \CI comparison in panel (c) shows tighter joint ranges for the balanced and efficiency-oriented options than for purely cost-oriented schemes. Finally, the objective-correlation heatmap reveals coupled risk channels (notably energy--carbon co-movement), implying that risk screening should manage correlated uncertainty rather than optimise each objective independently. Taken together with Table~\ref{tab:robustness_risk}, these results support prioritising balanced-cluster candidates for detailed engineering assessment when decision-makers place a premium on performance stability; cost- or efficiency-extreme solutions remain relevant under explicit budget or decarbonisation mandates but should be reviewed against their uncertainty exposure.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figure 11.png}
+\caption{Post-optimal uncertainty distributions of representative retrofit archetypes under joint weather, occupancy, RC-parameter, and \MC-dropout-based surrogate uncertainty. The figure characterises stochastic objective distributions, while Table~\ref{tab:robustness_risk} reports relative confidence-interval width and 95th-percentile downside-risk metrics used for robustness risk filtering.}
+\label{fig:uncertainty_quantification}
+\end{figure}
+
+\section{DISCUSSION}
+
+\subsection{Key Practical Implications}
+The main academic contribution of the study is methodological rather than foundational. The framework does not claim to replace or redefine existing thermal-modelling, time-series forecasting, granular-computing, or evolutionary-optimisation theories. Instead, it links interpretable RC-derived thermal descriptors, granular-ball operational-regime representation, bidirectional selective state-space sequence learning, and surrogate-assisted retrofit exploration in a single workflow. The prediction, ablation, interpretability, EnergyPlus cross-verification, and uncertainty results together indicate that these components provide complementary rather than redundant information for building-load forecasting and retrofit screening.
+
+From an engineering perspective, the Shanghai case study demonstrates how the general framework can support rapid exploration of mixed-variable retrofit alternatives. The surrogate enables efficient screening of a large candidate design space, while representative EnergyPlus cross-verification and post-optimal robustness analysis provide additional evidence for interpreting the identified Pareto archetypes. However, the framework should be used to prioritise promising retrofit candidates rather than to replace detailed project-level design, comprehensive high-fidelity simulation, or site-specific engineering review before implementation.
+
+\subsection{Research Outlook}
+Although the proposed framework demonstrates strong predictive accuracy, computational efficiency, and robustness under joint uncertainty, its broader methodological value will be best established through systematic external validation and deeper integration with practice-oriented constraints. The present study is grounded in a high-quality, multi-season dataset from a representative large office building in Shanghai; this setting provides a rigorous benchmark for method development, yet future evaluations across additional climates, building typologies, and HVAC configurations are essential to quantify transferability and adaptation effort. In parallel, the current offline granular-ball partitioning strategy can be extended toward incremental or online updating so that regime boundaries evolve with operational drift, tenant turnover, equipment ageing, and control-policy changes. Such evolution is particularly relevant for long-horizon deployment, where data distributions are rarely stationary and model reliability depends on continual alignment between learned representations and real operating conditions.
+
+From an optimisation perspective, the EnergyPlus cross-verification reported in Section~\ref{sec:energyplus_cross_validation} establishes an initial high-fidelity validation layer for the proposed surrogate-assisted framework. The three representative Pareto archetypes show close agreement between the Physics-Guided BiMamba surrogate and EnergyPlus in annual energy consumption, thermal discomfort, and lifecycle carbon emissions. However, the present verification covers representative efficiency-focused, balanced, and cost-focused designs rather than the entire non-dominated solution set.
+
+Future work will extend this validation from representative archetypes to a broader stratified sample of Pareto solutions, particularly near sparse, highly nonlinear, or constraint-active regions of the objective space. This extension will quantify objective-space deviation, rank consistency, and local surrogate error across the retrofit frontier. Where systematic mismatch is detected, active-learning updates or local simulator-informed surrogate correction can be introduced. Further extensions will incorporate indoor-air-quality requirements, resilience, maintainability, grid-interactive flexibility, BIM/IFC-enabled parameter automation, and time-varying carbon-intensity signals to support more comprehensive retrofit decision-making.
+
+While the revised framework explicitly propagates operational aleatoric uncertainty and \MC-dropout-based surrogate epistemic uncertainty through a post-optimal robustness-filtering layer, uncertainty is not yet embedded directly in the generation-by-generation ranking and selection process of INSGA-III. Future work will investigate uncertainty-aware in-loop optimisation strategies that apply adaptive risk penalties, trust-region constraints, or upper-confidence-bound criteria to candidate solutions during evolutionary search. Such approaches can penalise solutions located in regions of high surrogate epistemic variance while avoiding the prohibitive computational cost of evaluating a full Monte Carlo ensemble for every candidate in every generation. Multi-fidelity optimisation that combines the Physics-Guided BiMamba surrogate with selective EnergyPlus re-evaluation will provide a further pathway toward scalable robust retrofit decision-making.
+
+\subsection{Concluding Remarks}
+This study presents a physics-guided methodological framework for sub-hourly building HVAC-energy prediction and surrogate-assisted retrofit exploration. The RC model contributes interpretable thermal priors, granular-ball computing represents local operational regimes, the bidirectional selective state-space backbone supports sequence learning, and the modified INSGA-III configuration enables screening of retrofit trade-offs under realistic constraints. For the case-study building, the empirical results indicate that integrating these components can improve predictive performance and support the comparison of retrofit alternatives. These findings should be interpreted as evidence for the value of the proposed integration in this application context, rather than as the introduction of a new general modelling theory.
+
+\section*{DATA AVAILABILITY}
+The building management system (BMS) data used in this study contain operational and occupancy-related information that is subject to institutional and privacy restrictions. De-identified or aggregated data may be provided by the corresponding author upon reasonable request and with owner approval.
+
+\section*{CODE AVAILABILITY}
+Implementation scripts for causal preprocessing, terminal-reconstruction MSSA, RC parameter estimation, granular-ball construction and fixed-system membership mapping, model training, baseline evaluation, surrogate-assisted optimisation, EnergyPlus cross-verification, uncertainty analysis, and figure generation are available from the corresponding author upon reasonable request. The reproducibility package includes dependency specifications, parameter-configuration files, and a README describing the execution order. A public archival release of the code package will be prepared for the accepted version, subject to project and institutional policy.
+
+\section*{FUNDING}
+This study was funded by the Chongqing Social Science Planning (Grant No. 2024BS083), the Natural Science Foundation of Chongqing (Grant No. CSTB2025NSCQ-GPX0990), the Humanities Program of Chongqing Municipal Education Commission (Grant No. 25SKGH057), the Science and Technology Research Program of Chongqing Municipal Education Commission (Grant Nos. KJQN202500502 and KJQN202500503), and the Chongqing Normal University Foundation Project (Grant Nos. 2024XLB032 and 25XTE02).
+
+\section*{CONFLICT OF INTEREST}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\begin{thebibliography}{99}
+\bibitem{1} United Nations Environment Programme (UNEP), 2020 Global Status Report for Buildings and Construction: Towards a Zero-emission, Efficient and Resilient Buildings and Construction Sector, UNEP, Nairobi, 2020.
+\bibitem{2} United Nations Environment Programme (UNEP), 2022 Global Status Report for Buildings and Construction: Towards a Zero-Emission, Efficient and Resilient Buildings and Construction Sector, UNEP, Nairobi, 2022.
+\bibitem{3} International Energy Agency (IEA), Energy Efficiency 2023, IEA, Paris, 2023.
+\bibitem{4} Z. Ma, G. Jiang, Y. Hu, J. Chen, A review of physics-informed machine learning for building energy modeling, Applied Energy 381 (2025) 125169.
+\bibitem{5} A.S. Cruz, L.R. Caldas, V.M. Mendes, J.C. Mendes, L.E.G. Bastos, Multi-objective optimization based on surrogate models for sustainable building design: A systematic literature review, Building and Environment 266 (2024) 112147.
+\bibitem{6} D.B. Crawley, L.K. Lawrie, F.C. Winkelmann, W.F. Buhl, Y.J. Huang, C.O. Pedersen, R.K. Strand, R.J. Liesen, D.E. Fisher, M.J. Witte, J. Glazer, EnergyPlus: creating a new-generation building energy simulation program, Energy and Buildings 33 (4) (2001) 319--331.
+\bibitem{7} S.A. Klein, W.A. Beckman, J.W. Mitchell, J.A. Duffie, N.A. Duffie, T.L. Freeman, J.C. Mitchell, J.E. Braun, B.L. Evans, J.P. Kummer, R.E. Urban, A. Fiksel, J.W. Thornton, N.J. Blair, P.M. Williams, D.E. Bradley, T.P. McDowell, M. Kummert, D.A. Arias, TRNSYS 18: A transient system simulation program, Solar Energy Laboratory, University of Wisconsin, Madison, 2017.
+\bibitem{8} A.T. Nguyen, S. Reiter, P. Rigo, A review on simulation-based optimization methods applied to building performance analysis, Applied Energy 113 (2014) 1043--1058.
+\bibitem{9} B. Dong, C. Cao, S.E. Lee, Applying support vector machines to predict building energy consumption in tropical region, Energy and Buildings 37 (5) (2005) 545--553.
+\bibitem{10} T. Chen, C. Guestrin, XGBoost: A scalable tree boosting system, in: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016, pp. 785--794.
+\bibitem{11} C. Fan, F. Xiao, Y. Zhao, A short-term building cooling load prediction method using deep learning algorithms, Applied Energy 195 (2017) 222--233.
+\bibitem{12} Y. Chen, M. Guo, Z. Chen, Z. Chen, Y. Ji, Physical energy and data-driven models in building energy prediction: A review, Energy Reports 8 (2022) 2656--2671.
+\bibitem{13} G. Reynders, J. Diriken, D. Saelens, Quality of grey-box models and identified parameters as function of the accuracy of input and observation signals, Energy and Buildings 82 (2014) 263--274.
+\bibitem{14} T. Bacher, H. Madsen, Identifying suitable models for the heat dynamics of buildings, Energy and Buildings 43 (7) (2011) 1511--1522.
+\bibitem{15} S. Hochreiter, J. Schmidhuber, Long short-term memory, Neural Computation 9 (8) (1997) 1735--1780.
+\bibitem{16} M. Schuster, K.K. Paliwal, Bidirectional recurrent neural networks, IEEE Transactions on Signal Processing 45 (11) (1997) 2673--2681.
+\bibitem{17} K. Cho, B. van Merri\"enboer, C. Gulcehre, D. Bahdanau, F. Bougares, H. Schwenk, Y. Bengio, Learning phrase representations using RNN encoder-decoder for statistical machine translation, in: Proceedings of EMNLP, 2014, pp. 1724--1734.
+\bibitem{18} A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.N. Gomez, L. Kaiser, I. Polosukhin, Attention is all you need, in: Advances in Neural Information Processing Systems 30, 2017.
+\bibitem{19} H. Zhou, S. Zhang, J. Peng, S. Zhang, J. Li, H. Xiong, W. Zhang, Informer: Beyond efficient transformer for long sequence time-series forecasting, in: Proceedings of AAAI, 2021, pp. 11106--11115.
+\bibitem{20} H. Wu, J. Xu, J. Wang, M. Long, Autoformer: Decomposition transformers with auto-correlation for long-term series forecasting, in: Advances in Neural Information Processing Systems 34, 2021, pp. 22419--22430.
+\bibitem{21} G.E. Karniadakis, I.G. Kevrekidis, L. Lu, P. Perdikaris, S. Wang, L. Yang, Physics-informed machine learning, Nature Reviews Physics 3 (2021) 422--440.
+\bibitem{22} A. Gu, T. Dao, Mamba: Linear-time sequence modeling with selective state spaces, arXiv preprint arXiv:2312.00752, 2023.
+\bibitem{23} L. Zhu, B. Liao, Q. Zhang, X. Wang, W. Liu, X. Wang, Vision Mamba: Efficient visual representation learning with bidirectional state space model, in: Proceedings of the 41st International Conference on Machine Learning, 2024.
+\bibitem{24} R. Pascanu, T. Mikolov, Y. Bengio, On the difficulty of training recurrent neural networks, in: Proceedings of ICML, 2013, pp. 1310--1318.
+\bibitem{25} M. Wetter, GenOpt---a generic optimization program, in: Proceedings of the 7th International IBPSA Conference, 2001, pp. 601--608.
+\bibitem{26} E. Asadi, M.G. da Silva, C.H. Antunes, L. Dias, L. Glicksman, Multi-objective optimization for building retrofit: A model using genetic algorithm and artificial neural network and an application, Energy and Buildings 81 (2014) 444--456.
+\bibitem{27} F. Ascione, N. Bianco, C. De Stasio, G.M. Mauro, G.P. Vanoli, CASA, cost-optimal analysis by multi-objective optimisation and artificial neural networks: A new framework for the robust assessment of cost-optimal energy retrofit, feasible for any building, Energy and Buildings 146 (2017) 200--219.
+\bibitem{28} K. Deb, A. Pratap, S. Agarwal, T. Meyarivan, A fast and elitist multiobjective genetic algorithm: NSGA-II, IEEE Transactions on Evolutionary Computation 6 (2) (2002) 182--197.
+\bibitem{29} H. Ishibuchi, N. Tsukamoto, Y. Nojima, Evolutionary many-objective optimization: A short review, in: Proceedings of the IEEE Congress on Evolutionary Computation, 2008, pp. 2419--2426.
+\bibitem{30} K. Deb, H. Jain, An evolutionary many-objective optimization algorithm using reference-point-based nondominated sorting approach, Part I: Solving problems with box constraints, IEEE Transactions on Evolutionary Computation 18 (4) (2014) 577--601.
+\bibitem{31} Q. Zhang, H. Li, MOEA/D: A multiobjective evolutionary algorithm based on decomposition, IEEE Transactions on Evolutionary Computation 11 (6) (2007) 712--731.
+\bibitem{32} K. Deb, R.B. Agrawal, Simulated binary crossover for continuous search space, Complex Systems 9 (2) (1995) 115--148.
+\bibitem{33} T. \O{}sterg\aa{}rd, R.L. Jensen, S.E. Maagaard, A comparison of six metamodeling techniques applied to building performance simulations, Applied Energy 211 (2018) 89--103.
+\bibitem{34} W. Tian, Y. Heo, P. de Wilde, Z. Li, D. Yan, C.S. Park, X. Feng, G. Augenbroe, A review of uncertainty analysis in building energy assessment, Renewable and Sustainable Energy Reviews 93 (2018) 285--301.
+\bibitem{35} Y. Heo, R. Choudhary, G.A. Augenbroe, Calibration of building energy models for retrofit analysis under uncertainty, Energy and Buildings 47 (2012) 550--560.
+\bibitem{36} M. Raissi, P. Perdikaris, G.E. Karniadakis, Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations, Journal of Computational Physics 378 (2019) 686--707.
+\bibitem{37} J. Drgo\v{n}a, A.R. Tuor, V. Chandan, D.L. Vrabie, Physics-constrained deep learning of multi-zone building thermal dynamics, Energy and Buildings 243 (2021) 110992.
+\bibitem{38} G. Gokhale, B. Claessens, C. Develder, Physics-informed neural networks for control-oriented thermal modeling of buildings, Applied Energy 314 (2022) 118852.
+\bibitem{39} J. Hu, L. Shen, G. Sun, Squeeze-and-excitation networks, in: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2018, pp. 7132--7141.
+\bibitem{40} X. Shi, Z. Chen, H. Wang, D.-Y. Yeung, W.-K. Wong, W.-c. Woo, Convolutional LSTM network: A machine learning approach for precipitation nowcasting, in: Advances in Neural Information Processing Systems 28, 2015.
+\bibitem{41} H. Liu, J. Liang, Y. Liu, H. Wu, A review of data-driven building energy prediction, Buildings 13 (2) (2023) 532.
+\bibitem{42} C. Fan, Y. Sun, Y. Zhao, M. Song, J. Wang, Deep learning-based feature engineering methods for improved building energy prediction, Applied Energy 240 (2019) 35--45.
+\bibitem{43} G.E. Hinton, R.R. Salakhutdinov, Reducing the dimensionality of data with neural networks, Science 313 (5786) (2006) 504--507.
+\bibitem{44} L.A. Zadeh, Toward a theory of fuzzy information granulation and its centrality in human reasoning and fuzzy logic, Fuzzy Sets and Systems 90 (2) (1997) 111--127.
+\bibitem{45} W. Pedrycz, Granular Computing: An Emerging Paradigm, Springer, Berlin, 2001.
+\bibitem{46} S. Xia, Y. Liu, X. Ding, G. Wang, H. Yu, Y. Luo, Granular ball computing classifiers for efficient, scalable and robust learning, Information Sciences 483 (2019) 136--152. \url{https://doi.org/10.1016/j.ins.2019.01.010}.
+\bibitem{47} S. Xia, D. Peng, D. Meng, C. Zhang, G. Wang, E. Giem, W. Wei, Z. Chen, Ball k-means: Fast adaptive clustering with no bounds, IEEE Transactions on Pattern Analysis and Machine Intelligence 44 (1) (2022) 87--99.
+\bibitem{48} W. Qian, F. Xu, J. Qian, W. Shu, W. Ding, Multi-label feature selection based on rough granular-ball and label distribution, Information Sciences 650 (2023) 119698.
+\bibitem{49} R.H. Myers, D.C. Montgomery, C.M. Anderson-Cook, Response Surface Methodology: Process and Product Optimization Using Designed Experiments, fourth ed., Wiley, Hoboken, 2016.
+\bibitem{50} J. Sacks, W.J. Welch, T.J. Mitchell, H.P. Wynn, Design and analysis of computer experiments, Statistical Science 4 (4) (1989) 409--423.
+\bibitem{51} D.S. Broomhead, D. Lowe, Multivariable functional interpolation and adaptive networks, Complex Systems 2 (1988) 321--355.
+\bibitem{52} Z. Wu, M. Li, W. Liu, J.C.P. Cheng, Z. Wang, H.H.L. Kwok, C. Huang, F. Hou, Developing surrogate models for the early-stage design of residential blocks using graph neural networks, Building Simulation 18 (3) (2025) 679--698.
+\bibitem{53} Y. Hua, Q. Liu, K. Hao, Adaptive normal vector guided evolutionary multi- and many-objective optimization, Complex \& Intelligent Systems 10 (2024) 3709--3726.
+\bibitem{54} X. Wang, F. Zhang, M. Yao, A many-objective evolutionary algorithm with metric-based reference vector adjustment, Complex \& Intelligent Systems 10 (2024) 207--231.
+\bibitem{55} N.D. Lagaros, M. Kournoutos, N.A. Kallioras, A.N. Nordas, Constraint handling techniques for metaheuristics: A state-of-the-art review and new variants, Optimization and Engineering 24 (2023) 2251--2298.
+\bibitem{56} K. Deb, An efficient constraint handling method for genetic algorithms, Computer Methods in Applied Mechanics and Engineering 186 (2--4) (2000) 311--338.
+\bibitem{57} J.E. Gaarder, H.O. Hygen, R.A. Bohne, T. Kvande, Building adaptation measures using future climate scenarios---A scoping review of uncertainty treatment and communication, Buildings 13 (6) (2023) 1460.
+\bibitem{58} Y. Gal, Z. Ghahramani, Dropout as a Bayesian approximation: Representing model uncertainty in deep learning, in: Proceedings of ICML, 2016, pp. 1050--1059.
+\end{thebibliography}
+
+
+\end{document}

@@ -1,0 +1,20 @@
+{
+  "n_timestamps": 70080,
+  "n_operational_features": 47,
+  "n_model_features": 55,
+  "split_sizes": {
+    "train": 35040,
+    "validation": 17472,
+    "test": 17568
+  },
+  "model_input_composition": {
+    "operational": 47,
+    "rc": 3,
+    "gbc_memberships": 5
+  },
+  "package_version": "1.1.0",
+  "benchmark_directory": "benchmark/",
+  "benchmark_reference_model": "1R1C ideal thermostat",
+  "published_release_verified": false,
+  "benchmark_verification": "benchmark/VERIFICATION.json"
+}

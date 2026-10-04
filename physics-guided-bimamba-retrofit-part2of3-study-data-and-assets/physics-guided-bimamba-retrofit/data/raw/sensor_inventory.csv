@@ -1,0 +1,689 @@
+sensor_id,category,sensor_type,measurement,channel_index,unit
+1,Thermal environment,Pt100 RTD (zone),Air temperature,1,C
+2,Thermal environment,Pt100 RTD (zone),Air temperature,2,C
+3,Thermal environment,Pt100 RTD (zone),Air temperature,3,C
+4,Thermal environment,Pt100 RTD (zone),Air temperature,4,C
+5,Thermal environment,Pt100 RTD (zone),Air temperature,5,C
+6,Thermal environment,Pt100 RTD (zone),Air temperature,6,C
+7,Thermal environment,Pt100 RTD (zone),Air temperature,7,C
+8,Thermal environment,Pt100 RTD (zone),Air temperature,8,C
+9,Thermal environment,Pt100 RTD (zone),Air temperature,9,C
+10,Thermal environment,Pt100 RTD (zone),Air temperature,10,C
+11,Thermal environment,Pt100 RTD (zone),Air temperature,11,C
+12,Thermal environment,Pt100 RTD (zone),Air temperature,12,C
+13,Thermal environment,Pt100 RTD (zone),Air temperature,13,C
+14,Thermal environment,Pt100 RTD (zone),Air temperature,14,C
+15,Thermal environment,Pt100 RTD (zone),Air temperature,15,C
+16,Thermal environment,Pt100 RTD (zone),Air temperature,16,C
+17,Thermal environment,Pt100 RTD (zone),Air temperature,17,C
+18,Thermal environment,Pt100 RTD (zone),Air temperature,18,C
+19,Thermal environment,Pt100 RTD (zone),Air temperature,19,C
+20,Thermal environment,Pt100 RTD (zone),Air temperature,20,C
+21,Thermal environment,Pt100 RTD (zone),Air temperature,21,C
+22,Thermal environment,Pt100 RTD (zone),Air temperature,22,C
+23,Thermal environment,Pt100 RTD (zone),Air temperature,23,C
+24,Thermal environment,Pt100 RTD (zone),Air temperature,24,C
+25,Thermal environment,Pt100 RTD (zone),Air temperature,25,C
+26,Thermal environment,Pt100 RTD (zone),Air temperature,26,C
+27,Thermal environment,Pt100 RTD (zone),Air temperature,27,C
+28,Thermal environment,Pt100 RTD (zone),Air temperature,28,C
+29,Thermal environment,Pt100 RTD (zone),Air temperature,29,C
+30,Thermal environment,Pt100 RTD (zone),Air temperature,30,C
+31,Thermal environment,Pt100 RTD (zone),Air temperature,31,C
+32,Thermal environment,Pt100 RTD (zone),Air temperature,32,C
+33,Thermal environment,Pt100 RTD (zone),Air temperature,33,C
+34,Thermal environment,Pt100 RTD (zone),Air temperature,34,C
+35,Thermal environment,Pt100 RTD (zone),Air temperature,35,C
+36,Thermal environment,Pt100 RTD (zone),Air temperature,36,C
+37,Thermal environment,Pt100 RTD (zone),Air temperature,37,C
+38,Thermal environment,Pt100 RTD (zone),Air temperature,38,C
+39,Thermal environment,Pt100 RTD (zone),Air temperature,39,C
+40,Thermal environment,Pt100 RTD (zone),Air temperature,40,C
+41,Thermal environment,Pt100 RTD (zone),Air temperature,41,C
+42,Thermal environment,Pt100 RTD (zone),Air temperature,42,C
+43,Thermal environment,Pt100 RTD (zone),Air temperature,43,C
+44,Thermal environment,Pt100 RTD (zone),Air temperature,44,C
+45,Thermal environment,Pt100 RTD (zone),Air temperature,45,C
+46,Thermal environment,Pt100 RTD (zone),Air temperature,46,C
+47,Thermal environment,Pt100 RTD (zone),Air temperature,47,C
+48,Thermal environment,Pt100 RTD (zone),Air temperature,48,C
+49,Thermal environment,Pt100 RTD (zone),Air temperature,49,C
+50,Thermal environment,Pt100 RTD (zone),Air temperature,50,C
+51,Thermal environment,Pt100 RTD (zone),Air temperature,51,C
+52,Thermal environment,Pt100 RTD (zone),Air temperature,52,C
+53,Thermal environment,Pt100 RTD (zone),Air temperature,53,C
+54,Thermal environment,Pt100 RTD (zone),Air temperature,54,C
+55,Thermal environment,Pt100 RTD (zone),Air temperature,55,C
+56,Thermal environment,Pt100 RTD (zone),Air temperature,56,C
+57,Thermal environment,Pt100 RTD (zone),Air temperature,57,C
+58,Thermal environment,Pt100 RTD (zone),Air temperature,58,C
+59,Thermal environment,Pt100 RTD (zone),Air temperature,59,C
+60,Thermal environment,Pt100 RTD (zone),Air temperature,60,C
+61,Thermal environment,Pt100 RTD (zone),Air temperature,61,C
+62,Thermal environment,Pt100 RTD (zone),Air temperature,62,C
+63,Thermal environment,Pt100 RTD (zone),Air temperature,63,C
+64,Thermal environment,Pt100 RTD (zone),Air temperature,64,C
+65,Thermal environment,Pt100 RTD (zone),Air temperature,65,C
+66,Thermal environment,Pt100 RTD (zone),Air temperature,66,C
+67,Thermal environment,Pt100 RTD (zone),Air temperature,67,C
+68,Thermal environment,Pt100 RTD (zone),Air temperature,68,C
+69,Thermal environment,Pt100 RTD (zone),Air temperature,69,C
+70,Thermal environment,Pt100 RTD (zone),Air temperature,70,C
+71,Thermal environment,Pt100 RTD (zone),Air temperature,71,C
+72,Thermal environment,Pt100 RTD (zone),Air temperature,72,C
+73,Thermal environment,Pt100 RTD (zone),Air temperature,73,C
+74,Thermal environment,Pt100 RTD (zone),Air temperature,74,C
+75,Thermal environment,Pt100 RTD (zone),Air temperature,75,C
+76,Thermal environment,Pt100 RTD (zone),Air temperature,76,C
+77,Thermal environment,Pt100 RTD (zone),Air temperature,77,C
+78,Thermal environment,Pt100 RTD (zone),Air temperature,78,C
+79,Thermal environment,Pt100 RTD (zone),Air temperature,79,C
+80,Thermal environment,Pt100 RTD (zone),Air temperature,80,C
+81,Thermal environment,Pt100 RTD (zone),Air temperature,81,C
+82,Thermal environment,Pt100 RTD (zone),Air temperature,82,C
+83,Thermal environment,Pt100 RTD (zone),Air temperature,83,C
+84,Thermal environment,Pt100 RTD (zone),Air temperature,84,C
+85,Thermal environment,Pt100 RTD (zone),Air temperature,85,C
+86,Thermal environment,Pt100 RTD (zone),Air temperature,86,C
+87,Thermal environment,Pt100 RTD (zone),Air temperature,87,C
+88,Thermal environment,Pt100 RTD (zone),Air temperature,88,C
+89,Thermal environment,Pt100 RTD (zone),Air temperature,89,C
+90,Thermal environment,Pt100 RTD (zone),Air temperature,90,C
+91,Thermal environment,Pt100 RTD (zone),Air temperature,91,C
+92,Thermal environment,Pt100 RTD (zone),Air temperature,92,C
+93,Thermal environment,Pt100 RTD (zone),Air temperature,93,C
+94,Thermal environment,Pt100 RTD (zone),Air temperature,94,C
+95,Thermal environment,Pt100 RTD (zone),Air temperature,95,C
+96,Thermal environment,Pt100 RTD (zone),Air temperature,96,C
+97,Thermal environment,Pt100 RTD (zone),Air temperature,97,C
+98,Thermal environment,Pt100 RTD (zone),Air temperature,98,C
+99,Thermal environment,Pt100 RTD (zone),Air temperature,99,C
+100,Thermal environment,Pt100 RTD (zone),Air temperature,100,C
+101,Thermal environment,Pt100 RTD (zone),Air temperature,101,C
+102,Thermal environment,Pt100 RTD (zone),Air temperature,102,C
+103,Thermal environment,Pt100 RTD (zone),Air temperature,103,C
+104,Thermal environment,Pt100 RTD (zone),Air temperature,104,C
+105,Thermal environment,Pt100 RTD (zone),Air temperature,105,C
+106,Thermal environment,Pt100 RTD (zone),Air temperature,106,C
+107,Thermal environment,Pt100 RTD (zone),Air temperature,107,C
+108,Thermal environment,Pt100 RTD (zone),Air temperature,108,C
+109,Thermal environment,Pt100 RTD (zone),Air temperature,109,C
+110,Thermal environment,Pt100 RTD (zone),Air temperature,110,C
+111,Thermal environment,Pt100 RTD (zone),Air temperature,111,C
+112,Thermal environment,Pt100 RTD (zone),Air temperature,112,C
+113,Thermal environment,Pt100 RTD (zone),Air temperature,113,C
+114,Thermal environment,Pt100 RTD (zone),Air temperature,114,C
+115,Thermal environment,Pt100 RTD (zone),Air temperature,115,C
+116,Thermal environment,Pt100 RTD (zone),Air temperature,116,C
+117,Thermal environment,Pt100 RTD (zone),Air temperature,117,C
+118,Thermal environment,Pt100 RTD (zone),Air temperature,118,C
+119,Thermal environment,Pt100 RTD (zone),Air temperature,119,C
+120,Thermal environment,Pt100 RTD (zone),Air temperature,120,C
+121,Thermal environment,Capacitive (zone),Relative humidity,1,%
+122,Thermal environment,Capacitive (zone),Relative humidity,2,%
+123,Thermal environment,Capacitive (zone),Relative humidity,3,%
+124,Thermal environment,Capacitive (zone),Relative humidity,4,%
+125,Thermal environment,Capacitive (zone),Relative humidity,5,%
+126,Thermal environment,Capacitive (zone),Relative humidity,6,%
+127,Thermal environment,Capacitive (zone),Relative humidity,7,%
+128,Thermal environment,Capacitive (zone),Relative humidity,8,%
+129,Thermal environment,Capacitive (zone),Relative humidity,9,%
+130,Thermal environment,Capacitive (zone),Relative humidity,10,%
+131,Thermal environment,Capacitive (zone),Relative humidity,11,%
+132,Thermal environment,Capacitive (zone),Relative humidity,12,%
+133,Thermal environment,Capacitive (zone),Relative humidity,13,%
+134,Thermal environment,Capacitive (zone),Relative humidity,14,%
+135,Thermal environment,Capacitive (zone),Relative humidity,15,%
+136,Thermal environment,Capacitive (zone),Relative humidity,16,%
+137,Thermal environment,Capacitive (zone),Relative humidity,17,%
+138,Thermal environment,Capacitive (zone),Relative humidity,18,%
+139,Thermal environment,Capacitive (zone),Relative humidity,19,%
+140,Thermal environment,Capacitive (zone),Relative humidity,20,%
+141,Thermal environment,Capacitive (zone),Relative humidity,21,%
+142,Thermal environment,Capacitive (zone),Relative humidity,22,%
+143,Thermal environment,Capacitive (zone),Relative humidity,23,%
+144,Thermal environment,Capacitive (zone),Relative humidity,24,%
+145,Thermal environment,Capacitive (zone),Relative humidity,25,%
+146,Thermal environment,Capacitive (zone),Relative humidity,26,%
+147,Thermal environment,Capacitive (zone),Relative humidity,27,%
+148,Thermal environment,Capacitive (zone),Relative humidity,28,%
+149,Thermal environment,Capacitive (zone),Relative humidity,29,%
+150,Thermal environment,Capacitive (zone),Relative humidity,30,%
+151,Thermal environment,Capacitive (zone),Relative humidity,31,%
+152,Thermal environment,Capacitive (zone),Relative humidity,32,%
+153,Thermal environment,Capacitive (zone),Relative humidity,33,%
+154,Thermal environment,Capacitive (zone),Relative humidity,34,%
+155,Thermal environment,Capacitive (zone),Relative humidity,35,%
+156,Thermal environment,Capacitive (zone),Relative humidity,36,%
+157,Thermal environment,Capacitive (zone),Relative humidity,37,%
+158,Thermal environment,Capacitive (zone),Relative humidity,38,%
+159,Thermal environment,Capacitive (zone),Relative humidity,39,%
+160,Thermal environment,Capacitive (zone),Relative humidity,40,%
+161,Thermal environment,Capacitive (zone),Relative humidity,41,%
+162,Thermal environment,Capacitive (zone),Relative humidity,42,%
+163,Thermal environment,Capacitive (zone),Relative humidity,43,%
+164,Thermal environment,Capacitive (zone),Relative humidity,44,%
+165,Thermal environment,Capacitive (zone),Relative humidity,45,%
+166,Thermal environment,Capacitive (zone),Relative humidity,46,%
+167,Thermal environment,Capacitive (zone),Relative humidity,47,%
+168,Thermal environment,Capacitive (zone),Relative humidity,48,%
+169,Thermal environment,Capacitive (zone),Relative humidity,49,%
+170,Thermal environment,Capacitive (zone),Relative humidity,50,%
+171,Thermal environment,Capacitive (zone),Relative humidity,51,%
+172,Thermal environment,Capacitive (zone),Relative humidity,52,%
+173,Thermal environment,Capacitive (zone),Relative humidity,53,%
+174,Thermal environment,Capacitive (zone),Relative humidity,54,%
+175,Thermal environment,Capacitive (zone),Relative humidity,55,%
+176,Thermal environment,Capacitive (zone),Relative humidity,56,%
+177,Thermal environment,Capacitive (zone),Relative humidity,57,%
+178,Thermal environment,Capacitive (zone),Relative humidity,58,%
+179,Thermal environment,Capacitive (zone),Relative humidity,59,%
+180,Thermal environment,Capacitive (zone),Relative humidity,60,%
+181,Thermal environment,Capacitive (zone),Relative humidity,61,%
+182,Thermal environment,Capacitive (zone),Relative humidity,62,%
+183,Thermal environment,Capacitive (zone),Relative humidity,63,%
+184,Thermal environment,Capacitive (zone),Relative humidity,64,%
+185,Thermal environment,Capacitive (zone),Relative humidity,65,%
+186,Thermal environment,Capacitive (zone),Relative humidity,66,%
+187,Thermal environment,Capacitive (zone),Relative humidity,67,%
+188,Thermal environment,Capacitive (zone),Relative humidity,68,%
+189,Thermal environment,Capacitive (zone),Relative humidity,69,%
+190,Thermal environment,Capacitive (zone),Relative humidity,70,%
+191,Thermal environment,Capacitive (zone),Relative humidity,71,%
+192,Thermal environment,Capacitive (zone),Relative humidity,72,%
+193,Thermal environment,Capacitive (zone),Relative humidity,73,%
+194,Thermal environment,Capacitive (zone),Relative humidity,74,%
+195,Thermal environment,Capacitive (zone),Relative humidity,75,%
+196,Thermal environment,Capacitive (zone),Relative humidity,76,%
+197,Thermal environment,Capacitive (zone),Relative humidity,77,%
+198,Thermal environment,Capacitive (zone),Relative humidity,78,%
+199,Thermal environment,Capacitive (zone),Relative humidity,79,%
+200,Thermal environment,Capacitive (zone),Relative humidity,80,%
+201,Thermal environment,Capacitive (zone),Relative humidity,81,%
+202,Thermal environment,Capacitive (zone),Relative humidity,82,%
+203,Thermal environment,Capacitive (zone),Relative humidity,83,%
+204,Thermal environment,Capacitive (zone),Relative humidity,84,%
+205,Thermal environment,Capacitive (zone),Relative humidity,85,%
+206,Thermal environment,Capacitive (zone),Relative humidity,86,%
+207,Thermal environment,Capacitive (zone),Relative humidity,87,%
+208,Thermal environment,Capacitive (zone),Relative humidity,88,%
+209,Thermal environment,Capacitive (zone),Relative humidity,89,%
+210,Thermal environment,Capacitive (zone),Relative humidity,90,%
+211,Thermal environment,Capacitive (zone),Relative humidity,91,%
+212,Thermal environment,Capacitive (zone),Relative humidity,92,%
+213,Thermal environment,Capacitive (zone),Relative humidity,93,%
+214,Thermal environment,Capacitive (zone),Relative humidity,94,%
+215,Thermal environment,Capacitive (zone),Relative humidity,95,%
+216,Thermal environment,Capacitive (zone),Relative humidity,96,%
+217,Thermal environment,Capacitive (zone),Relative humidity,97,%
+218,Thermal environment,Capacitive (zone),Relative humidity,98,%
+219,Thermal environment,Capacitive (zone),Relative humidity,99,%
+220,Thermal environment,Capacitive (zone),Relative humidity,100,%
+221,Thermal environment,Capacitive (zone),Relative humidity,101,%
+222,Thermal environment,Capacitive (zone),Relative humidity,102,%
+223,Thermal environment,Capacitive (zone),Relative humidity,103,%
+224,Thermal environment,Capacitive (zone),Relative humidity,104,%
+225,Thermal environment,Capacitive (zone),Relative humidity,105,%
+226,Thermal environment,Capacitive (zone),Relative humidity,106,%
+227,Thermal environment,Capacitive (zone),Relative humidity,107,%
+228,Thermal environment,Capacitive (zone),Relative humidity,108,%
+229,Thermal environment,Capacitive (zone),Relative humidity,109,%
+230,Thermal environment,Capacitive (zone),Relative humidity,110,%
+231,Thermal environment,Capacitive (zone),Relative humidity,111,%
+232,Thermal environment,Capacitive (zone),Relative humidity,112,%
+233,Thermal environment,Capacitive (zone),Relative humidity,113,%
+234,Thermal environment,Capacitive (zone),Relative humidity,114,%
+235,Thermal environment,Capacitive (zone),Relative humidity,115,%
+236,Thermal environment,Capacitive (zone),Relative humidity,116,%
+237,Thermal environment,Capacitive (zone),Relative humidity,117,%
+238,Thermal environment,Capacitive (zone),Relative humidity,118,%
+239,Thermal environment,Capacitive (zone),Relative humidity,119,%
+240,Thermal environment,Capacitive (zone),Relative humidity,120,%
+241,Thermal environment,NDIR (zone),CO2 concentration,1,ppm
+242,Thermal environment,NDIR (zone),CO2 concentration,2,ppm
+243,Thermal environment,NDIR (zone),CO2 concentration,3,ppm
+244,Thermal environment,NDIR (zone),CO2 concentration,4,ppm
+245,Thermal environment,NDIR (zone),CO2 concentration,5,ppm
+246,Thermal environment,NDIR (zone),CO2 concentration,6,ppm
+247,Thermal environment,NDIR (zone),CO2 concentration,7,ppm
+248,Thermal environment,NDIR (zone),CO2 concentration,8,ppm
+249,Thermal environment,NDIR (zone),CO2 concentration,9,ppm
+250,Thermal environment,NDIR (zone),CO2 concentration,10,ppm
+251,Thermal environment,NDIR (zone),CO2 concentration,11,ppm
+252,Thermal environment,NDIR (zone),CO2 concentration,12,ppm
+253,Thermal environment,NDIR (zone),CO2 concentration,13,ppm
+254,Thermal environment,NDIR (zone),CO2 concentration,14,ppm
+255,Thermal environment,NDIR (zone),CO2 concentration,15,ppm
+256,Thermal environment,NDIR (zone),CO2 concentration,16,ppm
+257,Thermal environment,NDIR (zone),CO2 concentration,17,ppm
+258,Thermal environment,NDIR (zone),CO2 concentration,18,ppm
+259,Thermal environment,NDIR (zone),CO2 concentration,19,ppm
+260,Thermal environment,NDIR (zone),CO2 concentration,20,ppm
+261,Thermal environment,NDIR (zone),CO2 concentration,21,ppm
+262,Thermal environment,NDIR (zone),CO2 concentration,22,ppm
+263,Thermal environment,NDIR (zone),CO2 concentration,23,ppm
+264,Thermal environment,NDIR (zone),CO2 concentration,24,ppm
+265,Thermal environment,NDIR (zone),CO2 concentration,25,ppm
+266,Thermal environment,NDIR (zone),CO2 concentration,26,ppm
+267,Thermal environment,NDIR (zone),CO2 concentration,27,ppm
+268,Thermal environment,NDIR (zone),CO2 concentration,28,ppm
+269,Thermal environment,NDIR (zone),CO2 concentration,29,ppm
+270,Thermal environment,NDIR (zone),CO2 concentration,30,ppm
+271,Thermal environment,NDIR (zone),CO2 concentration,31,ppm
+272,Thermal environment,NDIR (zone),CO2 concentration,32,ppm
+273,Thermal environment,NDIR (zone),CO2 concentration,33,ppm
+274,Thermal environment,NDIR (zone),CO2 concentration,34,ppm
+275,Thermal environment,NDIR (zone),CO2 concentration,35,ppm
+276,Thermal environment,NDIR (zone),CO2 concentration,36,ppm
+277,Thermal environment,NDIR (zone),CO2 concentration,37,ppm
+278,Thermal environment,NDIR (zone),CO2 concentration,38,ppm
+279,Thermal environment,NDIR (zone),CO2 concentration,39,ppm
+280,Thermal environment,NDIR (zone),CO2 concentration,40,ppm
+281,Thermal environment,NDIR (zone),CO2 concentration,41,ppm
+282,Thermal environment,NDIR (zone),CO2 concentration,42,ppm
+283,Thermal environment,NDIR (zone),CO2 concentration,43,ppm
+284,Thermal environment,NDIR (zone),CO2 concentration,44,ppm
+285,Thermal environment,NDIR (zone),CO2 concentration,45,ppm
+286,HVAC system,CT clamp (chiller),Chiller power,1,kW
+287,HVAC system,CT clamp (chiller),Chiller power,2,kW
+288,HVAC system,CT clamp (chiller),Chiller power,3,kW
+289,HVAC system,CT clamp (chiller),Chiller power,4,kW
+290,HVAC system,CT clamp (chiller),Chiller power,5,kW
+291,HVAC system,CT clamp (chiller),Chiller power,6,kW
+292,HVAC system,CT clamp (chiller),Chiller power,7,kW
+293,HVAC system,CT clamp (chiller),Chiller power,8,kW
+294,HVAC system,CT clamp (chiller),Chiller power,9,kW
+295,HVAC system,CT clamp (chiller),Chiller power,10,kW
+296,HVAC system,CT clamp (chiller),Chiller power,11,kW
+297,HVAC system,CT clamp (chiller),Chiller power,12,kW
+298,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,1,kW/status
+299,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,2,kW/status
+300,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,3,kW/status
+301,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,4,kW/status
+302,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,5,kW/status
+303,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,6,kW/status
+304,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,7,kW/status
+305,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,8,kW/status
+306,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,9,kW/status
+307,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,10,kW/status
+308,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,11,kW/status
+309,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,12,kW/status
+310,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,13,kW/status
+311,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,14,kW/status
+312,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,15,kW/status
+313,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,16,kW/status
+314,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,17,kW/status
+315,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,18,kW/status
+316,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,19,kW/status
+317,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,20,kW/status
+318,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,21,kW/status
+319,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,22,kW/status
+320,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,23,kW/status
+321,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,24,kW/status
+322,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,25,kW/status
+323,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,26,kW/status
+324,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,27,kW/status
+325,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,28,kW/status
+326,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,29,kW/status
+327,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,30,kW/status
+328,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,31,kW/status
+329,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,32,kW/status
+330,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,33,kW/status
+331,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,34,kW/status
+332,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,35,kW/status
+333,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,36,kW/status
+334,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,37,kW/status
+335,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,38,kW/status
+336,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,39,kW/status
+337,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,40,kW/status
+338,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,41,kW/status
+339,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,42,kW/status
+340,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,43,kW/status
+341,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,44,kW/status
+342,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,45,kW/status
+343,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,46,kW/status
+344,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,47,kW/status
+345,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,48,kW/status
+346,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,49,kW/status
+347,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,50,kW/status
+348,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,51,kW/status
+349,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,52,kW/status
+350,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,53,kW/status
+351,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,54,kW/status
+352,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,55,kW/status
+353,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,56,kW/status
+354,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,57,kW/status
+355,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,58,kW/status
+356,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,59,kW/status
+357,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,60,kW/status
+358,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,61,kW/status
+359,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,62,kW/status
+360,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,63,kW/status
+361,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,64,kW/status
+362,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,65,kW/status
+363,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,66,kW/status
+364,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,67,kW/status
+365,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,68,kW/status
+366,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,69,kW/status
+367,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,70,kW/status
+368,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,71,kW/status
+369,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,72,kW/status
+370,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,73,kW/status
+371,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,74,kW/status
+372,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,75,kW/status
+373,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,76,kW/status
+374,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,77,kW/status
+375,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,78,kW/status
+376,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,79,kW/status
+377,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,80,kW/status
+378,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,81,kW/status
+379,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,82,kW/status
+380,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,83,kW/status
+381,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,84,kW/status
+382,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,85,kW/status
+383,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,86,kW/status
+384,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,87,kW/status
+385,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,88,kW/status
+386,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,89,kW/status
+387,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,90,kW/status
+388,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,91,kW/status
+389,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,92,kW/status
+390,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,93,kW/status
+391,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,94,kW/status
+392,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,95,kW/status
+393,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,96,kW/status
+394,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,97,kW/status
+395,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,98,kW/status
+396,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,99,kW/status
+397,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,100,kW/status
+398,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,101,kW/status
+399,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,102,kW/status
+400,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,103,kW/status
+401,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,104,kW/status
+402,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,105,kW/status
+403,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,106,kW/status
+404,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,107,kW/status
+405,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,108,kW/status
+406,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,109,kW/status
+407,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,110,kW/status
+408,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,111,kW/status
+409,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,112,kW/status
+410,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,113,kW/status
+411,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,114,kW/status
+412,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,115,kW/status
+413,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,116,kW/status
+414,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,117,kW/status
+415,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,118,kW/status
+416,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,119,kW/status
+417,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,120,kW/status
+418,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,121,kW/status
+419,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,122,kW/status
+420,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,123,kW/status
+421,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,124,kW/status
+422,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,125,kW/status
+423,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,126,kW/status
+424,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,127,kW/status
+425,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,128,kW/status
+426,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,129,kW/status
+427,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,130,kW/status
+428,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,131,kW/status
+429,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,132,kW/status
+430,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,133,kW/status
+431,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,134,kW/status
+432,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,135,kW/status
+433,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,136,kW/status
+434,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,137,kW/status
+435,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,138,kW/status
+436,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,139,kW/status
+437,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,140,kW/status
+438,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,141,kW/status
+439,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,142,kW/status
+440,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,143,kW/status
+441,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,144,kW/status
+442,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,145,kW/status
+443,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,146,kW/status
+444,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,147,kW/status
+445,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,148,kW/status
+446,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,149,kW/status
+447,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,150,kW/status
+448,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,151,kW/status
+449,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,152,kW/status
+450,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,153,kW/status
+451,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,154,kW/status
+452,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,155,kW/status
+453,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,156,kW/status
+454,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,157,kW/status
+455,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,158,kW/status
+456,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,159,kW/status
+457,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,160,kW/status
+458,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,161,kW/status
+459,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,162,kW/status
+460,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,163,kW/status
+461,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,164,kW/status
+462,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,165,kW/status
+463,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,166,kW/status
+464,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,167,kW/status
+465,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,168,kW/status
+466,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,169,kW/status
+467,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,170,kW/status
+468,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,171,kW/status
+469,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,172,kW/status
+470,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,173,kW/status
+471,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,174,kW/status
+472,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,175,kW/status
+473,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,176,kW/status
+474,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,177,kW/status
+475,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,178,kW/status
+476,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,179,kW/status
+477,HVAC system,CT clamp (VRF indoor),Indoor unit power/status,180,kW/status
+478,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,1,C
+479,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,2,C
+480,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,3,C
+481,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,4,C
+482,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,5,C
+483,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,6,C
+484,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,7,C
+485,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,8,C
+486,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,9,C
+487,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,10,C
+488,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,11,C
+489,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,12,C
+490,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,13,C
+491,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,14,C
+492,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,15,C
+493,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,16,C
+494,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,17,C
+495,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,18,C
+496,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,19,C
+497,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,20,C
+498,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,21,C
+499,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,22,C
+500,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,23,C
+501,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,24,C
+502,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,25,C
+503,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,26,C
+504,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,27,C
+505,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,28,C
+506,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,29,C
+507,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,30,C
+508,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,31,C
+509,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,32,C
+510,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,33,C
+511,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,34,C
+512,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,35,C
+513,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,36,C
+514,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,37,C
+515,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,38,C
+516,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,39,C
+517,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,40,C
+518,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,41,C
+519,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,42,C
+520,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,43,C
+521,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,44,C
+522,HVAC system,Pt100 RTD (AHU),Supply/return air temperature,45,C
+523,HVAC system,Pulse output (AHU),Fan speed,1,%
+524,HVAC system,Pulse output (AHU),Fan speed,2,%
+525,HVAC system,Pulse output (AHU),Fan speed,3,%
+526,HVAC system,Pulse output (AHU),Fan speed,4,%
+527,HVAC system,Pulse output (AHU),Fan speed,5,%
+528,HVAC system,Pulse output (AHU),Fan speed,6,%
+529,HVAC system,Pulse output (AHU),Fan speed,7,%
+530,HVAC system,Pulse output (AHU),Fan speed,8,%
+531,HVAC system,Pulse output (AHU),Fan speed,9,%
+532,HVAC system,Pulse output (AHU),Fan speed,10,%
+533,HVAC system,Pulse output (AHU),Fan speed,11,%
+534,HVAC system,Pulse output (AHU),Fan speed,12,%
+535,HVAC system,Pulse output (AHU),Fan speed,13,%
+536,HVAC system,Pulse output (AHU),Fan speed,14,%
+537,HVAC system,Pulse output (AHU),Fan speed,15,%
+538,HVAC system,Pulse output (AHU),Fan speed,16,%
+539,HVAC system,Pulse output (AHU),Fan speed,17,%
+540,HVAC system,Pulse output (AHU),Fan speed,18,%
+541,HVAC system,Pulse output (AHU),Fan speed,19,%
+542,HVAC system,Pulse output (AHU),Fan speed,20,%
+543,HVAC system,Pulse output (AHU),Fan speed,21,%
+544,HVAC system,Pulse output (AHU),Fan speed,22,%
+545,HVAC system,Pulse output (AHU),Fan speed,23,%
+546,HVAC system,Pulse output (AHU),Fan speed,24,%
+547,HVAC system,Pulse output (AHU),Fan speed,25,%
+548,HVAC system,Pulse output (AHU),Fan speed,26,%
+549,HVAC system,Pulse output (AHU),Fan speed,27,%
+550,HVAC system,Pulse output (AHU),Fan speed,28,%
+551,HVAC system,Pulse output (AHU),Fan speed,29,%
+552,HVAC system,Pulse output (AHU),Fan speed,30,%
+553,HVAC system,Pulse output (AHU),Fan speed,31,%
+554,HVAC system,Pulse output (AHU),Fan speed,32,%
+555,HVAC system,Pulse output (AHU),Fan speed,33,%
+556,HVAC system,Pulse output (AHU),Fan speed,34,%
+557,HVAC system,Pulse output (AHU),Fan speed,35,%
+558,HVAC system,Pulse output (AHU),Fan speed,36,%
+559,HVAC system,Pulse output (AHU),Fan speed,37,%
+560,HVAC system,Pulse output (AHU),Fan speed,38,%
+561,HVAC system,Pulse output (AHU),Fan speed,39,%
+562,HVAC system,Pulse output (AHU),Fan speed,40,%
+563,HVAC system,Pulse output (AHU),Fan speed,41,%
+564,HVAC system,Pulse output (AHU),Fan speed,42,%
+565,HVAC system,Pulse output (AHU),Fan speed,43,%
+566,HVAC system,Pulse output (AHU),Fan speed,44,%
+567,HVAC system,Pulse output (AHU),Fan speed,45,%
+568,Energy consumption,Revenue-grade meter,Main utility,1,kWh
+569,Energy consumption,Branch circuit meter,Lighting circuits,1,kWh
+570,Energy consumption,Branch circuit meter,Lighting circuits,2,kWh
+571,Energy consumption,Branch circuit meter,Lighting circuits,3,kWh
+572,Energy consumption,Branch circuit meter,Lighting circuits,4,kWh
+573,Energy consumption,Branch circuit meter,Lighting circuits,5,kWh
+574,Energy consumption,Branch circuit meter,Lighting circuits,6,kWh
+575,Energy consumption,Branch circuit meter,Lighting circuits,7,kWh
+576,Energy consumption,Branch circuit meter,Lighting circuits,8,kWh
+577,Energy consumption,Branch circuit meter,Plug load circuits,1,kWh
+578,Energy consumption,Branch circuit meter,Plug load circuits,2,kWh
+579,Energy consumption,Branch circuit meter,Plug load circuits,3,kWh
+580,Energy consumption,Branch circuit meter,Plug load circuits,4,kWh
+581,Energy consumption,Branch circuit meter,Plug load circuits,5,kWh
+582,Energy consumption,Branch circuit meter,Plug load circuits,6,kWh
+583,Energy consumption,Branch circuit meter,Plug load circuits,7,kWh
+584,Energy consumption,Branch circuit meter,Plug load circuits,8,kWh
+585,Energy consumption,Branch circuit meter,Plug load circuits,9,kWh
+586,Energy consumption,Branch circuit meter,Plug load circuits,10,kWh
+587,Energy consumption,Branch circuit meter,Plug load circuits,11,kWh
+588,Energy consumption,Branch circuit meter,Plug load circuits,12,kWh
+589,Energy consumption,Branch circuit meter,HVAC circuits,1,kWh
+590,Energy consumption,Branch circuit meter,HVAC circuits,2,kWh
+591,Energy consumption,Branch circuit meter,HVAC circuits,3,kWh
+592,Energy consumption,Branch circuit meter,HVAC circuits,4,kWh
+593,Energy consumption,Branch circuit meter,HVAC circuits,5,kWh
+594,Energy consumption,Branch circuit meter,HVAC circuits,6,kWh
+595,Weather,Vaisala WXT536,Dry-bulb temperature,1,C
+596,Weather,Vaisala WXT536,Relative humidity,1,%
+597,Weather,Vaisala WXT536,Wind speed/direction,1,m/s/deg
+598,Weather,Kipp & Zonen CMP6,Global horizontal irradiance,1,W/m2
+599,Occupancy,Cisco Meraki AP,Wi-Fi connection count,1,count
+600,Occupancy,Cisco Meraki AP,Wi-Fi connection count,2,count
+601,Occupancy,Cisco Meraki AP,Wi-Fi connection count,3,count
+602,Occupancy,Cisco Meraki AP,Wi-Fi connection count,4,count
+603,Occupancy,Cisco Meraki AP,Wi-Fi connection count,5,count
+604,Occupancy,Cisco Meraki AP,Wi-Fi connection count,6,count
+605,Occupancy,Cisco Meraki AP,Wi-Fi connection count,7,count
+606,Occupancy,Cisco Meraki AP,Wi-Fi connection count,8,count
+607,Occupancy,Cisco Meraki AP,Wi-Fi connection count,9,count
+608,Occupancy,Cisco Meraki AP,Wi-Fi connection count,10,count
+609,Occupancy,Cisco Meraki AP,Wi-Fi connection count,11,count
+610,Occupancy,Cisco Meraki AP,Wi-Fi connection count,12,count
+611,Occupancy,Cisco Meraki AP,Wi-Fi connection count,13,count
+612,Occupancy,Cisco Meraki AP,Wi-Fi connection count,14,count
+613,Occupancy,Cisco Meraki AP,Wi-Fi connection count,15,count
+614,Occupancy,Cisco Meraki AP,Wi-Fi connection count,16,count
+615,Occupancy,Cisco Meraki AP,Wi-Fi connection count,17,count
+616,Occupancy,Cisco Meraki AP,Wi-Fi connection count,18,count
+617,Occupancy,Cisco Meraki AP,Wi-Fi connection count,19,count
+618,Occupancy,Cisco Meraki AP,Wi-Fi connection count,20,count
+619,Occupancy,Cisco Meraki AP,Wi-Fi connection count,21,count
+620,Occupancy,Cisco Meraki AP,Wi-Fi connection count,22,count
+621,Occupancy,Cisco Meraki AP,Wi-Fi connection count,23,count
+622,Occupancy,Cisco Meraki AP,Wi-Fi connection count,24,count
+623,Occupancy,Cisco Meraki AP,Wi-Fi connection count,25,count
+624,Occupancy,Cisco Meraki AP,Wi-Fi connection count,26,count
+625,Occupancy,Cisco Meraki AP,Wi-Fi connection count,27,count
+626,Occupancy,Cisco Meraki AP,Wi-Fi connection count,28,count
+627,Occupancy,Cisco Meraki AP,Wi-Fi connection count,29,count
+628,Occupancy,Cisco Meraki AP,Wi-Fi connection count,30,count
+629,Occupancy,Cisco Meraki AP,Wi-Fi connection count,31,count
+630,Occupancy,Cisco Meraki AP,Wi-Fi connection count,32,count
+631,Occupancy,Cisco Meraki AP,Wi-Fi connection count,33,count
+632,Occupancy,Cisco Meraki AP,Wi-Fi connection count,34,count
+633,Occupancy,Cisco Meraki AP,Wi-Fi connection count,35,count
+634,Occupancy,Cisco Meraki AP,Wi-Fi connection count,36,count
+635,Occupancy,Cisco Meraki AP,Wi-Fi connection count,37,count
+636,Occupancy,Cisco Meraki AP,Wi-Fi connection count,38,count
+637,Occupancy,Cisco Meraki AP,Wi-Fi connection count,39,count
+638,Occupancy,Cisco Meraki AP,Wi-Fi connection count,40,count
+639,Occupancy,Cisco Meraki AP,Wi-Fi connection count,41,count
+640,Occupancy,Cisco Meraki AP,Wi-Fi connection count,42,count
+641,Occupancy,Cisco Meraki AP,Wi-Fi connection count,43,count
+642,Occupancy,Cisco Meraki AP,Wi-Fi connection count,44,count
+643,Occupancy,Cisco Meraki AP,Wi-Fi connection count,45,count
+644,Occupancy,Derived (CO2-based),Estimated occupant count,1,persons
+645,Occupancy,Derived (CO2-based),Estimated occupant count,2,persons
+646,Occupancy,Derived (CO2-based),Estimated occupant count,3,persons
+647,Occupancy,Derived (CO2-based),Estimated occupant count,4,persons
+648,Occupancy,Derived (CO2-based),Estimated occupant count,5,persons
+649,Occupancy,Derived (CO2-based),Estimated occupant count,6,persons
+650,Occupancy,Derived (CO2-based),Estimated occupant count,7,persons
+651,Occupancy,Derived (CO2-based),Estimated occupant count,8,persons
+652,Occupancy,Derived (CO2-based),Estimated occupant count,9,persons
+653,Occupancy,Derived (CO2-based),Estimated occupant count,10,persons
+654,Occupancy,Derived (CO2-based),Estimated occupant count,11,persons
+655,Occupancy,Derived (CO2-based),Estimated occupant count,12,persons
+656,Occupancy,Derived (CO2-based),Estimated occupant count,13,persons
+657,Occupancy,Derived (CO2-based),Estimated occupant count,14,persons
+658,Occupancy,Derived (CO2-based),Estimated occupant count,15,persons
+659,Occupancy,Derived (CO2-based),Estimated occupant count,16,persons
+660,Occupancy,Derived (CO2-based),Estimated occupant count,17,persons
+661,Occupancy,Derived (CO2-based),Estimated occupant count,18,persons
+662,Occupancy,Derived (CO2-based),Estimated occupant count,19,persons
+663,Occupancy,Derived (CO2-based),Estimated occupant count,20,persons
+664,Occupancy,Derived (CO2-based),Estimated occupant count,21,persons
+665,Occupancy,Derived (CO2-based),Estimated occupant count,22,persons
+666,Occupancy,Derived (CO2-based),Estimated occupant count,23,persons
+667,Occupancy,Derived (CO2-based),Estimated occupant count,24,persons
+668,Occupancy,Derived (CO2-based),Estimated occupant count,25,persons
+669,Occupancy,Derived (CO2-based),Estimated occupant count,26,persons
+670,Occupancy,Derived (CO2-based),Estimated occupant count,27,persons
+671,Occupancy,Derived (CO2-based),Estimated occupant count,28,persons
+672,Occupancy,Derived (CO2-based),Estimated occupant count,29,persons
+673,Occupancy,Derived (CO2-based),Estimated occupant count,30,persons
+674,Occupancy,Derived (CO2-based),Estimated occupant count,31,persons
+675,Occupancy,Derived (CO2-based),Estimated occupant count,32,persons
+676,Occupancy,Derived (CO2-based),Estimated occupant count,33,persons
+677,Occupancy,Derived (CO2-based),Estimated occupant count,34,persons
+678,Occupancy,Derived (CO2-based),Estimated occupant count,35,persons
+679,Occupancy,Derived (CO2-based),Estimated occupant count,36,persons
+680,Occupancy,Derived (CO2-based),Estimated occupant count,37,persons
+681,Occupancy,Derived (CO2-based),Estimated occupant count,38,persons
+682,Occupancy,Derived (CO2-based),Estimated occupant count,39,persons
+683,Occupancy,Derived (CO2-based),Estimated occupant count,40,persons
+684,Occupancy,Derived (CO2-based),Estimated occupant count,41,persons
+685,Occupancy,Derived (CO2-based),Estimated occupant count,42,persons
+686,Occupancy,Derived (CO2-based),Estimated occupant count,43,persons
+687,Occupancy,Derived (CO2-based),Estimated occupant count,44,persons
+688,Occupancy,Derived (CO2-based),Estimated occupant count,45,persons

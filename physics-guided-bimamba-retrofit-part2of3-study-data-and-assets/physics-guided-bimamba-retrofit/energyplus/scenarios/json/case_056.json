@@ -1,0 +1,23 @@
+{
+  "ID": 56,
+  "Stratum": "Pareto/optimisation-relevant",
+  "x1": 0.098,
+  "x2": 1.62,
+  "x3": 0.33,
+  "x4": 0.29,
+  "x5": 4.08,
+  "x6": 0.9,
+  "x7": 25.9,
+  "x8": 19.1,
+  "x9": 6.6,
+  "x10": 6.1,
+  "x11": 1,
+  "x12": 1,
+  "BiMamba_Energy": 89.6,
+  "EnergyPlus_Energy": 88.0,
+  "BiMamba_PPD": 10.3,
+  "EnergyPlus_PPD": 9.9,
+  "BiMamba_Carbon": 47.5,
+  "EnergyPlus_Carbon": 46.6,
+  "A_x": 97.8
+}

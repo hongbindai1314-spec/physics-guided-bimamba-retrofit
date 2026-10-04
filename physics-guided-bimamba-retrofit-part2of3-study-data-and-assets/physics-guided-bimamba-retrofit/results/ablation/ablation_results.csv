@@ -1,0 +1,9 @@
+variant,change,MAPE_pct,delta_MAPE_pp,rank_degradation
+"BiMamba (full, proposed)",All components included,8.0,0.0,1
+w/o MSSA denoising,Raw/noisy causal inputs,9.9,1.9,8
+w/o RC physical features,"Remove tau, kappa, Gamma",9.5,1.5,7
+w/o GBC granular features,Remove 5 membership weights,8.9,0.9,6
+w/o multi-scale CNN,Remove local convolution branch,8.7,0.7,5
+w/o Bidirectional,Unidirectional Mamba only,8.6,0.6,4
+w/o Temporal attention,Mean pooling,8.4,0.4,3
+w/o Physics-informed loss,lambda_phys=0,8.3,0.3,2

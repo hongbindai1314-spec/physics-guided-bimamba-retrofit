@@ -1,0 +1,9 @@
+short_gap_max_steps: 8
+knn_k: 5
+outlier_window_steps: 192
+outlier_iqr_multiplier: 3.0
+outlier_replacement_history: 12
+mssa:
+  support_window: 672
+  embedding_length: 96
+  retained_components: 15

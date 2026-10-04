@@ -1,0 +1,7 @@
+archetype,metric,deterministic_baseline,scenario_mean,relative_90CI_width_pct,P95
+Balanced,Energy,3600,3642.656739,4.183278,3717.477805
+Balanced,Carbon,2340,2368.486288,4.558695,2421.490441
+Cost-focused,Energy,4100,4214.861007,12.211404,4473.925237
+Cost-focused,Carbon,2665,2739.767827,13.102512,2911.226215
+Efficiency-focused,Energy,3050,3121.496216,7.277056,3240.765250
+Efficiency-focused,Carbon,1980,2026.435532,7.639575,2105.393771

@@ -1,0 +1,6 @@
+Version,23.2;
+Building,Shanghai Office,0.0,Suburbs,0.04,0.4,FullExterior,25,6;
+Timestep,4;
+! Baseline case-study model definition.
+! Geometry, construction layers and HVAC topology are described in the manuscript
+! and parameterised through energyplus/scenarios/json/.

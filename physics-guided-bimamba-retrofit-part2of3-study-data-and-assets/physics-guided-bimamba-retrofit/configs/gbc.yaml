@@ -1,0 +1,10 @@
+purity_threshold: 0.70
+min_ball_size: 15
+nearest_balls: 5
+bandwidth_radius_factor: 1.0
+split_random_state: 42
+applicability_domain:
+  metric: mahalanobis
+  distance_percentile: 95
+  D95: 2.14
+  minimum_annual_coverage_pct: 95.0

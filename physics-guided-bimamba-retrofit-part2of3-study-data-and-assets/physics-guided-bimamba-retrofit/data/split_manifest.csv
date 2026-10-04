@@ -1,0 +1,6 @@
+split,definition,start,end,n_15min
+train,count_aligned,2022-01-01 00:00,2022-12-31 23:45,35040
+validation,count_aligned,2023-01-01 00:00,2023-07-01 23:45,17472
+test,count_aligned,2023-07-02 00:00,2023-12-31 23:45,17568
+validation,calendar,2023-01-01 00:00,2023-06-30 23:45,17376
+test,calendar,2023-07-01 00:00,2023-12-31 23:45,17664

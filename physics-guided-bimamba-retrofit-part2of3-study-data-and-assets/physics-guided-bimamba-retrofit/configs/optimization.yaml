@@ -1,0 +1,25 @@
+population_size: 200
+generations: 300
+reference_point_divisions: 4
+crossover:
+  pc_initial: 0.90
+  pc_final: 0.60
+  sbx_eta: 20
+mutation:
+  pm_initial: 0.10
+  pm_final: 0.05
+  polynomial_eta: 20
+runs: 5
+variables:
+  x1_insulation_m: {type: continuous, lower: 0.02, upper: 0.15}
+  x2_window_u: {type: discrete, values: [1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0]}
+  x3_shgc: {type: discrete, values: [0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50]}
+  x4_wwr: {type: continuous, lower: 0.20, upper: 0.60}
+  x5_cooling_cop: {type: discrete, values: [3.0, 3.5, 4.0, 4.5, 5.0, 5.5]}
+  x6_heating_efficiency: {type: discrete, values: [0.80, 0.85, 0.90, 0.95, 0.98]}
+  x7_cooling_setpoint_c: {type: continuous, lower: 22.0, upper: 26.0}
+  x8_heating_setpoint_c: {type: continuous, lower: 18.0, upper: 22.0}
+  x9_ventilation_l_s_m2: {type: continuous, lower: 0.5, upper: 2.0}
+  x10_lpd_w_m2: {type: continuous, lower: 5.0, upper: 12.0}
+  x11_vfd: {type: binary, values: [0, 1]}
+  x12_erv: {type: binary, values: [0, 1]}
