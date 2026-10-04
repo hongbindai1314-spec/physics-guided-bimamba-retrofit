@@ -1,0 +1,277 @@
+[
+  {
+    "feature_index": 1,
+    "feature_name": "zone_temp_mean_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 2,
+    "feature_name": "zone_rh_mean_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 3,
+    "feature_name": "zone_co2_mean_ppm",
+    "group": "operational"
+  },
+  {
+    "feature_index": 4,
+    "feature_name": "outdoor_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 5,
+    "feature_name": "outdoor_rh_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 6,
+    "feature_name": "ghi_w_m2",
+    "group": "operational"
+  },
+  {
+    "feature_index": 7,
+    "feature_name": "wind_speed_m_s",
+    "group": "operational"
+  },
+  {
+    "feature_index": 8,
+    "feature_name": "wind_dir_deg",
+    "group": "operational"
+  },
+  {
+    "feature_index": 9,
+    "feature_name": "wifi_count",
+    "group": "operational"
+  },
+  {
+    "feature_index": 10,
+    "feature_name": "occupant_estimate",
+    "group": "operational"
+  },
+  {
+    "feature_index": 11,
+    "feature_name": "chiller_power_kw",
+    "group": "operational"
+  },
+  {
+    "feature_index": 12,
+    "feature_name": "cooling_energy_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 13,
+    "feature_name": "heating_energy_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 14,
+    "feature_name": "hvac_power_kw",
+    "group": "operational"
+  },
+  {
+    "feature_index": 15,
+    "feature_name": "supply_air_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 16,
+    "feature_name": "return_air_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 17,
+    "feature_name": "supply_water_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 18,
+    "feature_name": "return_water_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 19,
+    "feature_name": "fan_speed_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 20,
+    "feature_name": "pump_speed_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 21,
+    "feature_name": "valve_position_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 22,
+    "feature_name": "damper_position_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 23,
+    "feature_name": "cooling_setpoint_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 24,
+    "feature_name": "heating_setpoint_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 25,
+    "feature_name": "lighting_energy_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 26,
+    "feature_name": "plug_energy_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 27,
+    "feature_name": "main_energy_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 28,
+    "feature_name": "chilled_water_flow_kg_s",
+    "group": "operational"
+  },
+  {
+    "feature_index": 29,
+    "feature_name": "hot_water_flow_kg_s",
+    "group": "operational"
+  },
+  {
+    "feature_index": 30,
+    "feature_name": "ahu_static_pressure_pa",
+    "group": "operational"
+  },
+  {
+    "feature_index": 31,
+    "feature_name": "vrf_active_units",
+    "group": "operational"
+  },
+  {
+    "feature_index": 32,
+    "feature_name": "chiller_active_count",
+    "group": "operational"
+  },
+  {
+    "feature_index": 33,
+    "feature_name": "floor3_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 34,
+    "feature_name": "floor8_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 35,
+    "feature_name": "floor14_temp_c",
+    "group": "operational"
+  },
+  {
+    "feature_index": 36,
+    "feature_name": "floor3_rh_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 37,
+    "feature_name": "floor8_rh_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 38,
+    "feature_name": "floor14_rh_pct",
+    "group": "operational"
+  },
+  {
+    "feature_index": 39,
+    "feature_name": "floor3_co2_ppm",
+    "group": "operational"
+  },
+  {
+    "feature_index": 40,
+    "feature_name": "floor8_co2_ppm",
+    "group": "operational"
+  },
+  {
+    "feature_index": 41,
+    "feature_name": "floor14_co2_ppm",
+    "group": "operational"
+  },
+  {
+    "feature_index": 42,
+    "feature_name": "lag_hvac_15m_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 43,
+    "feature_name": "lag_hvac_1h_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 44,
+    "feature_name": "lag_hvac_24h_kwh",
+    "group": "operational"
+  },
+  {
+    "feature_index": 45,
+    "feature_name": "hour_sin",
+    "group": "operational"
+  },
+  {
+    "feature_index": 46,
+    "feature_name": "hour_cos",
+    "group": "operational"
+  },
+  {
+    "feature_index": 47,
+    "feature_name": "weekday_flag",
+    "group": "operational"
+  },
+  {
+    "feature_index": 48,
+    "feature_name": "tau_h",
+    "group": "RC"
+  },
+  {
+    "feature_index": 49,
+    "feature_name": "kappa_w_k",
+    "group": "RC"
+  },
+  {
+    "feature_index": 50,
+    "feature_name": "gamma_m2",
+    "group": "RC"
+  },
+  {
+    "feature_index": 51,
+    "feature_name": "gbc_w1",
+    "group": "GBC"
+  },
+  {
+    "feature_index": 52,
+    "feature_name": "gbc_w2",
+    "group": "GBC"
+  },
+  {
+    "feature_index": 53,
+    "feature_name": "gbc_w3",
+    "group": "GBC"
+  },
+  {
+    "feature_index": 54,
+    "feature_name": "gbc_w4",
+    "group": "GBC"
+  },
+  {
+    "feature_index": 55,
+    "feature_name": "gbc_w5",
+    "group": "GBC"
+  }
+]

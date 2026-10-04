@@ -1,0 +1,6 @@
+method,metric,value,interpretation
+GBC,Silhouette,0.288,intrinsic geometric structure
+GBC,Davies-Bouldin,1.21,intrinsic geometric structure
+GBC,Calinski-Harabasz,1580.0,intrinsic geometric structure
+GBC,Operational-concordance NMI,0.785,semantic concordance; not independent ground truth
+GBC,Block-bootstrap ARI,0.842,temporal stability

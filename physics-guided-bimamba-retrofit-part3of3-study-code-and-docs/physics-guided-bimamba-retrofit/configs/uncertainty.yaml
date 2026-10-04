@@ -1,0 +1,5 @@
+monte_carlo_scenarios: 500
+interval_quantiles: [0.05, 0.95]
+weather_pool_years: 10
+occupancy_model: nonhomogeneous_poisson
+mc_dropout: true

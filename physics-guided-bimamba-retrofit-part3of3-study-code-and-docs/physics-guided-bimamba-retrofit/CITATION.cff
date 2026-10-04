@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: Cite this software package together with the associated manuscript.
+title: Physics-guided BiMamba for building energy prediction and retrofit optimization
+type: software
+authors:
+- family-names: Dai
+  given-names: Hongbin
+- family-names: Zhang
+  given-names: Qinqin
+- family-names: Zeng
+  given-names: Huibin
+- family-names: Huang
+  given-names: Guangqiu
+- family-names: Wang
+  given-names: Jingjing
+version: 1.1.0
+date-released: '2026-10-04'
+license: MIT
+repository-code: https://github.com/hongbindai1314-spec/physics-guided-bimamba-retrofit

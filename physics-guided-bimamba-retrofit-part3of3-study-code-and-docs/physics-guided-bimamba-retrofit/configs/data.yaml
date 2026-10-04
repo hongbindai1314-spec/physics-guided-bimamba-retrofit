@@ -1,0 +1,58 @@
+sampling_minutes: 15
+timestamp_column: timestamp
+target_column: hvac_energy_kwh
+raw_bms_path: data/raw/bms_15min.csv.gz
+processed_path: data/processed/model_55d.csv.gz
+model_input_path: data/processed/model_55d.csv.gz
+count_aligned_splits:
+  train_n: 35040
+  validation_n: 17472
+  test_n: 17568
+operational_features:
+  - zone_temp_mean_c
+  - zone_rh_mean_pct
+  - zone_co2_mean_ppm
+  - outdoor_temp_c
+  - outdoor_rh_pct
+  - ghi_w_m2
+  - wind_speed_m_s
+  - wind_dir_deg
+  - wifi_count
+  - occupant_estimate
+  - chiller_power_kw
+  - cooling_energy_kwh
+  - heating_energy_kwh
+  - hvac_power_kw
+  - supply_air_temp_c
+  - return_air_temp_c
+  - supply_water_temp_c
+  - return_water_temp_c
+  - fan_speed_pct
+  - pump_speed_pct
+  - valve_position_pct
+  - damper_position_pct
+  - cooling_setpoint_c
+  - heating_setpoint_c
+  - lighting_energy_kwh
+  - plug_energy_kwh
+  - main_energy_kwh
+  - chilled_water_flow_kg_s
+  - hot_water_flow_kg_s
+  - ahu_static_pressure_pa
+  - vrf_active_units
+  - chiller_active_count
+  - floor3_temp_c
+  - floor8_temp_c
+  - floor14_temp_c
+  - floor3_rh_pct
+  - floor8_rh_pct
+  - floor14_rh_pct
+  - floor3_co2_ppm
+  - floor8_co2_ppm
+  - floor14_co2_ppm
+  - lag_hvac_15m_kwh
+  - lag_hvac_1h_kwh
+  - lag_hvac_24h_kwh
+  - hour_sin
+  - hour_cos
+  - weekday_flag

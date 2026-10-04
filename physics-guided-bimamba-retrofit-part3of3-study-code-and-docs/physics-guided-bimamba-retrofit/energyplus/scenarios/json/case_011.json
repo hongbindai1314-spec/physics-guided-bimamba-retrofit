@@ -1,0 +1,23 @@
+{
+  "ID": 11,
+  "Stratum": "Near-baseline",
+  "x1": 0.037,
+  "x2": 2.88,
+  "x3": 0.47,
+  "x4": 0.42,
+  "x5": 3.32,
+  "x6": 0.8,
+  "x7": 24.7,
+  "x8": 20.3,
+  "x9": 8.8,
+  "x10": 9.4,
+  "x11": 0,
+  "x12": 0,
+  "BiMamba_Energy": 139.2,
+  "EnergyPlus_Energy": 137.4,
+  "BiMamba_PPD": 8.5,
+  "EnergyPlus_PPD": 8.2,
+  "BiMamba_Carbon": 73.8,
+  "EnergyPlus_Carbon": 72.8,
+  "A_x": 98.5
+}

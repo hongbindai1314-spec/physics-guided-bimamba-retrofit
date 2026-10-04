@@ -1,0 +1,6 @@
+replicates: 10000
+block_length: 672
+method: circular_moving_block
+confidence_level: 0.95
+bonferroni_comparisons: 13
+random_seed: 2026

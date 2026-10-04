@@ -1,0 +1,23 @@
+{
+  "ID": 33,
+  "Stratum": "Boundary/extreme",
+  "x1": 0.015,
+  "x2": 3.9,
+  "x3": 0.62,
+  "x4": 0.55,
+  "x5": 2.9,
+  "x6": 0.74,
+  "x7": 23.2,
+  "x8": 21.8,
+  "x9": 13.2,
+  "x10": 13.2,
+  "x11": 0,
+  "x12": 0,
+  "BiMamba_Energy": 179.8,
+  "EnergyPlus_Energy": 186.8,
+  "BiMamba_PPD": 6.8,
+  "EnergyPlus_PPD": 7.4,
+  "BiMamba_Carbon": 95.3,
+  "EnergyPlus_Carbon": 99.0,
+  "A_x": 95.8
+}

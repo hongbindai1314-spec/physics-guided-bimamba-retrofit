@@ -1,0 +1,12 @@
+sampling_seconds: 900
+regularization_mu: 0.01
+max_iterations: 500
+tolerance: 1.0e-6
+initial:
+  R_zw_K_W: 0.02
+  R_wm_K_W: 0.03
+  C_z_J_K: 5000000
+  C_w_J_K: 20000000
+  C_m_J_K: 50000000
+  alpha_sol: 0.7
+# Effective solar aperture also requires facade/window area A_w.
