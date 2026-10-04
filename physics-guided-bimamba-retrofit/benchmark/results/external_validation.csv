@@ -1,0 +1,3 @@
+domain,n,RMSE,MAE,MAPE_pct,R2,support_fraction,origin
+warm_climate,2880,0.43586789,0.25358195,15.993877,0.96020451,0.89756944,"synthetic, NOT BDG2"
+cold_climate,2880,0.51579048,0.31975128,19.746437,0.91553518,0.76631944,"synthetic, NOT BDG2"

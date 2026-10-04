@@ -1,0 +1,16 @@
+{
+  "n": 17568,
+  "block_length": 672,
+  "replicates": 10000,
+  "RMSE_ci95": [
+    0.4416987480816699,
+    0.5056412940741296
+  ],
+  "MAE_ci95": [
+    0.260687368553493,
+    0.28758098774724616
+  ],
+  "mean_squared_error_gain_vs_persistence": 0.3942968325962744,
+  "centered_null_two_sided_p": 9.999000099990002e-05,
+  "unit": "15-minute interval observations"
+}

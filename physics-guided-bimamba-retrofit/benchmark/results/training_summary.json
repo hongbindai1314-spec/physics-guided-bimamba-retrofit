@@ -1,0 +1,19 @@
+{
+  "validation": {
+    "RMSE": 0.4544866887165328,
+    "MAE": 0.27029203911807437,
+    "MAPE_pct": 16.224884096347733,
+    "R2": 0.9668077626383607
+  },
+  "test": {
+    "RMSE": 0.4744821300429999,
+    "MAE": 0.2738189273462318,
+    "MAPE_pct": 15.452719642779059,
+    "R2": 0.9643951469926312
+  },
+  "training_epochs": 16,
+  "physics_loss_used": true,
+  "lambda_phys": 0.05,
+  "seed": 20261004,
+  "scope": "CPU physics-guided MLP benchmark"
+}

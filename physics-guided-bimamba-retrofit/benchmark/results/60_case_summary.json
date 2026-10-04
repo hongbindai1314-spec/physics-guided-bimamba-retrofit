@@ -1,0 +1,11 @@
+{
+  "n": 60,
+  "energy": {
+    "RMSE": 4.86823835167852,
+    "MAE": 4.547682548903932,
+    "MAPE_pct": 3.5132856974378104,
+    "R2": 0.9635278129650324
+  },
+  "simulator": "1R1C ideal thermostat; not EnergyPlus",
+  "annualization": "eight seasonal days times 365/8; no annual building simulation claim"
+}

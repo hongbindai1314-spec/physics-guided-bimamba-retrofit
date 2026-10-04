@@ -1,0 +1,19 @@
+{
+  "package_version": "1.1.0",
+  "data_origin": "1R1C reference simulator",
+  "seed": 20261004,
+  "generator": "scripts/reproduce.py + src/pipeline/core.py",
+  "model": "1R1C ideal thermostat",
+  "train_candidates": "different randomly sampled candidate configuration per day",
+  "observations": "noisy reference HVAC energy",
+  "physics_loss": "optimized, lambda .05, tolerance .2 kWh",
+  "configuration": {
+    "epochs": 16,
+    "bootstrap": 10000,
+    "population": 24,
+    "generations": 16,
+    "scenarios": 500
+  },
+  "numpy": "2.3.5",
+  "pandas": "2.2.3"
+}

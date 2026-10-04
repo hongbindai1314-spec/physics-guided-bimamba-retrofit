@@ -1,0 +1,13 @@
+dropout_probability,passes,mean_interval_energy_kwh,q05,q95,width,scope
+0.1,20,2.6885566,2.6059929,2.7658054,0.15981254,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.1,50,2.6948458,2.6050061,2.7903619,0.18535576,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.1,100,2.6769912,2.5690443,2.7829059,0.2138616,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.1,200,2.6840308,2.5722715,2.7864131,0.21414159,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.2,20,2.7881306,2.6971454,2.8841988,0.18705338,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.2,50,2.7818815,2.6566143,2.8932629,0.23664861,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.2,100,2.7995095,2.6568346,2.9249218,0.26808725,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.2,200,2.7999197,2.6653746,2.940986,0.27561137,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.3,20,2.8814265,2.6429466,3.0465638,0.40361718,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.3,50,2.8926907,2.690834,3.0505052,0.35967123,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.3,100,2.8959321,2.7343661,3.0470586,0.31269251,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
+0.3,200,2.9091624,2.7577452,3.0920956,0.33435038,post-hoc hidden-unit perturbation; NOT calibrated epistemic uncertainty
